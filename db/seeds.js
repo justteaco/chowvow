@@ -11,7 +11,7 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           username: 'xxx',
           email: 'xxx',
           password: 'xxx',
-          passwordConfiramtion: 'xxx',
+          passwordConfiramtion: 'xxx'
         }
       ])
     })
