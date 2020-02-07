@@ -21,7 +21,7 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
 
       ])
     })
-    .then(createdUser => console.log(`${'* '.repeat(createdUser.length)} chefs created `))
+    .then(createdUser => console.log(`${' * '.repeat(createdUser.length)} chefs created `))
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
 })
