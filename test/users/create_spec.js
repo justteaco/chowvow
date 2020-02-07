@@ -1,4 +1,4 @@
-const User = require(../../models/user)
+const User = require('../../models/user')
 const jst = require('jsonwebtoken')
 const { secret } = require('../../config/environment')
 
@@ -11,3 +11,5 @@ const testUserData = {
   password: 'test',
   passwordConfirmation: 'test'
 }
+
+describe('GET /users', () => {
