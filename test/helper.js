@@ -6,5 +6,5 @@ global.should = chai.should()
 global.expect = chai.expect
 // supertest makes mock HTTP requests
 const supertest = require('supertest')
-const app = require('../index.js')
+const app = require('../index')
 global.api = supertest(app)
