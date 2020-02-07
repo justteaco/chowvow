@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const { dbURI } = require()
-const User = require()
+const { dbURI } = require('../config/environment')
+const User = require('../models/user')
 
 mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err, db) => {
   if (err) return console.log(err)
