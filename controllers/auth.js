@@ -5,7 +5,7 @@ const { secret } = require('../config/environment')
 function register(req, res) {
   User
     .create(req.body)
-    .then(user => res.status(201).json({ 'message': `Thanks for registering ${user.username}` }))
+    .then(user => res.status(201).json({ 'message': `Thanks for registering ${user.name}` }))
     .catch(err => res.json(err))
 }
 
