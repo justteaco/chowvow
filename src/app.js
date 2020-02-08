@@ -6,6 +6,7 @@ import 'bulma'
 
 import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
+import UserShow from './components/users/UserShow'
 
 const App = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => (
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/users/:id" component={UserShow} />
       </Switch>
     </>
   </BrowserRouter>

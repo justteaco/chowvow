@@ -8,10 +8,11 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
     .then(() => {
       return User.create([
         {
-          username: 'xxx',
+          name: 'xxx',
           email: 'xxx',
           password: 'xxx',
           passwordConfiramtion: 'xxx'
+          
         }
       ])
     })
