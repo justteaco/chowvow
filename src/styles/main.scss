@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .hero-body {
   background-image: url('https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
   background-size: cover;
@@ -33,7 +37,6 @@
 .columns .skill {
   position: relative;
   text-align: center;
-  color: white;
   padding: 15px;
   
   img{
@@ -57,9 +60,41 @@
     h2 {
       font-size: 30px;  
       font-weight: 500;
-      text-shadow: 2px 3px 4px black;  
+      text-shadow: 2px 3px 4px black;
+      color: white;  
     }
   }
+}
+
+.search-bar {
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .search {
+    display: flex;
   
+    .search-text {
+      width: 100%;
+      border: 5px solid rgb(2, 194, 120);
+      border-right: none;
+      padding: 20px;
+      height: 60px;
+      border-radius: 5px 0 0 5px;
+      color: rgb(68, 77, 73);
+      font-size: 25px;
+    }
   
+    .search-button {
+      width: 70px;
+      height: 60px;
+      border: 1px solid rgb(2, 194, 120);
+      background-color: rgb(2, 194, 120);
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      display: flex;
+    }
+  }
 }
