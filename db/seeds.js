@@ -2,21 +2,21 @@ const mongoose = require('mongoose')
 const { dbURI } = require('../config/environment')
 const User = require('../models/user')
 
-mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err, db) => {
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err, db) => {
   if (err) return console.log(err)
   db.dropDatabase()
     .then(() => {
-      return User.create([
-        {
-          username: 'xxx',
-          email: 'xxx',
-          password: 'xxx',
-          passwordConfiramtion: 'xxx'
-        }
-      ])
-    })
-    .then(createdUsers => {
-      console.log(`${'👩‍🚒'.repeat(createdUsers.length)} users created`)
+    //   return User.create([
+    //     {
+    //       username: 'xxx',
+    //       email: 'xxx',
+    //       password: 'xxx',
+    //       passwordConfiramtion: 'xxx'
+    //     }
+    //   ])
+    // })
+    // .then(createdUsers => {
+    //   console.log(`${'👩‍🚒'.repeat(createdUsers.length)} users created`)
       return User.create([
         {
           name: 'Ben Parker',
@@ -25,7 +25,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Moroccan', 'Turkish/Middle-Eastern', 'Italian'],
           city: 'London',
           postcode: 'SW19 3ES',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Beth Williams',
           email: 'beth@email.com',
@@ -33,7 +34,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['French', 'Italian', 'Greek'],
           city: 'London',
           postcode: 'SE11 5EL',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Edgar Riveria',
           email: 'edgar@email.com',
@@ -41,7 +43,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Mexican', 'Spanish', 'Vegan', 'Vegetarian'],
           city: 'London',
           postcode: 'E17 6RE',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Harry Kent',
           email: 'harry@email.com',
@@ -49,7 +52,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['South East Asian', 'Korean', 'Vegan'],
           city: 'London',
           postcode: 'SW1V 2JP',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Jessica Wood',
           email: 'jessica@email.com',
@@ -57,7 +61,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Greek', 'Chinese', 'Indian'],
           city: 'London',
           postcode: 'SE19 1XB',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Sergio De Paula',
           email: 'sergio@email.com',
@@ -65,7 +70,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Vegetarian', 'Indian'],
           city: 'London',
           postcode: 'W1F 9NE',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Steph Gardiner',
           email: 'steph@email.com',
@@ -73,7 +79,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Japanese'],
           city: 'London',
           postcode: 'WC1B 3RD',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Francesca Harris',
           email: 'francesca@email.com',
@@ -81,7 +88,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['African', 'Caribbean'],
           city: 'London',
           postcode: 'NW1 3UJ',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Marius Stone',
           email: 'marius@email.com',
@@ -89,7 +97,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Chinese', 'Japanese'],
           city: 'London',
           postcode: 'N1P 1SG',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Angela Reed',
           email: 'angela@email.com',
@@ -97,7 +106,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Mexican', 'Spanish', 'Moroccan', 'French'],
           city: 'London',
           postcode: 'N17 0BF',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Jack Minton',
           email: 'jack6@email.com',
@@ -105,7 +115,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Japanese', 'Vegan', 'Italian'],
           city: 'London',
           postcode: 'SE9 3DA',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'John Malcolm',
           email: 'John5@email.com',
@@ -113,7 +124,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Spanish', 'Greek'],
           city: 'London',
           postcode: 'SE28 0FF',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Samantha Rudd',
           email: 'Sam4@email.com',
@@ -121,7 +133,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Mexican', 'Vegetarian'],
           city: 'London',
           postcode: 'SE5 7PP',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Mack Jay',
           email: 'Mack@email.com',
@@ -129,7 +142,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Caribbean'],
           city: 'London',
           postcode: 'SE8 3JW',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Jennifer Fray',
           email: 'jennifer5@email.com',
@@ -137,7 +151,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['African', 'Chinese'],
           city: 'London',
           postcode: 'SE8 3JW',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Asai Hiro',
           email: 'Asai@email.com',
@@ -145,7 +160,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Vegetarian', 'Japanese'],
           city: 'London',
           postcode: 'SE9 5HP',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Safiri Abdu',
           email: 'safiri@email.com',
@@ -153,7 +169,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['African', 'Vegan'],
           city: 'London',
           postcode: 'SE6 9LP',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Ataleo Signorelli',
           email: 'ataleo@email.com',
@@ -161,7 +178,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Italian'],
           city: 'London',
           postcode: 'N22 7UQ',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Ender Yenal',
           email: 'Ender@email.com',
@@ -169,7 +187,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Turkish/Middle-Eastern', 'Vegan'],
           city: 'London',
           postcode: 'N22 8PH',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Alejandro Curbelo',
           email: 'Alejandro@email.com',
@@ -177,7 +196,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Mexican', 'Spanish'],
           city: 'London',
           postcode: 'W9 2JW',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Tahirah Jarrett',
           email: 'tea@jay.com',
@@ -185,7 +205,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Caribbean', 'South-East Asian', 'Greek'],
           city: 'Kilburn',
           postcode: 'DH1 3YD',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Katherine Gonzalez',
           email: 'kat@gon.com',
@@ -193,7 +214,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['African', 'Spanish', 'Greek'],
           city: 'Clapham',
           postcode: 'HA5 3XX',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Rebecca Dunncan',
           email: 'beck@dun.com',
@@ -201,7 +223,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['South-East Asian', 'Greek'],
           city: 'Brixton',
           postcode: 'SP4 0AS',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Jenny Byrnes',
           email: 'jen@byrn.com',
@@ -209,7 +232,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Caribbean', 'Spanish'],
           city: 'Chelsea',
           postcode: 'BS3 3HH',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Talia Bunda',
           email: 'talia@bun.com',
@@ -217,7 +241,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Chinese', 'French', 'African'],
           city: 'Queens Park',
           postcode: 'NW3 1LJ',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Patrick Gowie',
           email: 'pat@gow.com',
@@ -225,7 +250,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Turkish/Middle-Eastern'],
           city: 'Peckham',
           postcode: 'E3 3LG',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Ena Maud',
           email: 'mummy@jane.com',
@@ -233,7 +259,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['South-East Asian', 'Caribbean'],
           city: 'Hackney Downs',
           postcode: 'HA9 0PA',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Kelsey Marie',
           email: 'kels@marie.com',
@@ -241,7 +268,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Spanish'],
           city: 'Notting Hill',
           postcode: 'SS13 2AQ',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Joan Taylor',
           email: 'joan@tay.com',
@@ -249,7 +277,8 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Mexican', 'South-East Asian', 'Indian'],
           city: 'Hackney Downs',
           postcode: 'E8 1EY',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }, {
           name: 'Devon Brown',
           email: 'surf@allah.com',
@@ -257,11 +286,12 @@ mongoose.connect(dbURI, { useNewUrParser: true, useUnifiedTopology: true }, (err
           skills: ['Vegetarian', 'South-East Asian', 'Vegan'],
           city: 'Harrow',
           postcode: 'PH21 1LQ',
-          password: 'pass'
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }
       ])
     })
-    .then(createdUser => console.log(`${' * '.repeat(createdUser.length)} chefs created `))
+    .then(createdUser => console.log(`${createdUser.length} users created `))
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
 })
