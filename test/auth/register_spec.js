@@ -6,7 +6,8 @@ const testDataIncorrect = {
   email: 'test@test.test',
   image: 'image.jpg',
   skills: 'indian',
-  location: 'london',
+  city: 'london',
+  postcode: 'br20hg',
   password: 'test',
   passwordConfirmation: 'code'
 }
@@ -16,7 +17,8 @@ const testDataCorrect = {
   email: 'testCorrect@test.test',
   image: 'image.jpg',
   skills: 'indian',
-  location: 'london',
+  city: 'london',
+  postcode: 'br20hg',
   password: 'test',
   passwordConfirmation: 'test'
 }
@@ -26,7 +28,8 @@ const testDataDuplicateEmail = {
   email: 'test@test.test',
   image: 'image.jpg',
   skills: 'indian',
-  location: 'london',
+  city: 'london',
+  postcode: 'br20hg',
   password: 'test',
   passwordConfirmation: 'test'
 }
@@ -38,7 +41,8 @@ describe('POST /register', () => {
       email: 'test@test.test',
       image: 'image.jpg',
       skills: 'indian',
-      location: 'london',
+      city: 'london',
+      postcode: 'br20hg',
       password: 'test',
       passwordConfirmation: 'test'
     })

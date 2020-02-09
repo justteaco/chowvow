@@ -6,7 +6,7 @@ function register(req, res) {
   User
     .create(req.body)
     .then(user => res.status(201).json({ 'message': `Thanks for registering ${user.name}` }))
-    .catch(err => res.status(422).json(err))
+    .catch(err => res.json(err))
 }
 
 function login(req, res) {
@@ -24,12 +24,13 @@ function login(req, res) {
     })
     .catch(err => res.json(err))
 }
-// function profile(req, res) {
-//   User
-//     .findById(req.currentUSer._id)
-//     .populate('createdUser')
-//     .then(user => res.status(200).json(user))
-//     .catch(err => res.json(err))
-// }
 
-module.exports = { register, login }
+function profile(req, res) {
+  User
+    .findById(req.currentUSer._id)
+    .populate('createdUser')
+    .then(user => res.status(200).json(user))
+    .catch(err => res.json(err))
+}
+
+module.exports = { register, login, profile }

@@ -18,7 +18,8 @@ describe('POST /login', () => {
       email: 'test@test.test', // the login data objects above are based on this user
       image: 'image.jpg',
       skills: 'indian',
-      location: 'london',
+      city: 'london',
+      postcode: 'br20hg',
       password: 'test',
       passwordConfirmation: 'test'
     })
