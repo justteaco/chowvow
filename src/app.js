@@ -25,7 +25,7 @@ const App = () => (
         <Route path="/users/:id" component={UserShow} />
         <Route path="/users" component={UserIndex} />
         <Route path="/users/login" component={Login} />
-        <Route path="/users/register" component={Register} />
+        <Route path="/register" component={Register} />
         {/* <Route path="/*" component={ErrorPage} /> */}
       </Switch>
     </>

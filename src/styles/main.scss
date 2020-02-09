@@ -117,7 +117,8 @@ body {
   margin: 0;
   .userInfo,
   .userImage,
-  .skills-recipes {
+  .skills-recipes,
+  .column {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -126,6 +127,6 @@ body {
 }
 
 .image {
-  border: solid;
+  border: none;
   border-radius: 80%;
 }
