@@ -11,8 +11,9 @@ import UserIndex from './components/users/UserIndex'
 
 
 import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 //import SecureRoute from '../lib/secureRoute'
-import ErrorPage from './components/common/ErrorPage'
+// import ErrorPage from './components/common/ErrorPage'
 
 
 const App = () => (
@@ -24,7 +25,8 @@ const App = () => (
         <Route path="/users/:id" component={UserShow} />
         <Route path="/users" component={UserIndex} />
         <Route path="/users/login" component={Login} />
-        <Route path="/*" component={ErrorPage} />
+        <Route path="/users/register" component={Register} />
+        {/* <Route path="/*" component={ErrorPage} /> */}
       </Switch>
     </>
   </BrowserRouter>
