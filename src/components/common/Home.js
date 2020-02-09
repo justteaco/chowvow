@@ -27,7 +27,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/caribbean2.jpg" alt="caribbean" />
+              <img src="../../assets/caribbean4.jpeg" alt="caribbean" />
               <div className="border">
                 <h2>Caribbean</h2>
               </div>
@@ -43,7 +43,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/french2.jpeg" alt="french" />
+              <img src="../../assets/french4.jpeg" alt="french" />
               <div className="border">
                 <h2>French</h2>
               </div>
@@ -107,7 +107,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/SE asian2.jpeg" alt="south-east asian" />
+              <img src="../../assets/asian.jpeg" alt="south-east asian" />
               <div className="border">
                 <h2>South-East Asian</h2>
               </div>
@@ -115,7 +115,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/spanish3.jpg" alt="spanish" />
+              <img src="../../assets/spanish6.jpg" alt="spanish" />
               <div className="border">
                 <h2>Spanish</h2>
               </div>
@@ -131,7 +131,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/vegan2.jpeg" alt="vegan" />
+              <img src="../../assets/vegan6.jpeg" alt="vegan" />
               <div className="border">
                 <h2>Vegan</h2>
               </div>
@@ -139,7 +139,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/vegan3.jpeg" alt="vegetarian" />
+              <img src="../../assets/vegan8.jpg" alt="vegetarian" />
               <div className="border">
                 <h2>Vegetarian</h2>
               </div>
