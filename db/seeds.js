@@ -291,7 +291,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Reeva Fraser',
           email: 'reevafraser12@hotmail.com',
-          image: 'james3.jpg',
+          image: '../src/assets/seeds/james3.jpg',
           skills: ['Spanish', 'Vegan', 'Italian'],
           city: 'London',
           postcode: 'SE1 2UD',
@@ -300,7 +300,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Eden Matthews',
           email: 'edenM23@gmail.com',
-          image: 'james8.jpg',
+          image: '../src/assets/seeds/james8.jpg',
           skills: ['Mexican', 'Japanese'],
           city: 'Leeds',
           postcode: 'LS1 1HE',
@@ -309,7 +309,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Rosa Adams',
           email: 'rosa.adams1@hotmail.com',
-          image: 'james4.jpg',
+          image: '../src/assets/seeds/james4.jpg',
           skills: ['Turkish/Middle-Eastern'],
           city: 'London',
           postcode: 'EC4Y 9BJ',
@@ -318,7 +318,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Amelia-Rose Green',
           email: 'arose.green@gmail.com',
-          image: 'james10.jpg',
+          image: 'j../src/assets/seeds/ames10.jpg',
           skills: ['Caribbean', 'Chinese', 'African'],
           city: 'London',
           postcode: 'E1 6NU',
@@ -327,7 +327,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Xavier oduneye',
           email: 'oduneye123@hotmail.com',
-          image: 'james7.jpg',
+          image: '../src/assets/seeds/james7.jpg',
           skills: ['African', 'Chinese', 'Vegan'],
           city: 'London',
           postcode: 'HA01AU',
@@ -336,7 +336,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Kevin Uchiha',
           email: 'favouritecakes77@gmail.com',
-          image: 'james1.jpg',
+          image: '../src/assets/seeds/james1.jpg',
           skills: ['Italian'],
           city: 'London',
           postcode: 'N153BF',
@@ -345,7 +345,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Dillon Bates',
           email: 'Bates245@gmail.com',
-          image: 'james6.jpg',
+          image: '../src/assets/seeds/james6.jpg',
           skills: ['Spanish', 'Vegan'],
           city: 'Manchester',
           postcode: 'M1 1EZ',
@@ -354,7 +354,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Brayden Howard',
           email: 'Bradybunch@hotmail.com',
-          image: 'james2.jpg',
+          image: '../src/assets/seeds/james2.jpg',
           skills: ['Mexican', 'Vegetarian'],
           city: 'Bristol',
           postcode: 'BS11JN',
@@ -363,7 +363,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Jonathan Porter',
           email: 'jonnyp099@hotmail.com',
-          image: 'james9.jpg',
+          image: '../src/assets/seeds/james9.jpg',
           skills: ['Turkish/Middle-Eastern', 'Vegan'],
           city: 'Newcastle',
           postcode: 'NE1 1EE',
@@ -372,7 +372,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Tom Cresent',
           email: 'tomcresent.1.@gmail.com',
-          image: 'james5.jpg',
+          image: '../src/assets/seeds/james5.jpg',
           skills: ['Mexican', 'Spanish'],
           city: 'Edinburgh',
           postcode: 'EH1 2BU',

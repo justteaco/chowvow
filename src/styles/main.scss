@@ -7,6 +7,16 @@
   align-items: center;
 }
 
+.hero-body-failed {
+  background-image: url("../assets/background/error1.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .header h1 {
   font-size: 100px;
   color: grey;
@@ -41,4 +51,38 @@ body {
 .image {
   border: solid;
   border-radius: 80%;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 3px solid rgb(69, 77, 78);
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  // background: rgb(69, 77, 78);
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+}
+.searchTerm {
+  width: 100%;
+  border: 3px solid rgb(69, 77, 78);
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  padding: 5px;
+  height: 36px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.map {
+  display: flex;
 }
