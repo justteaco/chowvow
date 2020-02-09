@@ -4,7 +4,6 @@ const User = require('../models/user')
 function index(req, res) {
   User
     .find()
-    // .populate('user')
     .then(foundUsers => res.status(200).json(foundUsers))
     .catch(err => res.json(err))
 }
