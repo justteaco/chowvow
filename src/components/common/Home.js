@@ -19,7 +19,7 @@ const Home = () => (
         <div className="columns is-mobile is-multiline">
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/african2.jpeg" alt="african" />
+              <img src="../../assets/african.jpeg" alt="african" />
               <div className="border">
                 <h2>African</h2>
               </div>
@@ -27,7 +27,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/caribbean4.jpeg" alt="caribbean" />
+              <img src="../../assets/caribbean.jpeg" alt="caribbean" />
               <div className="border">
                 <h2>Caribbean</h2>
               </div>
@@ -35,7 +35,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/chinese2.jpeg" alt="chinese" />
+              <img src="../../assets/chinese.jpeg" alt="chinese" />
               <div className="border">
                 <h2>Chinese</h2>
               </div>
@@ -43,7 +43,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/french4.jpeg" alt="french" />
+              <img src="../../assets/french.jpeg" alt="french" />
               <div className="border">
                 <h2>French</h2>
               </div>
@@ -59,7 +59,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/indian2.jpeg" alt="indian" />
+              <img src="../../assets/indian.jpeg" alt="indian" />
               <div className="border">
                 <h2>Indian</h2>
               </div>
@@ -67,7 +67,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/italian2.jpeg" alt="italian" />
+              <img src="../../assets/italian.jpeg" alt="italian" />
               <div className="border">
                 <h2>Italian</h2>
               </div>
@@ -75,7 +75,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/japan3.jpeg" alt="japanese" />
+              <img src="../../assets/japanese.jpeg" alt="japanese" />
               <div className="border">
                 <h2>Japanese</h2>
               </div>
@@ -83,7 +83,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/korean5.jpeg" alt="korean" />
+              <img src="../../assets/korean.jpeg" alt="korean" />
               <div className="border">
                 <h2>Korean</h2>
               </div>
@@ -91,7 +91,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/mexican3.jpg" alt="mexican" />
+              <img src="../../assets/mexican.jpg" alt="mexican" />
               <div className="border">
                 <h2>Mexican</h2>
               </div>
@@ -115,7 +115,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/spanish6.jpg" alt="spanish" />
+              <img src="../../assets/spanish.jpg" alt="spanish" />
               <div className="border">
                 <h2>Spanish</h2>
               </div>
@@ -123,7 +123,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/turkish4.jpg" alt="turkish middle-eastern" />
+              <img src="../../assets/turkish.jpg" alt="turkish middle-eastern" />
               <div className="border">
                 <h2>Turkish/Middle-Eastern</h2>
               </div>
@@ -131,7 +131,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/vegan6.jpeg" alt="vegan" />
+              <img src="../../assets/vegan.jpeg" alt="vegan" />
               <div className="border">
                 <h2>Vegan</h2>
               </div>
@@ -139,7 +139,7 @@ const Home = () => (
           </div>
           <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
             <Link to="/chefs">
-              <img src="../../assets/vegan8.jpg" alt="vegetarian" />
+              <img src="../../assets/vegetarian.jpg" alt="vegetarian" />
               <div className="border">
                 <h2>Vegetarian</h2>
               </div>
