@@ -2,7 +2,11 @@ const mongoose = require('mongoose') // This is needed to create a new schema an
 const bcrypt = require('bcrypt') // Our chosen our library used to hash passwords
 
 const userSchema = new mongoose.Schema({
+<<<<<<< HEAD
+  name: { type: String, required: true },
+=======
   name: { type: String, required: true, unique: true },
+>>>>>>> development
   email: { type: String, required: true, unique: true },
   image: { type: String, required: true },
   skills: { type: Array, required: true },

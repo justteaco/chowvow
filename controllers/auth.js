@@ -5,8 +5,8 @@ const { secret } = require('../config/environment')
 function register(req, res) {
   User
     .create(req.body)
-    .then(user => res.status(201).json({ 'message': `Thanks for registering ${user.username}` }))
-    .catch(err => res.json(err))
+    .then(user => res.status(201).json({ 'message': `Thanks for registering ${user.name}` }))
+    .catch(err => res.status(422).json(err))
 }
 
 function login(req, res) {
@@ -18,18 +18,18 @@ function login(req, res) {
       }
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '24h' })
       res.status(202).json({
-        message: `Welcome back ${user.username}`, 
-        token 
+        message: `Welcome back ${user.name}`,
+        token
       })
     })
     .catch(err => res.json(err))
 }
-function profile(req, res) {
-  User
-    .findById(req.currentUSer._id)
-    .populate('createdUser')
-    .then(user => res.status(200).json(user))
-    .catch(err => res.json(err))
-}
+// function profile(req, res) {
+//   User
+//     .findById(req.currentUSer._id)
+//     .populate('createdUser')
+//     .then(user => res.status(200).json(user))
+//     .catch(err => res.json(err))
+// }
 
-module.exports = { register, login, profile }
+module.exports = { register, login }

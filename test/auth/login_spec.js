@@ -14,7 +14,7 @@ const loginDataIncorrect = { // so we can test our incorrect responses
 describe('POST /login', () => {
   beforeEach(done => { // making a user before each test, this is the user we are going to test 'logging in'
     User.create({
-      username: 'test',
+      name: 'test',
       email: 'test@test.test', // the login data objects above are based on this user
       image: 'image.jpg',
       skills: 'indian',
