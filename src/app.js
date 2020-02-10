@@ -13,7 +13,17 @@ import UserIndex from './components/users/UserIndex'
 
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
+<<<<<<< HEAD
+// import SecureRoute from '../lib/secureRoute'
+=======
 //import SecureRoute from '../lib/secureRoute'
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> b5da77e277b4c3031decfb9b215bca96923a23db
+>>>>>>> development
 // import ErrorPage from './components/common/ErrorPage'
 
 
@@ -27,6 +37,9 @@ const App = () => (
         <Route path="/map" component={UserMap} />
 <<<<<<< HEAD
         <Route path="/users" component={UserIndex} />
+<<<<<<< HEAD
+        <Route path="/login" component={Login} />
+=======
         <Route path="/users/login" component={Login} />
 <<<<<<< HEAD
 
@@ -34,6 +47,7 @@ const App = () => (
 =======
         <Route path="/chefs" component={UserIndex} />
 >>>>>>> development
+>>>>>>> b5da77e277b4c3031decfb9b215bca96923a23db
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/*" component={FailedPage} />

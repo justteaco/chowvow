@@ -1,11 +1,19 @@
 import React from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 // import { Link } from 'react-router-dom'
 // import Auth from '../../lib/auth'
 
 class UserShow extends React.Component {
-  // state = { user: null }
-
+  state = { chef: null }
+  async componentDidMount() {
+    const chefId = this.props.match.params.id
+    try {
+      const res = await axios.get(`https://localhost:8000/chefs/${chefId}`)
+      this.setState({ chef: res.data })
+    } catch (err) {
+      this.props.history.push('/notfound')
+    }
+  }
 
   render() {
     // const { user } = this.state
