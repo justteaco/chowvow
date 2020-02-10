@@ -5,18 +5,18 @@ const testDataIncorrect = {
   name: 'test',
   email: 'test@test.test',
   image: 'image.jpg',
-  skills: 'indian',
+  skills: ['indian'],
   city: 'london',
   postcode: 'br20hg',
   password: 'test',
-  passwordConfirmation: 'code'
+  passwordConfirmation: 'hello'
 }
 
 const testDataCorrect = {
   name: 'test',
   email: 'testCorrect@test.test',
   image: 'image.jpg',
-  skills: 'indian',
+  skills: ['indian'],
   city: 'london',
   postcode: 'br20hg',
   password: 'test',
@@ -25,22 +25,22 @@ const testDataCorrect = {
 
 const testDataDuplicateEmail = {
   name: 'test',
-  email: 'test@test.test',
+  email: 'test.test.com',
   image: 'image.jpg',
-  skills: 'indian',
+  skills: ['indian'],
   city: 'london',
   postcode: 'br20hg',
   password: 'test',
   passwordConfirmation: 'test'
 }
 
-describe('POST /register', () => {
+describe('Test to check if email already exists /register', () => {
   beforeEach(done => {
     User.create({
       name: 'test',
-      email: 'test@test.test',
+      email: 'test.test.com',
       image: 'image.jpg',
-      skills: 'indian',
+      skills: ['indian'],
       city: 'london',
       postcode: 'br20hg',
       password: 'test',
@@ -49,6 +49,22 @@ describe('POST /register', () => {
       .then(() => done())
   })
 
+  it('should return a 422 response if email already exists', done => {
+    api.post('/api/register')
+      .send(testDataDuplicateEmail)
+      .end((err, res) => {
+        expect(res.status).to.eq(422)
+        done()
+      })
+  })
+
+  afterEach(done => { // as always emptying the db after the tests
+    User.deleteMany().then(() => done())
+  })
+})
+
+describe('Tests to check if password confirmation matches password, and if its returning an object correctly / register', () => {
+
   afterEach(done => { // as always emptying the db after the tests
     User.deleteMany().then(() => done())
   })
@@ -56,15 +72,6 @@ describe('POST /register', () => {
   it('should return a 422 response if password does not match passwordConfirmation', done => {
     api.post('/api/register')
       .send(testDataIncorrect)
-      .end((err, res) => {
-        expect(res.status).to.eq(422)
-        done()
-      })
-  })
-
-  it('should return a 422 response if email already exists', done => {
-    api.post('/api/register')
-      .send(testDataDuplicateEmail)
       .end((err, res) => {
         expect(res.status).to.eq(422)
         done()
@@ -100,5 +107,3 @@ describe('POST /register', () => {
       })
   })
 })
-
-

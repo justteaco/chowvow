@@ -19,13 +19,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     //   console.log(`${'👩‍🚒'.repeat(createdUsers.length)} users created`)
       return User.create([
         {
-<<<<<<< HEAD
-          name: 'xxx',
-          email: 'xxx',
-          password: 'xxx',
-          passwordConfiramtion: 'xxx'
-          
-=======
           name: 'Ben Parker',
           email: 'ben@email.com',
           image: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
@@ -295,7 +288,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'PH21 1LQ',
           password: 'pass',
           passwordConfirmation: 'pass'
->>>>>>> development
         }
       ])
     })
