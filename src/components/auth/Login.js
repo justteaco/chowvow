@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+
 import Auth from '../lib/auth'
 
 class Login extends React.Component {
@@ -19,7 +20,7 @@ class Login extends React.Component {
  handleSubmit = async e => {
    e.preventDefault()
    try {
-     const res =  await axios.post('https://localhost:8000/login', this.state.data)
+     const res =  await axios.post('/api/login', this.state.data)
      console.log(this.state.data, 'data')
      Auth.setToken(res.data.token)
 

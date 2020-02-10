@@ -2,6 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 
+.usersmap{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .hero-body {
   background-image: url("https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
   background-size: cover;
@@ -151,6 +158,10 @@ body {
   }
 }
 
+.skills-recipes {
+  max-width: 200px;
+}
+
 .image {
   border: none;
   border-radius: 80%;
@@ -193,3 +204,26 @@ body {
 .skills-recipes {
   max-width: 200px;
 }
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .bio {
+    margin-left: 120px;
+  }
+
+  .skills {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+
+    p {
+    border: 1px solid black;
+    height: fit-content;
+    margin: 20px;
+    padding: 20px 40px;
+    }
+  }
+}
+

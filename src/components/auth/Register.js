@@ -64,6 +64,7 @@ class Register extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <section className="userSection">
         <form onSubmit={this.handleSubmit} className="userContainer">
