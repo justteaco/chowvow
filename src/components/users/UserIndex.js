@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../common/Navbar'
 import axios from 'axios'
 import UserShow from './UserShow'
-import FailedPage from '..//common/ErrorPage'
+//import FailedPage from '..//common/ErrorPage'
 
 class UserIndex extends React.Component {
   state = {
@@ -38,7 +38,7 @@ class UserIndex extends React.Component {
           <div className="container">
             <div className="columns is-mobile is-multiline">
               {filterUsers.length === 0 && this.state.userInput ?
-                <FailedPage /> :
+                //<FailedPage />//  
                 filterUsers.map(user => <UserShow key={user._id} {...user} />)}
 
             </div>
