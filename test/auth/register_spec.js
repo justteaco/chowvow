@@ -3,7 +3,7 @@ const User = require('../../models/user')
 
 const testDataIncorrect = {
   name: 'test',
-  email: 'test@test.test',
+  email: 'testIncorrect@test.test',
   image: 'image.jpg',
   skills: ['indian'],
   city: 'london',
@@ -48,7 +48,6 @@ describe('Test to check if email already exists /register', () => {
     })
       .then(() => done())
   })
-
   it('should return a 422 response if email already exists', done => {
     api.post('/api/register')
       .send(testDataDuplicateEmail)
@@ -57,11 +56,15 @@ describe('Test to check if email already exists /register', () => {
         done()
       })
   })
-
   afterEach(done => { // as always emptying the db after the tests
     User.deleteMany().then(() => done())
   })
+}),
+
+afterEach(done => { // as always emptying the db after the tests
+  User.deleteMany().then(() => done())
 })
+
 
 describe('Tests to check if password confirmation matches password, and if its returning an object correctly / register', () => {
 
