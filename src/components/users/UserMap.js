@@ -16,7 +16,8 @@ class UserMap extends React.Component {
       longitude: -0.1,
       zoom: 12
     },
-    display: false
+    display: false,
+    userPicked: {}
   };
 
   myMap = React.createRef()
@@ -58,15 +59,22 @@ class UserMap extends React.Component {
     })
   };
 
-  changeDisplay = () => {
-    this.setState({ display: true })
+  showUser = user => {
+    
+    this.setState({ userPicked: user })
+  }
+
+  togglePopup = () => {
+    const { display } = this.state
+    if (!display) {
+      this.setState({ display: true })
+    } else this.setState({ display: false })
   }
 
 
   render() {
-    const { viewport, userswithco, display } = this.state
+    const { viewport, userswithco, userPicked, display } = this.state
     if (!userswithco.length) return null
-    console.log(userswithco)
     return (
       <section className="userSection">
         <div className="map">
@@ -81,47 +89,43 @@ class UserMap extends React.Component {
             maxZoom={13}
           >
             <Geocoder
+
               mapRef={this.myMap}
               mapboxApiAccessToken={token}
               onViewportChange={this.handleViewportChange}
               position="top-left"
               
             />
-            
             {userswithco[0].latlng && userswithco.map((user, i) => (
               <>
               <Marker 
+  
                 key={i}
                 latitude={user.latlng[1]}
                 longitude={user.latlng[0]}
               >
                 <a onClick={(e) => {
                   e.preventDefault()
-                  this.changeDisplay()
+                  this.showUser(user)
+                  this.togglePopup()
                 }}>
                   <img src={user.image} className="usersmap" />
                 </a>
-
               </Marker> 
-
-              {display ? (<Popup
-                latitude={user.latlng[1]}
-                longitude={user.latlng[0]}
-              >
-                
-                <Link to="/login">
-                  {user.name}
-                  <br />
-                  {user.skills.map((skill => (
-                    skill[1]
-                  ))}
-                </Link>
-
-              </Popup>)
-                : null}
               </>
             ))}
-
+            {display ? (<Popup
+              latitude={userPicked.latlng[1]}
+              longitude={userPicked.latlng[0]}
+            >
+              <Link to={`/chefs/${userPicked._id}`}>
+                {userPicked.name}
+                <br />
+                Skills:
+                {' '}{userPicked.skills.slice(0, userPicked.skills.length).join(', ')}
+              </Link>
+            </Popup>)
+              : null}
           </MapGL>
         </div>
       </section>
