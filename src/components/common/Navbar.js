@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 class Navbar extends React.Component {
 
   handleClick = (e) => {
-    const skill = e.target.innerHTML.toLowerCase()
-    localStorage.setItem('skill', skill)
+    localStorage.setItem('skill', e.target.innerHTML)
   }
 
   render() {

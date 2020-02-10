@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import './styles/main.scss'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import 'bulma'
-
 import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
 import UserShow from './components/users/UserShow'
@@ -13,7 +12,6 @@ import UserIndex from './components/users/UserIndex'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 // import SecureRoute from '../lib/secureRoute
-
 const App = () => (
   <BrowserRouter>
     <>
@@ -30,7 +28,6 @@ const App = () => (
     </>
   </BrowserRouter>
 )
-
 ReactDOM.render(
   <App />,
   document.getElementById('root')
