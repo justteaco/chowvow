@@ -58,6 +58,7 @@ class Register extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <section className="userSection">
         {/* <div className="userContainer"> */}
@@ -70,7 +71,7 @@ class Register extends React.Component {
                 <input
                   className={`input ${this.state.errors.name ? 'is-danger' : ''}`}
                   placeholder="Username"
-                  name="username"
+                  name=" name"
                   onChange={this.handleChange}
                 />
               </div>
