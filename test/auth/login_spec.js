@@ -11,7 +11,7 @@ const loginDataIncorrect = { // so we can test our incorrect responses
   password: 'wrong'
 }
 
-describe('POST /login', () => {
+describe('Test to check whether authorization is approved or not / login', () => {
   beforeEach(done => { // making a user before each test, this is the user we are going to test 'logging in'
     User.create({
       name: 'test',
@@ -19,7 +19,7 @@ describe('POST /login', () => {
       image: 'image.jpg',
       skills: 'indian',
       city: 'london',
-      postcode: 'se1 2ud',
+      postcode: 'br20hg',
       password: 'test',
       passwordConfirmation: 'test'
     })
