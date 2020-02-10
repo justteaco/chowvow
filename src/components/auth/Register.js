@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
+import ImageUpload from '../ImageUpload'
+
 
 class Register extends React.Component {
   state = {
@@ -9,7 +11,10 @@ class Register extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      skills: ''
+      image: '',
+      skills: '',
+      city: '',
+      postcode: ''
     },
     errors: {}
   }
@@ -49,11 +54,11 @@ class Register extends React.Component {
 
     console.log('submitting', this.state.data)
     try {
+      await axios.post('api/register', this.state.data)
       console.log('hey man')
-      await axios.post('http://localhost:8000/register', this.state.data)
-      this.props.history.push('/chefs')
+      this.props.history.push('/login')
     } catch (err) {
-      // console.log(err.response.data.errors) //Specific only to this API
+      console.log(err.response.data.errors) //Specific only to this API
       this.setState({ errors: err.response.data.errors })
     }
   }
@@ -116,11 +121,19 @@ class Register extends React.Component {
             </div>
           </div>
           <div className="userImage">
-            <figure className="imageContainer">
+            {/* <figure className="imageContainer">
+              <label className="label">Your photo</label>
               <img className="image" src='https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png' alt='Placeholder image' />
-            </figure>
+            </figure> */}
+            <ImageUpload
+              labelText="my custom label text"
+              handleChange={this.handleChange}
+              fieldName="profileImage"
+              labelClassName="my-label-class"
+              inputClassName="my-input-class"
+            />
             <hr />
-            <button className="button is-primary">SAVE</button>
+            <button type="submit" className="button is-primary">SAVE</button>
           </div>
           <div className="skills-recipes">
             <label className="label">What are your skills?</label>
@@ -130,6 +143,30 @@ class Register extends React.Component {
                 isMulti
                 onChange={this.handleMultiChange}
               />
+            </div>
+            <div className="field">
+              <label className="label">NAME</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.errors.city ? 'is-danger' : ''}`}
+                  placeholder="City"
+                  name="city"
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.errors.city && <small className="help is-danger">{this.state.errors.city}</small>}
+            </div>
+            <div className="field">
+              <label className="label">NAME</label>
+              <div className="control">
+                <input
+                  className={`input ${this.state.errors.postcode ? 'is-danger' : ''}`}
+                  placeholder="Postcode"
+                  name="postcode"
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.errors.postcode && <small className="help is-danger">{this.state.errors.postcode}</small>}
             </div>
           </div>
         </form>
