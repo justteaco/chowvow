@@ -1,13 +1,16 @@
 import React from 'react'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
+
 // import UserShow from './UserShow'
 // import FailedPage from '../common/FailedPage'
+
 class UserIndex extends React.Component {
   state = {
     users: [],
     skillFilter: ''
   }
+
   async getData() {
     try {
       const res = await axios.get('/api/chefs')
@@ -18,37 +21,32 @@ class UserIndex extends React.Component {
           filteredUsers = [...filteredUsers, user]
         }
         return filteredUsers
-      }) 
+      })
       this.setState({ users: filteredUsers, skillFilter })
     } catch (err) {
       console.log(err)
     }
   }
+
   componentDidMount() {
+    console.log(this.props)
     this.getData()
   }
+
   componentDidUpdate() {
     const skillFilter = localStorage.getItem('skill')
     skillFilter !== this.state.skillFilter ? this.getData() : null
   }
+
   render() {
-    console.log(this.state)
-    // console.log(this.state)
-    // if (!this.state.users) return null
-    // const filterUsers = this.state.users.filter(user => user.name.toLowerCase().includes(this.state.userInput.toLowerCase()) || user.location.toLowerCase().includes(this.state.userInput.toLowerCase()) || user.skill.toLowerCase().includes(this.state.userInput.toLowerCase()))
-    // console.log(filterUsers)
     return (
       <>
-        <h2 className="title is-2">Skill: {localStorage.getItem('skill')}</h2>
+        <h2 className="skill-header">Skill : <span className="has-text-info">{localStorage.getItem('skill')}</span></h2>
         {this.state.users.map(user => (
           // <Link to="/chefs/:id" component={UserShow} key={user._id}>
           <div key={user._id} className="box">
             <article className="media">
-              <div className="media-left">
-                <figure className="image is-128x128">
-                  <img className="is-rounded" src={user.image} alt={user.name} />
-                </figure>
-              </div>
+              <img src={user.image} alt={user.name} />
               <div className="info">
                 <div className="bio">
                   <h3 className="title">{user.name}</h3>
