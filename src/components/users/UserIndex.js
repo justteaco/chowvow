@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import UserShow from './UserShow'
-import FailedPage from '../common/FailedPage'
+// import { Link } from 'react-router-dom'
+// import UserShow from './UserShow'
+// import FailedPage from '../common/FailedPage'
 
 class UserIndex extends React.Component {
   state = {
