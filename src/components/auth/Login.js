@@ -1,11 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-<<<<<<< HEAD
-import Auth from '../../../controllers/auth'
-import Navbar from '../common/Navbar'
-=======
 import Auth from '../../lib/auth'
->>>>>>> development
 
 class Login extends React.Component {
  state = {
@@ -37,10 +32,6 @@ class Login extends React.Component {
  render() {
    return (
      <>
-<<<<<<< HEAD
-     <Navbar/>
-=======
->>>>>>> development
      <section className="section">
        <div className="container">
          <div className="columns">

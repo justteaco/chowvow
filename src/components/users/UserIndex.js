@@ -1,69 +1,24 @@
 import React from 'react'
-<<<<<<< HEAD
-import Navbar from '../common/Navbar'
-import axios from 'axios'
-=======
 import axios from 'axios'
 import { Link } from 'react-router-dom'
->>>>>>> development
 import UserShow from './UserShow'
 import FailedPage from '../common/FailedPage'
 
 class UserIndex extends React.Component {
   state = {
-<<<<<<< HEAD
-    user: null, 
-=======
     users: [],
->>>>>>> development
     userInput: ''
   }
 
   async componentDidMount() {
     try {
-<<<<<<< HEAD
-      const res = await axios.get('/api/chefs') 
-      console.log(res.data)
-      this.setState({ users: res.data })
-      console.log(this.state.users)
-=======
       const res = await axios.get('/api/chefs')
       this.setState({ users: res.data })
->>>>>>> development
     } catch (err) {
       console.log(err)
     }
   }
 
-<<<<<<< HEAD
-  handleChange = userInput => {
-    this.setState({ userInput })
-  }
-
-  render() {
-    if (!this.state.users) return null
-    const filterUsers = this.state.users.filter(user => user.name.toLowerCase().includes(this.state.userInput.toLowerCase()) || user.location.toLowerCase().includes(this.state.userInput.toLowerCase()) || user.skill.toLowerCase().includes(this.state.userInput.toLowerCase()))
-    console.log(filterUsers)
-    return (
-      <>
-        <Navbar/>
-          <div className="location-search">
-          </div>
-        <section className="section">
-          <div className="container">
-            <div className="columns is-mobile is-multiline">
-              {filterUsers.length === 0 && this.state.userInput ?
-                <FailedPage /> :
-                filterUsers.map(user => <UserShow key={user._id} {...user} />)}
-            </div>
-          </div>
-        </section>
-      </>
-    )
-  }
-}
-
-=======
   // handleChange = userInput => {
   //   this.setState({ userInput })
   // }
@@ -120,5 +75,4 @@ class UserIndex extends React.Component {
   }
 }
 
->>>>>>> development
 export default UserIndex

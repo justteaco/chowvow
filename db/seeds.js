@@ -201,7 +201,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Tahirah Jarrett',
           email: 'tea@jay.com',
-          image: 'https://images.unsplash.com/photo-1528809217021-151305b50e55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Tahirah_Jarrett.jpeg',
           skills: ['Caribbean', 'South-East Asian', 'Greek'],
           city: 'Kilburn',
           postcode: 'DH1 3YD',
@@ -210,7 +210,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Katherine Gonzalez',
           email: 'kat@gon.com',
-          image: 'https://images.unsplash.com/photo-1542662482-65e2129ea2bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Katherine_Gonzalez.jpeg',
           skills: ['African', 'Spanish', 'Greek'],
           city: 'Clapham',
           postcode: 'HA5 3XX',
@@ -219,7 +219,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Rebecca Dunncan',
           email: 'beck@dun.com',
-          image: 'https://images.unsplash.com/photo-1495383294417-3166600af8a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Becky_Dunnacan.jpeg',
           skills: ['South-East Asian', 'Greek'],
           city: 'Brixton',
           postcode: 'SP4 0AS',
@@ -228,7 +228,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Jenny Byrnes',
           email: 'jen@byrn.com',
-          image: 'https://images.unsplash.com/photo-1532800393221-f7c187ad204a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Jenny_Byrnes.jpeg',
           skills: ['Caribbean', 'Spanish'],
           city: 'Chelsea',
           postcode: 'BS3 3HH',
@@ -237,7 +237,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Talia Bunda',
           email: 'talia@bun.com',
-          image: 'https://images.unsplash.com/photo-1499651681375-8afc5a4db253?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Talia_Bunda.jpeg',
           skills: ['Chinese', 'French', 'African'],
           city: 'Queens Park',
           postcode: 'NW3 1LJ',
@@ -246,7 +246,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Patrick Gowie',
           email: 'pat@gow.com',
-          image: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Patrick_Gowie.jpeg',
           skills: ['Turkish/Middle-Eastern'],
           city: 'Peckham',
           postcode: 'E3 3LG',
@@ -255,7 +255,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Ena Maud',
           email: 'mummy@jane.com',
-          image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Ena_Maud.jpeg',
           skills: ['South-East Asian', 'Caribbean'],
           city: 'Hackney Downs',
           postcode: 'HA9 0PA',
@@ -264,7 +264,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Kelsey Marie',
           email: 'kels@marie.com',
-          image: 'https://images.unsplash.com/photo-1515081770940-d32ee225699e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Kelsey_Marie.jpeg',
           skills: ['Spanish'],
           city: 'Notting Hill',
           postcode: 'SS13 2AQ',
@@ -273,7 +273,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Joan Taylor',
           email: 'joan@tay.com',
-          image: 'https://images.unsplash.com/photo-1520998116484-6eeb2f72b5b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Joan_Taylor.jpeg',
           skills: ['Mexican', 'South-East Asian', 'Indian'],
           city: 'Hackney Downs',
           postcode: 'E8 1EY',
@@ -282,7 +282,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Devon Brown',
           email: 'surf@allah.com',
-          image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+          image: '../assets/profiles/Devon_Brown.jpeg',
           skills: ['Vegetarian', 'South-East Asian', 'Vegan'],
           city: 'Harrow',
           postcode: 'PH21 1LQ',

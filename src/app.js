@@ -14,11 +14,7 @@ import UserIndex from './components/users/UserIndex'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 //import SecureRoute from '../lib/secureRoute'
-<<<<<<< HEAD
-
-=======
 // import ErrorPage from './components/common/ErrorPage'
->>>>>>> development
 
 
 const App = () => (
