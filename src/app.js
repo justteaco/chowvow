@@ -11,7 +11,6 @@ import FailedPage from './components/common/FailedPage'
 import UserMap from './components/users/UserMap'
 import UserIndex from './components/users/UserIndex'
 
-
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 //import SecureRoute from '../lib/secureRoute'
@@ -30,12 +29,17 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route path="/users/:id" component={UserShow} />
         <Route path="/map" component={UserMap} />
+<<<<<<< HEAD
         <Route path="/users" component={UserIndex} />
         <Route path="/users/login" component={Login} />
 <<<<<<< HEAD
 
 =======
+=======
+        <Route path="/chefs" component={UserIndex} />
+>>>>>>> development
         <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
         <Route path="/*" component={FailedPage} />
 >>>>>>> development
       </Switch>
