@@ -1,5 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .hero-body {
   background-image: url("https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-body-failed {
+  background-image: url("../assets/background/error1.jpg");
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -7,9 +20,93 @@
   align-items: center;
 }
 
+
 .header h1 {
   font-size: 100px;
   color: grey;
+}
+
+.space {
+  height: 2000px;
+}
+
+.arrow {
+  position: absolute;
+  width: 200px;
+  top: 700px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper {
+  padding: 60px;
+}
+
+.columns .skill {
+  position: relative;
+  text-align: center;
+  padding: 15px;
+  
+  img{
+    height: 250px;
+    width: 400px;
+  }
+
+  .border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid white;
+    height: 170px;
+    width: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+
+    h2 {
+      font-size: 30px;  
+      font-weight: 500;
+      text-shadow: 2px 3px 4px black;
+      color: white;  
+    }
+  }
+}
+
+.search-bar {
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .search {
+    display: flex;
+  
+    .search-text {
+      width: 100%;
+      border: 5px solid rgb(2, 194, 120);
+      border-right: none;
+      padding: 20px;
+      height: 60px;
+      border-radius: 5px 0 0 5px;
+      color: rgb(68, 77, 73);
+      font-size: 25px;
+    }
+  
+    .search-button {
+      width: 70px;
+      height: 60px;
+      border: 1px solid rgb(2, 194, 120);
+      background-color: rgb(2, 194, 120);
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      display: flex;
+    }
+  }
 }
 
 body {
@@ -30,7 +127,8 @@ body {
   margin: 0;
   .userInfo,
   .userImage,
-  .skills-recipes {
+  .skills-recipes,
+  .column {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -39,6 +137,40 @@ body {
 }
 
 .image {
-  border: solid;
+  border: none;
   border-radius: 80%;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 3px solid rgb(69, 77, 78);
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  // background: rgb(69, 77, 78);
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+}
+.searchTerm {
+  width: 100%;
+  border: 3px solid rgb(69, 77, 78);
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  padding: 5px;
+  height: 36px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.map {
+  display: flex;
 }

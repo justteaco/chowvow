@@ -19,13 +19,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     //   console.log(`${'👩‍🚒'.repeat(createdUsers.length)} users created`)
       return User.create([
         {
-<<<<<<< HEAD
-          name: 'xxx',
-          email: 'xxx',
-          password: 'xxx',
-          passwordConfiramtion: 'xxx'
-          
-=======
           name: 'Ben Parker',
           email: 'ben@email.com',
           image: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
@@ -295,7 +288,96 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'PH21 1LQ',
           password: 'pass',
           passwordConfirmation: 'pass'
->>>>>>> development
+        }, {
+          name: 'Reeva Fraser',
+          email: 'reevafraser12@hotmail.com',
+          image: '../src/assets/seeds/james3.jpg',
+          skills: ['Spanish', 'Vegan', 'Italian'],
+          city: 'London',
+          postcode: 'SE1 2UD',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Eden Matthews',
+          email: 'edenM23@gmail.com',
+          image: '../src/assets/seeds/james8.jpg',
+          skills: ['Mexican', 'Japanese'],
+          city: 'Leeds',
+          postcode: 'LS1 1HE',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Rosa Adams',
+          email: 'rosa.adams1@hotmail.com',
+          image: '../src/assets/seeds/james4.jpg',
+          skills: ['Turkish/Middle-Eastern'],
+          city: 'London',
+          postcode: 'EC4Y 9BJ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Amelia-Rose Green',
+          email: 'arose.green@gmail.com',
+          image: 'j../src/assets/seeds/ames10.jpg',
+          skills: ['Caribbean', 'Chinese', 'African'],
+          city: 'London',
+          postcode: 'E1 6NU',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Xavier oduneye',
+          email: 'oduneye123@hotmail.com',
+          image: '../src/assets/seeds/james7.jpg',
+          skills: ['African', 'Chinese', 'Vegan'],
+          city: 'London',
+          postcode: 'HA01AU',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Kevin Uchiha',
+          email: 'favouritecakes77@gmail.com',
+          image: '../src/assets/seeds/james1.jpg',
+          skills: ['Italian'],
+          city: 'London',
+          postcode: 'N153BF',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Dillon Bates',
+          email: 'Bates245@gmail.com',
+          image: '../src/assets/seeds/james6.jpg',
+          skills: ['Spanish', 'Vegan'],
+          city: 'Manchester',
+          postcode: 'M1 1EZ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Brayden Howard',
+          email: 'Bradybunch@hotmail.com',
+          image: '../src/assets/seeds/james2.jpg',
+          skills: ['Mexican', 'Vegetarian'],
+          city: 'Bristol',
+          postcode: 'BS11JN',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Jonathan Porter',
+          email: 'jonnyp099@hotmail.com',
+          image: '../src/assets/seeds/james9.jpg',
+          skills: ['Turkish/Middle-Eastern', 'Vegan'],
+          city: 'Newcastle',
+          postcode: 'NE1 1EE',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Tom Cresent',
+          email: 'tomcresent.1.@gmail.com',
+          image: '../src/assets/seeds/james5.jpg',
+          skills: ['Mexican', 'Spanish'],
+          city: 'Edinburgh',
+          postcode: 'EH1 2BU',
+          password: 'pass',
+          passwordConfirmation: 'pass'
         }
       ])
     })
