@@ -6,10 +6,10 @@ const testDataIncorrect = {
   email: 'testIncorrect@test.test',
   image: 'image.jpg',
   skills: ['indian'],
-  city: 'London',
-  postcode: 'SE12UD',
+  city: 'london',
+  postcode: 'br20hg',
   password: 'test',
-  passwordConfirmation: 'code'
+  passwordConfirmation: 'hello'
 }
 
 const testDataCorrect = {
@@ -17,32 +17,32 @@ const testDataCorrect = {
   email: 'testCorrect@test.test',
   image: 'image.jpg',
   skills: ['indian'],
-  city: 'London',
-  postcode: 'SE12UD',
+  city: 'london',
+  postcode: 'br20hg',
   password: 'test',
   passwordConfirmation: 'test'
 }
 
 const testDataDuplicateEmail = {
-  name: 'emma',
-  email: 'surf@allah.com',
+  name: 'test',
+  email: 'test.test.com',
   image: 'image.jpg',
   skills: ['indian'],
-  city: 'London',
-  postcode: 'SE12UD',
+  city: 'london',
+  postcode: 'br20hg',
   password: 'test',
   passwordConfirmation: 'test'
 }
 
-describe('POST /register', () => {
+describe('Test to check if email already exists /register', () => {
   beforeEach(done => {
     User.create({
       name: 'test',
-      email: 'surf@allah.com',
+      email: 'test.test.com',
       image: 'image.jpg',
       skills: ['indian'],
-      city: 'London',
-      postcode: 'SE12UD',
+      city: 'london',
+      postcode: 'br20hg',
       password: 'test',
       passwordConfirmation: 'test'
     })
@@ -61,7 +61,13 @@ describe('POST /register', () => {
   })
 }),
 
-describe('POST /register', () => {
+afterEach(done => { // as always emptying the db after the tests
+  User.deleteMany().then(() => done())
+})
+
+
+describe('Tests to check if password confirmation matches password, and if its returning an object correctly / register', () => {
+
   afterEach(done => { // as always emptying the db after the tests
     User.deleteMany().then(() => done())
   })
@@ -103,5 +109,4 @@ describe('POST /register', () => {
         done()
       })
   })
-}
-)
+})

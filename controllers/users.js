@@ -12,7 +12,7 @@ function index(req, res) {
 function show(req, res) {
   User
     .findById(req.params.id)
-    // .populate('user')
+    .populate('user')
     .then(selectedUser => res.status(200).json(selectedUser))
     .catch(err => res.json(err))
 }

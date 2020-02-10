@@ -112,7 +112,7 @@ class UserMap extends React.Component {
                 <Link to="/login">
                   {user.name}
                   <br />
-                  {user.skills.map((skill, i) => (
+                  {user.skills.map((skill => (
                     skill[1]
                   ))}
                 </Link>
