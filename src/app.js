@@ -18,11 +18,13 @@ import Register from './components/auth/Register'
 =======
 //import SecureRoute from '../lib/secureRoute'
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 =======
 >>>>>>> b5da77e277b4c3031decfb9b215bca96923a23db
-// import ErrorPage from './components/common/ErrorPage'
 >>>>>>> development
+// import ErrorPage from './components/common/ErrorPage'
 
 
 const App = () => (
