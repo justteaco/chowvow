@@ -8,13 +8,13 @@ import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
 import UserShow from './components/users/UserShow'
 import FailedPage from './components/common/FailedPage'
-import UserMap from './components/users/UserMap'
+// import UserMap from './components/users/UserMap'
 import UserIndex from './components/users/UserIndex'
 
 
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-//import SecureRoute from '../lib/secureRoute'
+// import SecureRoute from '../lib/secureRoute'
 // import ErrorPage from './components/common/ErrorPage'
 
 
@@ -24,10 +24,10 @@ const App = () => (
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/users/:id" component={UserShow} />
-        <Route path="/map" component={UserMap} />
-        <Route path="/users" component={UserIndex} />
-        <Route path="/users/login" component={Login} />
+        <Route path="/chefs/:id" component={UserShow} />
+        {/* <Route path="/map" component={UserMap} /> */}
+        <Route path="/chefs" component={UserIndex} />
+        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/*" component={FailedPage} />
       </Switch>

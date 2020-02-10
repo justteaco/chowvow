@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const users = require('../controllers/users')
 const auth = require('../controllers/auth')
+
 //need to bring in secure route
 
 router.route('/chefs')
