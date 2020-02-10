@@ -193,3 +193,27 @@ body {
 .map {
   display: flex;
 }
+
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .bio {
+    margin-left: 120px;
+  }
+
+  .skills {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+
+    p {
+    border: 1px solid black;
+    height: fit-content;
+    margin: 20px;
+    padding: 20px 40px;
+    }
+  }
+}
+
