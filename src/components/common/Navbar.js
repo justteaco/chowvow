@@ -12,22 +12,22 @@ class Navbar extends React.Component {
               <div className="navbar-item has-dropdown is-hoverable">
                 <a className="navbar-link">Skills</a>
                 <div className="navbar-dropdown">
-                  <a className="navbar-item" href="/chefs">African</a>
-                  <a className="navbar-item" href="/chefs">Caribbean</a>
-                  <a className="navbar-item" href="/chefs">Chinese</a>
-                  <a className="navbar-item" href="/chefs">French</a>
-                  <a className="navbar-item" href="/chefs">Greek</a>
-                  <a className="navbar-item" href="/chefs">Indian</a>
-                  <a className="navbar-item" href="/chefs">Italian</a>
-                  <a className="navbar-item" href="/chefs">Japanese</a>
-                  <a className="navbar-item" href="/chefs">Korean</a>
-                  <a className="navbar-item" href="/chefs">Mexican</a>
-                  <a className="navbar-item" href="/chefs">Moroccan</a>
-                  <a className="navbar-item" href="/chefs">South-East Asian</a>
-                  <a className="navbar-item" href="/chefs">Spanish</a>
-                  <a className="navbar-item" href="/chefs">Turkish/Middle-Eastern</a>
-                  <a className="navbar-item" href="/chefs">Vegan</a>
-                  <a className="navbar-item" href="/chefs">Vegetarian</a>
+                  <Link className="navbar-item" to="/chefs">African</Link>
+                  <Link className="navbar-item" to="/chefs">Caribbean</Link>
+                  <Link className="navbar-item" to="/chefs">Chinese</Link>
+                  <Link className="navbar-item" to="/chefs">French</Link>
+                  <Link className="navbar-item" to="/chefs">Greek</Link>
+                  <Link className="navbar-item" to="/chefs">Indian</Link>
+                  <Link className="navbar-item" to="/chefs">Italian</Link>
+                  <Link className="navbar-item" to="/chefs">Japanese</Link>
+                  <Link className="navbar-item" to="/chefs">Korean</Link>
+                  <Link className="navbar-item" to="/chefs">Mexican</Link>
+                  <Link className="navbar-item" to="/chefs">Moroccan</Link>
+                  <Link className="navbar-item" to="/chefs">South-East Asian</Link>
+                  <Link className="navbar-item" to="/chefs">Spanish</Link>
+                  <Link className="navbar-item" to="/chefs">Turkish/Middle-Eastern</Link>
+                  <Link className="navbar-item" to="/chefs">Vegan</Link>
+                  <Link className="navbar-item" to="/chefs">Vegetarian</Link>
                 </div>
               </div>
             </nav>
