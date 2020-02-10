@@ -21,7 +21,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         {
           name: 'Ben Parker',
           email: 'ben@email.com',
-          image: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          image: '../src/assets/profiles/ben_parker.jpeg',
           skills: ['Moroccan', 'Turkish/Middle-Eastern', 'Italian'],
           city: 'London',
           postcode: 'SW19 3ES',
@@ -30,7 +30,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Beth Williams',
           email: 'beth@email.com',
-          image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80',
+          image: '../src/assets/profiles/beth_williams.jpeg',
           skills: ['French', 'Italian', 'Greek'],
           city: 'London',
           postcode: 'SE11 5EL',
@@ -39,7 +39,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Edgar Riveria',
           email: 'edgar@email.com',
-          image: 'https://images.unsplash.com/photo-1552072805-2a9039d00e57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          image: '../src/assets/profiles/edgar_riveria.jpeg',
           skills: ['Mexican', 'Spanish', 'Vegan', 'Vegetarian'],
           city: 'London',
           postcode: 'E17 6RE',
@@ -48,7 +48,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Harry Kent',
           email: 'harry@email.com',
-          image: 'https://images.unsplash.com/photo-1541647376583-8934aaf3448a?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
+          image: '../src/assets/profiles/harry_kent.jpeg',
           skills: ['South East Asian', 'Korean', 'Vegan'],
           city: 'London',
           postcode: 'SW1V 2JP',
@@ -57,7 +57,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Jessica Wood',
           email: 'jessica@email.com',
-          image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          image: '../src/assets/profiles/jessica_wood.jpeg',
           skills: ['Greek', 'Chinese', 'Indian'],
           city: 'London',
           postcode: 'SE19 1XB',
@@ -66,7 +66,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Sergio De Paula',
           email: 'sergio@email.com',
-          image: 'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+          image: '../src/assets/profiles/sergio_de_paula.jpeg',
           skills: ['Vegetarian', 'Indian'],
           city: 'London',
           postcode: 'W1F 9NE',
@@ -75,7 +75,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Steph Gardiner',
           email: 'steph@email.com',
-          image: 'https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+          image: '../src/assets/profiles/steph_gardiner.jpeg',
           skills: ['Japanese'],
           city: 'London',
           postcode: 'WC1B 3RD',
@@ -84,7 +84,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Francesca Harris',
           email: 'francesca@email.com',
-          image: 'https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80',
+          image: '../src/assets/profiles/francesca_harris.jpeg',
           skills: ['African', 'Caribbean'],
           city: 'London',
           postcode: 'NW1 3UJ',
@@ -93,7 +93,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Marius Stone',
           email: 'marius@email.com',
-          image: 'https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1030&q=80',
+          image: '../src/assets/profiles/marius_stone.jpeg',
           skills: ['Chinese', 'Japanese'],
           city: 'London',
           postcode: 'N1P 1SG',
@@ -102,7 +102,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         }, {
           name: 'Angela Reed',
           email: 'angela@email.com',
-          image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+          image: '../src/assets/profiles/angela_reed.jpeg',
           skills: ['Mexican', 'Spanish', 'Moroccan', 'French'],
           city: 'London',
           postcode: 'N17 0BF',
@@ -286,6 +286,96 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           skills: ['Vegetarian', 'South-East Asian', 'Vegan'],
           city: 'Harrow',
           postcode: 'PH21 1LQ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Reeva Fraser',
+          email: 'reevafraser12@hotmail.com',
+          image: '../src/assets/profiles/james3.jpg',
+          skills: ['Spanish', 'Vegan', 'Italian'],
+          city: 'London',
+          postcode: 'SE1 2UD',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Eden Matthews',
+          email: 'edenM23@gmail.com',
+          image: '../src/assets/profiles/james8.jpg',
+          skills: ['Mexican', 'Japanese'],
+          city: 'Leeds',
+          postcode: 'LS1 1HE',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Rosa Adams',
+          email: 'rosa.adams1@hotmail.com',
+          image: '../src/assets/profiles/james4.jpg',
+          skills: ['Turkish/Middle-Eastern'],
+          city: 'London',
+          postcode: 'EC4Y 9BJ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Amelia-Rose Green',
+          email: 'arose.green@gmail.com',
+          image: 'j../src/assets/profiles/ames10.jpg',
+          skills: ['Caribbean', 'Chinese', 'African'],
+          city: 'London',
+          postcode: 'E1 6NU',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Xavier oduneye',
+          email: 'oduneye123@hotmail.com',
+          image: '../src/assets/profiles/james7.jpg',
+          skills: ['African', 'Chinese', 'Vegan'],
+          city: 'London',
+          postcode: 'HA01AU',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Kevin Uchiha',
+          email: 'favouritecakes77@gmail.com',
+          image: '../src/assets/profiles/james1.jpg',
+          skills: ['Italian'],
+          city: 'London',
+          postcode: 'N153BF',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Dillon Bates',
+          email: 'Bates245@gmail.com',
+          image: '../src/assets/profiles/james6.jpg',
+          skills: ['Spanish', 'Vegan'],
+          city: 'Manchester',
+          postcode: 'M1 1EZ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Brayden Howard',
+          email: 'Bradybunch@hotmail.com',
+          image: '../src/assets/profiles/james2.jpg',
+          skills: ['Mexican', 'Vegetarian'],
+          city: 'Bristol',
+          postcode: 'BS11JN',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Jonathan Porter',
+          email: 'jonnyp099@hotmail.com',
+          image: '../src/assets/profiles/james9.jpg',
+          skills: ['Turkish/Middle-Eastern', 'Vegan'],
+          city: 'Newcastle',
+          postcode: 'NE1 1EE',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Tom Cresent',
+          email: 'tomcresent.1.@gmail.com',
+          image: '../src/assets/profiles/james5.jpg',
+          skills: ['Mexican', 'Spanish'],
+          city: 'Edinburgh',
+          postcode: 'EH1 2BU',
           password: 'pass',
           passwordConfirmation: 'pass'
         }
