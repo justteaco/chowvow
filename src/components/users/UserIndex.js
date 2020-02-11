@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 class UserIndex extends React.Component {
   state = {
     users: [],
-    skillFilter: ''
+    skillFilter: '',
+    avgRating: null
   }
 
   async getData() {
@@ -21,9 +22,20 @@ class UserIndex extends React.Component {
         return filteredUsers
       })
       this.setState({ users: filteredUsers, skillFilter })
+      this.calcAvgRating()
     } catch (err) {
       console.log(err)
     }
+  }
+
+  calcAvgRating = () => {
+    let ratings = []
+    this.state.users.map(user => ratings = [...user.rating])
+    const ratingValues = []
+    ratings.map(rate => ratingValues.push(rate.rating))
+    const sum = ratingValues.reduce((previous, current) => current += previous)
+    const avgRating = (sum / ratingValues.length).toFixed(1)
+    this.setState({ avgRating })
   }
 
   componentDidMount() {
@@ -34,6 +46,8 @@ class UserIndex extends React.Component {
     const skillFilter = localStorage.getItem('skill')
     skillFilter !== this.state.skillFilter ? this.getData() : null
   }
+
+  hasRatings = () => this.state.avgRating > 0
 
   render() {
     return (
@@ -47,8 +61,8 @@ class UserIndex extends React.Component {
                 <div className="info">
                   <div className="bio">
                     <h3 className="title">{user.name}</h3>
-                    <h3 className="subtitle">★ ★ ★ ★ ☆</h3>
-                    <h3 className="subtitle">{user.city}</h3>
+                    {this.hasRatings() && <h3>{this.state.avgRating} <span className="star">★</span></h3>}
+                    <h4>{user.city}</h4>
                   </div>
                   <div className="skills">
                     {user.skills.map((skill, i) => <p key={i}>{skill}</p>)}

@@ -6,10 +6,10 @@ import Select from 'react-select'
 const UserForm = ({ data, handleChange, handleSubmit }) => {
 
   return (
-    <section className="userSection">
+    <section className="user-section">
       <h2 className="title">Register</h2>
-      <form onSubmit={handleSubmit} className="userContainer">
-        <div className="userInfo">
+      <form onSubmit={handleSubmit} className="user-container">
+        <div className="user-info">
           <div className="field">
             <label className="label">NAME</label>
             <div className="control">
@@ -37,7 +37,7 @@ const UserForm = ({ data, handleChange, handleSubmit }) => {
             {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
           </div>
         </div>
-        <div className="userImage">
+        <div className="user-image">
           {/* <figure className="imageContainer">
           <label className="label">Your photo</label>
           <img className="image" src='https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png' alt='Placeholder image' />
@@ -45,7 +45,7 @@ const UserForm = ({ data, handleChange, handleSubmit }) => {
           <ImageUpload
           // labelText="my custom label text"
             handleChange={this.handleChange}
-            fieldName="profileImage"
+            fieldName="image"
             // labelClassName="my-label-class"
             inputClassName="my-input-class"
           />
