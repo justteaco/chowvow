@@ -17,7 +17,34 @@ function show(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, show }
+function ratingCreate(req, res) {
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found' })
+      user.rating.push(req.body)
+      return user.save()
+    })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.json(err))
+}
+
+function offersPendingCreate(req, res) {
+  console.log(req)
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found' })
+      user.offersPending.push(req.body)
+      return user.save()
+    })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.json(err))
+}
+
+
+
+module.exports = { index, show, ratingCreate, offersPendingCreate }
 
 
 // create an update function that finds a cook by their id, updates it with the request body and re-saves (edit profile)

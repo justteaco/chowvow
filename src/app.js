@@ -16,17 +16,16 @@ import Navbar from './components/common/Navbar'
 import FailedPage from './components/common/FailedPage'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
-//import SecureRoute from '../lib/secureRoute'
-
-
-
+import Offers from './components/users/OfferIndex'
+import SecureRoute from './components/common/SecureRoute'
 const App = () => (
   <BrowserRouter>
     <>
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/chefs/:id" component={UserShow} />
+        <Route path="/chefs/:id/offers" component={Offers} />
+        <SecureRoute path="/chefs/:id" component={UserShow} />
         <Route path="/map/:address" component={UserMap} />
         <Route path="/chefs" component={UserIndex} />
         <Route path="/register" component={Register} />

@@ -56,6 +56,7 @@ class Register extends React.Component {
     }
   }
   render() {
+    console.log(this.state.data)
     return (
       <section className="userSection">
         <h2 className="title">Register</h2>
