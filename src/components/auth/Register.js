@@ -11,30 +11,30 @@ class Register extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      image: '',
       skills: '',
       city: '',
-      postcode: ''
+      postcode: '',
+      image: ''
     },
     errors: {}
   }
 
   options = [
-    { value: 'african', label: 'African' },
-    { value: 'caribbean', label: 'Caribbean' },
-    { value: 'chinese', label: 'Chinese' },
-    { value: 'french', label: 'French' },
-    { value: 'greek', label: 'Greek' },
-    { value: 'indian', label: 'Indian' },
-    { value: 'italian', label: 'Italian' },
-    { value: 'japanese', label: 'Japanese' },
-    { value: 'korean', label: 'Korean' },
-    { value: 'mexican', label: 'Mexican' },
-    { value: 'moroccan', label: 'Moroccan' },
-    { value: 'south-east-asian', label: 'South-East Asian' },
-    { value: 'turkish/middle-eastern', label: 'Turkish/Middle-Eastern' },
-    { value: 'vegan', label: 'Vegan' },
-    { value: 'vegetarian', label: 'Vegetarian' }
+    { value: 'African', label: 'African' },
+    { value: 'Caribbean', label: 'Caribbean' },
+    { value: 'Chinese', label: 'Chinese' },
+    { value: 'French', label: 'French' },
+    { value: 'Greek', label: 'Greek' },
+    { value: 'Indian', label: 'Indian' },
+    { value: 'Italian', label: 'Italian' },
+    { value: 'Japanese', label: 'Japanese' },
+    { value: 'Korean', label: 'Korean' },
+    { value: 'Mexican', label: 'Mexican' },
+    { value: 'Moroccan', label: 'Moroccan' },
+    { value: 'South-East Asian', label: 'South-East Asian' },
+    { value: 'Turkish/Middle-Eastern', label: 'Turkish/Middle-Eastern' },
+    { value: 'Vegan', label: 'Vegan' },
+    { value: 'Vegetarian', label: 'Vegetarian' }
   ]
 
   handleChange = e => {
@@ -63,6 +63,7 @@ class Register extends React.Component {
   }
 
   render() {
+    console.log(this.state.data)
     return (
       <section className="userSection">
         <h2 className="title">Register</h2>
@@ -120,15 +121,9 @@ class Register extends React.Component {
             </div>
           </div>
           <div className="userImage">
-            {/* <figure className="imageContainer">
-              <label className="label">Your photo</label>
-              <img className="image" src='https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png' alt='Placeholder image' />
-            </figure> */}
             <ImageUpload
-              // labelText="my custom label text"
               handleChange={this.handleChange}
-              fieldName="profileImage"
-              // labelClassName="my-label-class"
+              fieldName="image"
               inputClassName="my-input-class"
             />
             <hr />

@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt') // Our chosen our library used to hash password
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  image: { type: Object, required: true },
+  image: { type: String, required: true },
   skills: { type: Array, required: true },
   city: { type: String, required: true },
   postcode: { type: String, required: true },
