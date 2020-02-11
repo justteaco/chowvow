@@ -26,6 +26,14 @@ class Auth {
     const now = Math.round(Date.now() / 1000)
     return now < payload.exp
   }
+
+  static getUser() {
+    const { sub } = this.getPayload()
+    console.log('full payload', this.getPayload())
+    console.log('just sub', sub)
+    return sub
+  }
+  
 }
 
 export default Auth

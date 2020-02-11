@@ -7,6 +7,12 @@ const ratingSchema = new mongoose.Schema({
   timestamps: true
 })
 
+const offersPendingSchema = new mongoose.Schema({
+  offersPending: { type: Array, required: true }
+}, {
+  timestamps: true
+})
+
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -17,7 +23,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   rating: [ ratingSchema ],
   avgRating: { type: Number },
-  offersPending: { type: Array },
+  offersPending: [ offersPendingSchema ],
   offersAccepted: { type: Array }
 }, {
   timestamps: true
