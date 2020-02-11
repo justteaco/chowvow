@@ -2,6 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 class Home extends React.Component {
+  state = {
+    search: ''
+  }
+
+  handleChange = e => {
+    this.setState({ search: e.target.value })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.history.push(`/map/${this.state.search}`)
+  }
 
   handleClick = (e) => {
     console.log(e.target.id)
@@ -12,16 +24,16 @@ class Home extends React.Component {
     return (
       <>
         <div className="hero-body">
-          <div className="search-bar">
+          <form onSubmit={this.handleSubmit} className="search-bar">
             <div className="search">
-              <input type="text" className="search-text" placeholder="What's your postcode?" />
+              <input type="text" className="search-text" placeholder="What's your address?" onChange={this.handleChange} />
               <button type="submit" className="search-button">
                 <img src="../../assets/search.png" />
               </button>
             </div>
-          </div>
+          </form>
+          <a href="#skills" className="arrow"><img src="../../assets/arrow.png" /></a>
         </div>
-        <a href="#skills" className="arrow"><img src="../../assets/arrow.png" /></a>
         <section>
           <div className="wrapper" id="skills">
             <div className="columns is-mobile is-multiline">
