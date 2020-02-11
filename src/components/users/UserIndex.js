@@ -1,8 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import { Link } from 'react-router-dom'
-
-// import UserShow from './UserShow'
+import { Link } from 'react-router-dom'
 // import FailedPage from '../common/FailedPage'
 
 class UserIndex extends React.Component {
@@ -29,7 +27,6 @@ class UserIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.getData()
   }
 
@@ -43,27 +40,28 @@ class UserIndex extends React.Component {
       <>
         <h2 className="skill-header">Skill : <span className="has-text-info">{localStorage.getItem('skill')}</span></h2>
         {this.state.users.map(user => (
-          // <Link to="/chefs/:id" component={UserShow} key={user._id}>
-          <div key={user._id} className="box">
-            <article className="media">
-              <img src={user.image} alt={user.name} />
-              <div className="info">
-                <div className="bio">
-                  <h3 className="title">{user.name}</h3>
-                  <h3 className="subtitle">★ ★ ★ ★ ☆</h3>
-                  <h3 className="subtitle">{user.city}</h3>
+          <Link to={`/chefs/${user._id}`} key={user._id}>
+            <div  className="box">
+              <article className="media">
+                <img src={user.image} alt={user.name} />
+                <div className="info">
+                  <div className="bio">
+                    <h3 className="title">{user.name}</h3>
+                    <h3 className="subtitle">★ ★ ★ ★ ☆</h3>
+                    <h3 className="subtitle">{user.city}</h3>
+                  </div>
+                  <div className="skills">
+                    {user.skills.map((skill, i) => <p key={i}>{skill}</p>)}
+                  </div>
                 </div>
-                <div className="skills">
-                  {user.skills.map((skill, i) => <p key={i}>{skill}</p>)}
-                </div>
-              </div>
-            </article>
-          </div>
-          // </Link>
+              </article>
+            </div>
+          </Link>
         ))
         }
       </>
     )
   }
 }
+
 export default UserIndex
