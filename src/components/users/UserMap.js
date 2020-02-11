@@ -12,11 +12,12 @@ class UserMap extends React.Component {
     users: [],
     userswithco: [],
     viewport: {
-      latitude: 51.5074,
-      longitude: -0.1,
+      longitude: 0,
+      latitude: 0,
       zoom: 12
     },
-    display: false
+    display: false,
+    userPicked: {}
   };
 
   myMap = React.createRef()
@@ -44,6 +45,11 @@ class UserMap extends React.Component {
 
   async componentDidMount() {
     try {
+      const search = location.pathname.split('/').slice(2).join('/')
+      const mapStartFocus = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${token}`)
+      const firstLatLng = mapStartFocus.data.features[0].center
+      this.setState({ viewport: { longitude: firstLatLng[0], latitude: firstLatLng[1], zoom: 12 } })
+      console.log(this.state.viewport)
       const res = await axios.get('/api/chefs')
       this.setState({ users: res.data })
       await this.findlatlong()
@@ -58,15 +64,22 @@ class UserMap extends React.Component {
     })
   };
 
-  changeDisplay = () => {
-    this.setState({ display: true })
+  showUser = user => {
+    
+    this.setState({ userPicked: user })
+  }
+
+  togglePopup = () => {
+    const { display } = this.state
+    if (!display) {
+      this.setState({ display: true })
+    } else this.setState({ display: false })
   }
 
 
   render() {
-    const { viewport, userswithco, display } = this.state
+    const { viewport, userswithco, userPicked, display } = this.state
     if (!userswithco.length) return null
-    console.log(userswithco)
     return (
       <section className="userSection">
         <div className="map">
@@ -85,9 +98,7 @@ class UserMap extends React.Component {
               mapboxApiAccessToken={token}
               onViewportChange={this.handleViewportChange}
               position="top-left"
-              
             />
-            
             {userswithco[0].latlng && userswithco.map((user, i) => (
               <>
               <Marker 
@@ -97,31 +108,27 @@ class UserMap extends React.Component {
               >
                 <a onClick={(e) => {
                   e.preventDefault()
-                  this.changeDisplay()
+                  this.showUser(user)
+                  this.togglePopup()
                 }}>
                   <img src={user.image} className="usersmap" />
                 </a>
-
               </Marker> 
-
-              {display ? (<Popup
-                latitude={user.latlng[1]}
-                longitude={user.latlng[0]}
-              >
-                
-                <Link to="/login">
-                  {user.name}
-                  <br />
-                  {user.skills.map((skill => (
-                    skill[1]
-                  )))}
-                </Link>
-
-              </Popup>)
-                : null}
               </>
             ))}
-
+            {display ? (<Popup
+              key={userPicked.name}
+              latitude={userPicked.latlng[1]}
+              longitude={userPicked.latlng[0]}
+            >
+              <Link to={`/chefs/${userPicked._id}`} key={userPicked._id}>
+                {userPicked.name}
+                <br />
+                Skills:
+                {' '}{userPicked.skills.slice(0, userPicked.skills.length).join(', ')}
+              </Link>
+            </Popup>)
+              : null}
           </MapGL>
         </div>
       </section>

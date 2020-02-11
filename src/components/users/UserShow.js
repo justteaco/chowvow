@@ -1,7 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-// import { Link } from 'react-router-dom'
-import Auth from '../lib/auth'
 
 class UserShow extends React.Component {
   state = { 
@@ -19,19 +17,19 @@ class UserShow extends React.Component {
     }
   }
 
-  handleDelete = async () => {
-    const chefId = this.props.match.params.id
-    try {
-      await axios.delete(`/api/chefs/${chefId}`, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      })
-      this.props.history.push('/chefs')
-    } catch (err) {
-      console.log(err.response)
-    }
-  }
+  // handleDelete = async () => {
+  //   const chefId = this.props.match.params.id
+  //   try {
+  //     await axios.delete(`/api/chefs/${chefId}`, {
+  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //     })
+  //     this.props.history.push('/chefs')
+  //   } catch (err) {
+  //     console.log(err.response)
+  //   }
+  // }
 
-  isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
+  // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
 
   render() {
 

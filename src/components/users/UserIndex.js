@@ -2,11 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 // import FailedPage from '../common/FailedPage'
+
 class UserIndex extends React.Component {
   state = {
     users: [],
     skillFilter: ''
   }
+
   async getData() {
     try {
       const res = await axios.get('/api/chefs')
@@ -23,13 +25,16 @@ class UserIndex extends React.Component {
       console.log(err)
     }
   }
+
   componentDidMount() {
     this.getData()
   }
+
   componentDidUpdate() {
     const skillFilter = localStorage.getItem('skill')
     skillFilter !== this.state.skillFilter ? this.getData() : null
   }
+
   render() {
     return (
       <>
@@ -58,4 +63,5 @@ class UserIndex extends React.Component {
     )
   }
 }
+
 export default UserIndex
