@@ -21,11 +21,11 @@ class ImageUpload extends React.Component {
 
   render() {
     const labelClass = this.props.labelClassName ? this.props.labelClassName : 'default_class'
+    // const { image } = this.state
     const { image } = this.state
-    console.log(this.state)
     return (
       <>
-        {image ?
+        {image ?      
           <div>
             <img src={image} />
           </div>

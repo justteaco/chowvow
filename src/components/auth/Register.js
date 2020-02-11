@@ -54,9 +54,8 @@ class Register extends React.Component {
 
     console.log('submitting', this.state.data)
     try {
-      await axios.post('api/register', this.state.data)
-      console.log('hey man')
-      this.props.history.push('/login')
+      await axios.post('/api/register', this.state.data)
+      this.props.history.push('/chefs')
     } catch (err) {
       console.log(err.response.data.errors) //Specific only to this API
       this.setState({ errors: err.response.data.errors })
@@ -64,12 +63,11 @@ class Register extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <section className="userSection">
+        <h2 className="title">Register</h2>
         <form onSubmit={this.handleSubmit} className="userContainer">
           <div className="userInfo">
-            <h2 className="title">Register</h2>
             <div className="field">
               <label className="label">NAME</label>
               <div className="control">
@@ -127,10 +125,10 @@ class Register extends React.Component {
               <img className="image" src='https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png' alt='Placeholder image' />
             </figure> */}
             <ImageUpload
-              labelText="my custom label text"
+              // labelText="my custom label text"
               handleChange={this.handleChange}
               fieldName="profileImage"
-              labelClassName="my-label-class"
+              // labelClassName="my-label-class"
               inputClassName="my-input-class"
             />
             <hr />
@@ -145,8 +143,9 @@ class Register extends React.Component {
                 onChange={this.handleMultiChange}
               />
             </div>
+            <hr />
             <div className="field">
-              <label className="label">NAME</label>
+              <label className="label">CITY</label>
               <div className="control">
                 <input
                   className={`input ${this.state.errors.city ? 'is-danger' : ''}`}
@@ -157,8 +156,9 @@ class Register extends React.Component {
               </div>
               {this.state.errors.city && <small className="help is-danger">{this.state.errors.city}</small>}
             </div>
+            <hr />
             <div className="field">
-              <label className="label">NAME</label>
+              <label className="label">POSTCODE</label>
               <div className="control">
                 <input
                   className={`input ${this.state.errors.postcode ? 'is-danger' : ''}`}
