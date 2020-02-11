@@ -12,8 +12,8 @@ class UserMap extends React.Component {
     users: [],
     userswithco: [],
     viewport: {
-      longitude: 0,
-      latitude: 0,
+      longitude: -0.1275,
+      latitude: 51.50722,
       zoom: 12
     },
     display: false,
@@ -47,9 +47,13 @@ class UserMap extends React.Component {
     try {
       const search = location.pathname.split('/').slice(2).join('/')
       const mapStartFocus = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${search}.json?access_token=${token}`)
-      const firstLatLng = mapStartFocus.data.features[0].center
-      this.setState({ viewport: { longitude: firstLatLng[0], latitude: firstLatLng[1], zoom: 12 } })
-      console.log(this.state.viewport)
+      if (mapStartFocus.data.features.length === 0) {
+        this.props.history.push('/map/london')
+        alert('Sorry we couldn\'t find that address')
+      } else {
+        const firstLatLng = mapStartFocus.data.features[0].center
+        this.setState({ viewport: { longitude: firstLatLng[0], latitude: firstLatLng[1], zoom: 12 } })
+      }
       const res = await axios.get('/api/chefs')
       this.setState({ users: res.data })
       await this.findlatlong()
@@ -65,7 +69,6 @@ class UserMap extends React.Component {
   };
 
   showUser = user => {
-    
     this.setState({ userPicked: user })
   }
 
@@ -80,57 +83,53 @@ class UserMap extends React.Component {
   render() {
     const { viewport, userswithco, userPicked, display } = this.state
     if (!userswithco.length) return null
+    console.log(userPicked)
     return (
-      <section className="userSection">
-        <div className="map">
-          <MapGL
-            ref={this.myMap}
-            {...viewport}
-            height={'75vh'}
-            width={'100vw'}
-            mapStyle='mapbox://styles/mapbox/streets-v9' 
-            onViewportChange={this.handleViewportChange}
+      <section className="map">
+        <MapGL
+          ref={this.myMap}
+          {...viewport}
+          height={'100vh'}
+          width={'100vw'}
+          mapStyle='mapbox://styles/mapbox/streets-v9' 
+          onViewportChange={this.handleViewportChange}
+          mapboxApiAccessToken={token}
+          maxZoom={13}
+        >
+          <Geocoder
+            mapRef={this.myMap}
             mapboxApiAccessToken={token}
-            maxZoom={13}
-          >
-            <Geocoder
-              mapRef={this.myMap}
-              mapboxApiAccessToken={token}
-              onViewportChange={this.handleViewportChange}
-              position="top-left"
-            />
-            {userswithco[0].latlng && userswithco.map((user, i) => (
-              <>
-              <Marker 
-                key={i}
-                latitude={user.latlng[1]}
-                longitude={user.latlng[0]}
-              >
-                <a onClick={(e) => {
-                  e.preventDefault()
-                  this.showUser(user)
-                  this.togglePopup()
-                }}>
-                  <img src={user.image} className="usersmap" />
-                </a>
-              </Marker> 
-              </>
-            ))}
-            {display ? (<Popup
-              key={userPicked.name}
-              latitude={userPicked.latlng[1]}
-              longitude={userPicked.latlng[0]}
+            onViewportChange={this.handleViewportChange}
+            position="top-left"
+          />
+          {userswithco[0].latlng && userswithco.map((user, i) => (
+            <Marker 
+              key={i}
+              latitude={user.latlng[1]}
+              longitude={user.latlng[0]}
             >
-              <Link to={`/chefs/${userPicked._id}`} key={userPicked._id}>
-                {userPicked.name}
-                <br />
+              <a onClick={(e) => {
+                e.preventDefault()
+                this.showUser(user)
+                this.togglePopup()
+              }}>
+                <img src={user.image} alt={user.name} className="usersmap" />
+              </a>
+            </Marker> 
+          ))}
+          {display ? (<Popup
+            latitude={userPicked.latlng[1]}
+            longitude={userPicked.latlng[0]}
+          >
+            <Link to={`/chefs/${userPicked._id}`}>
+              {userPicked.name}
+              <br />
                 Skills:
-                {' '}{userPicked.skills.slice(0, userPicked.skills.length).join(', ')}
-              </Link>
-            </Popup>)
-              : null}
-          </MapGL>
-        </div>
+              {' '}{userPicked.skills.slice(0, userPicked.skills.length).join(', ')}
+            </Link>
+          </Popup>)
+            : null}
+        </MapGL>
       </section>
     )
   }
