@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import { Link } from 'react-router-dom'
-// import UserShow from './UserShow'
+import { Link } from 'react-router-dom'
 // import FailedPage from '../common/FailedPage'
 class UserIndex extends React.Component {
   state = {
@@ -18,7 +17,7 @@ class UserIndex extends React.Component {
           filteredUsers = [...filteredUsers, user]
         }
         return filteredUsers
-      }) 
+      })
       this.setState({ users: filteredUsers, skillFilter })
     } catch (err) {
       console.log(err)
@@ -32,36 +31,27 @@ class UserIndex extends React.Component {
     skillFilter !== this.state.skillFilter ? this.getData() : null
   }
   render() {
-    console.log(this.state)
-    // console.log(this.state)
-    // if (!this.state.users) return null
-    // const filterUsers = this.state.users.filter(user => user.name.toLowerCase().includes(this.state.userInput.toLowerCase()) || user.location.toLowerCase().includes(this.state.userInput.toLowerCase()) || user.skill.toLowerCase().includes(this.state.userInput.toLowerCase()))
-    // console.log(filterUsers)
     return (
       <>
-        <h2 className="title is-2">Skill: {localStorage.getItem('skill')}</h2>
+        <h2 className="skill-header">Skill : <span className="has-text-info">{localStorage.getItem('skill')}</span></h2>
         {this.state.users.map(user => (
-          // <Link to="/chefs/:id" component={UserShow} key={user._id}>
-          <div key={user._id} className="box">
-            <article className="media">
-              <div className="media-left">
-                <figure className="image is-128x128">
-                  <img className="is-rounded" src={user.image} alt={user.name} />
-                </figure>
-              </div>
-              <div className="info">
-                <div className="bio">
-                  <h3 className="title">{user.name}</h3>
-                  <h3 className="subtitle">★ ★ ★ ★ ☆</h3>
-                  <h3 className="subtitle">{user.city}</h3>
+          <Link to={`/chefs/${user._id}`} key={user._id}>
+            <div className="box">
+              <article className="media">
+                <img src={user.image} alt={user.name} />
+                <div className="info">
+                  <div className="bio">
+                    <h3 className="title">{user.name}</h3>
+                    <h3 className="subtitle">★ ★ ★ ★ ☆</h3>
+                    <h3 className="subtitle">{user.city}</h3>
+                  </div>
+                  <div className="skills">
+                    {user.skills.map((skill, i) => <p key={i}>{skill}</p>)}
+                  </div>
                 </div>
-                <div className="skills">
-                  {user.skills.map((skill, i) => <p key={i}>{skill}</p>)}
-                </div>
-              </div>
-            </article>
-          </div>
-          // </Link>
+              </article>
+            </div>
+          </Link>
         ))
         }
       </>
