@@ -15,7 +15,7 @@ html {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .hero-body-failed {
@@ -27,24 +27,14 @@ html {
   align-items: center;
 }
 
-
 .header h1 {
   font-size: 100px;
   color: grey;
 }
 
-.space {
-  height: 2000px;
-}
-
 .arrow {
-  position: absolute;
   width: 200px;
-  top: 700px;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+ 
 }
 
 .wrapper {

@@ -8,7 +8,10 @@ const userSchema = new mongoose.Schema({
   skills: { type: Array, required: true },
   city: { type: String, required: true },
   postcode: { type: String, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  rating: { type: Array },
+  offersPending: { type: Array },
+  offersAccepted: { type: Array }
 }, {
   timestamps: true
 })
