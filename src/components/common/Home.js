@@ -32,8 +32,8 @@ class Home extends React.Component {
               </button>
             </div>
           </form>
+          <a href="#skills" className="arrow"><img src="../../assets/arrow.png" /></a>
         </div>
-        <a href="#skills" className="arrow"><img src="../../assets/arrow.png" /></a>
         <section>
           <div className="wrapper" id="skills">
             <div className="columns is-mobile is-multiline">
