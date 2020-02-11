@@ -7,16 +7,18 @@ class Offers extends React.Component {
   }
 
   async componentDidMount() {
-
+    const user = await axios.get('/api/chefs/5e42868ed663a1ea7c564d87')
+    this.setState({ user: user.data })
   }
 
 
   render() {
-    const { user } = this.state
+    const { offersPending, offersAccepted } = this.state.user
+    if (!offersPending && !offersAccepted) return null
     return (
       <>
         <h2>My Offers</h2>
-        {user.map(user => (
+        {offersPending.map(user => (
           <div key={user.id}>
             <img src={user.image} alt={user.id} />
             <div>
