@@ -27,7 +27,7 @@ class UserMap extends React.Component {
   }
 
   findlatlong = async () => {
-    const users = this.state.users
+    const { users } = this.state
     const codes = users.map(person => person.postcode)
     Promise.all(codes.map(postcode => {
       return this.getLatLng(postcode)
