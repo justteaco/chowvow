@@ -12,7 +12,7 @@ import UserIndex from './components/users/UserIndex'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Offers from './components/users/OfferIndex'
-// import SecureRoute from '../lib/secureRoute
+import SecureRoute from './components/common/SecureRoute'
 const App = () => (
   <BrowserRouter>
     <>
@@ -20,7 +20,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/chefs/:id/offers" component={Offers} />
-        <Route path="/chefs/:id" component={UserShow} />
+        <SecureRoute path="/chefs/:id" component={UserShow} />
         <Route path="/map/:address" component={UserMap} />
         <Route path="/chefs" component={UserIndex} />
         <Route path="/register" component={Register} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../lib/Auth'
 
 class UserShow extends React.Component {
   state = { 
@@ -17,6 +18,20 @@ class UserShow extends React.Component {
     }
   }
 
+  offerPending = async () => {
+    const chefId = this.props.match.params.id
+    const loggedInUserID = Auth.getPayload()
+    try {
+      const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
+      const interestedUser = loggedInUser.data
+      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } }) 
+      await axios.get(`/api/chefs/${chefId}`)
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
+  
+
   // handleDelete = async () => {
   //   const chefId = this.props.match.params.id
   //   try {
@@ -32,8 +47,8 @@ class UserShow extends React.Component {
   // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
 
   render() {
-
     const { name, city, image } = this.state.user
+    if (!this.state.user) return null
     return (
       <section className="userSection">
         <div className="userContainer">
@@ -57,7 +72,7 @@ class UserShow extends React.Component {
               <img className="chefImage" src={image} alt={name} />
             </figure>
             <hr />
-            <button className="button is-success">INTERESTED</button>
+            <button className="button is-success" onClick={this.offerPending}>INTERESTED</button>
           </div>
           <div className="skills-recipes">
             <h2 className="title">SKILLS:</h2>

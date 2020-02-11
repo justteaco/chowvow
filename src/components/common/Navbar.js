@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import Auth from '../lib/auth'
+import Auth from '../../lib/auth'
 
 
 class Navbar extends React.Component {
@@ -25,7 +25,6 @@ class Navbar extends React.Component {
       this.setState({ navbarOpen: false })
     }
   }
-
 
   render() {
     const { navbarOpen } = this.state
