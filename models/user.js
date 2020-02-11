@@ -1,6 +1,12 @@
 const mongoose = require('mongoose') // This is needed to create a new schema and model
 const bcrypt = require('bcrypt') // Our chosen our library used to hash passwords
 
+const ratingSchema = new mongoose.Schema({
+  rating: { type: Number, required: true }
+}, {
+  timestamps: true
+})
+
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -9,7 +15,8 @@ const userSchema = new mongoose.Schema({
   city: { type: String, required: true },
   postcode: { type: String, required: true },
   password: { type: String, required: true },
-  rating: { type: Array },
+  rating: [ ratingSchema ],
+  avgRating: { type: Number },
   offersPending: { type: Array },
   offersAccepted: { type: Array }
 }, {

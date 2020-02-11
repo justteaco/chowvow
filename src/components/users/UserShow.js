@@ -2,9 +2,11 @@ import React from 'react'
 import axios from 'axios'
 
 class UserShow extends React.Component {
-  state = { 
+  state = {
     user: {},
-    skills: []
+    skills: [],
+    avgRating: 0,
+    numOfRatings: 0
   }
 
   async componentDidMount() {
@@ -12,9 +14,36 @@ class UserShow extends React.Component {
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
       this.setState({ user: res.data, skills: res.data.skills })
+      if (res.data.rating.length < 1) return
+      this.calculateAvgRating(res)
     } catch (err) {
       this.props.history.push('/notfound')
     }
+  }
+
+  handleChange = ({ target: { name, value } }) => {
+    const user = { ...this.state.user, [name]: value }
+    this.setState({ user })
+  }
+
+  handleSubmit = async e => {
+    e.preventDefault()
+    const chefId = this.props.match.params.id
+    try {
+      const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user)
+      this.calculateAvgRating(res)
+    } catch (err) {
+      this.setState({ error: 'Invalid Credentials' })
+    }
+  }
+
+  calculateAvgRating = (res) => {
+    const numOfRatings = res.data.rating.length
+    const ratingNums = []
+    res.data.rating.map(rate => ratingNums.push(rate.rating))
+    const sum = ratingNums.reduce((previous, current) => current += previous)
+    const avg = (sum / ratingNums.length).toFixed(1)
+    this.setState({ avgRating: avg, numOfRatings })
   }
 
   // handleDelete = async () => {
@@ -31,19 +60,19 @@ class UserShow extends React.Component {
 
   // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
 
-  render() {
+  hasRatings = () => this.state.avgRating > 0
 
+  render() {
     const { name, city, image } = this.state.user
     return (
       <section className="userSection">
         <div className="userContainer">
           <div className="userInfo">
-            <h2 className="title">NAME:</h2>
-            <p>{name}</p>
+            <h2 className="title">{name}</h2>
             <hr />
-            <h2 className="title">RATING:</h2>
             <div className="starRating">
-              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+              {this.hasRatings() && <><h2>{this.state.avgRating} ★</h2><p>{this.state.numOfRatings} ratings</p></>}
+              {!this.hasRatings() && <p>No ratings received yet</p>}
             </div>
             <hr />
             <h2 className="title">LOCATION:</h2>
@@ -62,6 +91,13 @@ class UserShow extends React.Component {
           <div className="skills-recipes">
             <h2 className="title">SKILLS:</h2>
             {this.state.skills.map((skill, i) => <p key={i}>{skill}</p>)}
+          </div>
+          <div className="rating">
+            <p>Rate {name}:</p>
+            <form onSubmit={this.handleSubmit}>
+              <input onChange={this.handleChange} name="rating" type="number" min="1" max="5"></input>
+              <button type="submit">Submit</button>
+            </form>
           </div>
         </div>
       </section>

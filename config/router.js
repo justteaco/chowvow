@@ -9,6 +9,9 @@ router.route('/chefs')
 
 router.route('/chefs/:id')
   .get(users.show)
+  
+router.route('/chefs/:id/rating')
+  .post(users.ratingCreate)
 
 router.route('/register')
   .post(auth.register)
