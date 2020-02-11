@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const users = require('../controllers/users')
 const auth = require('../controllers/auth')
-//const secureRoute = require('../lib/secureRoute')
+// const secureRoute = require('../lib/secureRoute')
 console.log(auth.login)
 
 router.route('/chefs')
@@ -9,6 +9,20 @@ router.route('/chefs')
 
 router.route('/chefs/:id')
   .get(users.show)
+  
+router.route('/chefs/:id/rating')
+  .post(users.ratingCreate)
+
+router.route('/chefs/:id/rating')
+  .post(users.ratingCreate)
+
+router.route('/chefs/:id/offersPending')
+  .post(users.offersPendingCreate)
+  // .delete(users.)
+
+// router.route('/chefs/:id/offersAccepted')
+//   .post(users.)
+//   .delete(users.)
 
 router.route('/register')
   .post(auth.register)
