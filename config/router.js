@@ -1,39 +1,40 @@
 const router = require('express').Router()
 const users = require('../controllers/users')
-const auth = require('../controllers/auth')
+const authUsers = require('../controllers/auth')
 const secureRoute = require('../lib/secureRoute')
 
 router.route('/chefs')
   .get(users.index)
 
+
 router.route('/chefs/:id')
   .get(users.show)
+  .put(secureRoute, users.update)
   
 router.route('/chefs/:id/rating')
   .post(users.ratingCreate)
 
-router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
+router.route('/chefs/:id/review')
+  .post(users.reviewCreate)
+  
+// .delete(secureRoute, users.destroy)
 
 router.route('/chefs/:id/offersPending')
   .post(secureRoute, users.offersPendingCreate)
   .delete(secureRoute, users.offersPendingDelete)
   
 router.route('/chefs/:id/offers')
-  .get(secureRoute, auth.offers)
+  .get(secureRoute, authUsers.offers)
 
 // router.route('/chefs/:id/offersAccepted')
 //   .post(users.)
 //   .delete(users.)
 
 router.route('/register')
-  .post(auth.register)
+  .post(authUsers.register)
 
 router.route('/login')
-  .post(auth.login)
-
-// router.route('/user/:id')
-//   .get(secureRoute, users.profile)
+  .post(authUsers.login)
 
 
 module.exports = router

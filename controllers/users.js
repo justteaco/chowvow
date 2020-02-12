@@ -5,6 +5,7 @@ function index(req, res) {
   console.log('working')
   User
     .find()
+    .populate('user')
     .then(foundUsers => res.status(200).json(foundUsers))
     .catch(err => res.json(err))
 }
@@ -16,7 +17,37 @@ function show(req, res) {
     .populate('user')
     .then(selectedUser => res.status(200).json(selectedUser))
     .catch(err => res.json(err))
+
 }
+
+function update(req, res, next) {
+  console.log(req.currentUser)
+  User
+    .findById(req.params.id)
+    .then(user => {
+      console.log(user)
+      if (!user) throw new Error('Not Found')
+      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
+      Object.assign(user, req.body) 
+      return user.save()  
+    })
+    .then(updatedUser => res.status(202).json(updatedUser)) 
+    .catch(next)
+}
+
+// function destroy(req, res) {
+//   User
+//     .findById(req.params.id)
+//     .then(user => {
+//       if (!user) return res.status(404).json({ message: 'Not Found ' })
+//       if (!user.user.equals(req.currentUser._id)) {
+//         res.status(401).json({ message: 'Unauthorised' })
+//       } else {
+//         user.remove().then(() => res.sendStatus(204))
+//       }
+//     })
+//     .catch(err => res.json(err))
+// }
 
 function ratingCreate(req, res) {
   User
@@ -56,8 +87,19 @@ function offersPendingDelete(req, res) {
     
     .catch(err => res.status(401).json(err)) //send any errors
 }
+function reviewCreate(req, res) {
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found' })
+      user.review.push(req.body)
+      return user.save()
+    })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.json(err))
+}
 
-module.exports = { index, show, ratingCreate, offersPendingCreate, offersPendingDelete }
+module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete }
 
 // .then(user => {
 //   if (!user) return res.status(404).json({ message: 'Not Found' })

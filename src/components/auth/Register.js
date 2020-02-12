@@ -3,6 +3,8 @@ import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
 import ImageUpload from '../ImageUpload'
+
+
 class Register extends React.Component {
   state = {
     data: {
@@ -17,6 +19,7 @@ class Register extends React.Component {
     },
     errors: {}
   }
+
   options = [
     { value: 'African', label: 'African' },
     { value: 'Caribbean', label: 'Caribbean' },
@@ -34,33 +37,36 @@ class Register extends React.Component {
     { value: 'Vegan', label: 'Vegan' },
     { value: 'Vegetarian', label: 'Vegetarian' }
   ]
+
   handleChange = e => {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     const errors = { ...this.state.errors, [e.target.name]: '' }
     this.setState({ data, errors })
   }
+
   handleMultiChange = (selected) => {
     const skills = selected ? selected.map(item => item.value) : []
     const data = { ...this.state.data, skills }
     this.setState({ data })
   }
+
   handleSubmit = async e => {
     e.preventDefault()
     console.log('submitting', this.state.data)
     try {
       await axios.post('/api/register', this.state.data)
-      this.props.history.push('/chefs')
+      this.props.history.push('/login')
     } catch (err) {
-      console.log(err.response.data.errors) //Specific only to this API
       this.setState({ errors: err.response.data.errors })
     }
   }
+
   render() {
     return (
-      <section className="userSection">
+      <section className="user-section">
         <h2 className="title">Register</h2>
-        <form onSubmit={this.handleSubmit} className="userContainer">
-          <div className="userInfo">
+        <form onSubmit={this.handleSubmit} className="user-container">
+          <div className="user-info">
             <div className="field">
               <label className="label">NAME</label>
               <div className="control">
@@ -112,7 +118,7 @@ class Register extends React.Component {
               {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
             </div>
           </div>
-          <div className="userImage">
+          <div className="user-image">
             <ImageUpload
               handleChange={this.handleChange}
               fieldName="image"
@@ -162,4 +168,5 @@ class Register extends React.Component {
     )
   }
 }
+
 export default Register

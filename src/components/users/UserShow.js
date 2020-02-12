@@ -1,26 +1,32 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../lib/Auth'
+import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
+// import UserEdit from '../users/UserEdit'
 
 class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
-    avgRating: 0,
-    numOfRatings: 0,
+    review: '',
+    ratingsCount: 0,
     colab: true
   }
 
-  async componentDidMount() {
+  async getData() {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
+      console.log(res)
       this.setState({ user: res.data, skills: res.data.skills })
-      if (res.data.rating.length < 1) return
-      this.calculateAvgRating(res)
+      this.countRatings(res)
     } catch (err) {
-      this.props.history.push('/notfound')
+      // this.props.history.push('/notfound')
     }
+  }
+
+  componentDidMount() {
+    this.getData()
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -30,24 +36,49 @@ class UserShow extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault()
+    e.target.innerHTML = '<h2>Review submitted</h2>'
     const chefId = this.props.match.params.id
     try {
       const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user)
-      this.calculateAvgRating(res)
+      this.getData()
+      this.countRatings(res)
+      const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user)
+      this.submitReview(rev)
     } catch (err) {
       this.setState({ error: 'Invalid Credentials' })
     }
   }
 
-  calculateAvgRating = (res) => {
-    const numOfRatings = res.data.rating.length
-    const ratingNums = []
-    res.data.rating.map(rate => ratingNums.push(rate.rating))
-    const sum = ratingNums.reduce((previous, current) => current += previous)
-    const avg = (sum / ratingNums.length).toFixed(1)
-    this.setState({ avgRating: avg, numOfRatings })
+  // handleReviewSubmit = async e => {
+  //   e.preventDefault()
+  //   const chefId = this.props.match.params.id
+  //   try {
+  //     const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user)
+  //     this.submitReview(rev)
+  //   } catch (err) {
+  //     this.setState({ error: 'Invalid Credentials' })
+  //   }
+  // }
+
+  countRatings = (res) => {
+    const ratingsCount = res.data.rating.length
+    this.setState({ ratingsCount })
   }
-  
+
+  submitReview = (rev) => {
+    const review = rev.data.review.length
+    // review.push(review)
+    this.setState({ review })
+    console.log('checking this works')
+  }
+
+  // submitReview = async () => {
+  //   const review = this.props.match.params.id
+  //   review.push(review)
+  //   console.log('checking')
+  //   // this.setState({ user })
+  // }
+
   offerPending = async () => {
     const chefId = this.props.match.params.id
     try {
@@ -64,58 +95,95 @@ class UserShow extends React.Component {
     this.setState({ colab: false })
   }
 
-  // handleDelete = async () => {
-  //   const chefId = this.props.match.params.id
-  //   try {
-  //     await axios.delete(`/api/chefs/${chefId}`, {
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //     })
-  //     this.props.history.push('/chefs')
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
-  // }
 
-  // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
+
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
+
+  hasRatings = () => this.state.user.avgRating > 0
 
   render() {
-    const { name, city, image } = this.state.user
-    const { numOfRatings, avgRating, skills, colab } = this.state
-    console.log(this.state.user)
+    const { name, city, image, avgRating, _id } = this.state.user
+    const { ratingsCount, skills, colab } = this.state
     if (!this.state.user) return null
     return (
-      <section className="userSection">
-        <div className="userContainer">
-          <div className="userInfo">
-            <h2 className="title">{name}</h2>
+      <section className="user-section">
+        <div className="user-container">
+          <div className="user-info">
+            <h2 className="username">{name}</h2>
             <hr />
-            <div className="starRating">
-              {numOfRatings ? (<><h2>{avgRating} ★</h2><p>{numOfRatings} ratings</p></>) : <p>No ratings received</p>}
+            <div className="star-rating">
+              {ratingsCount ?
+                <><h2>{avgRating} ★</h2><p>{ratingsCount} ratings</p></>
+                :
+                <p>No ratings received</p>}
             </div>
+            <Link to={`/chefs/${_id}/review`}>
+              <div className="allReviews">
+                <p>Read reviews</p>
+              </div>
+            </Link>
             <hr />
-            <h2 className="title">LOCATION:</h2>
-            <p>{city}</p>
+            <h2>{city}</h2>
             <hr />
           </div>
-          <div className="userImage">
-            <button className="button is-warning">EDIT</button>
-            <hr />
-            <figure className="imageContainer">
-              <img className="chefImage" src={image} alt={name} />
+          <div className="user-image">
+            <Link to={`/chefs/${_id}/edit`} className="button is-warning">
+              Edit Profile
+            </Link>
+            <figure className="image-container">
+              <img className="chef-image" src={image} alt={name} />
             </figure>
             <hr />
             {colab ? <button className="button is-success" onClick={this.offerPending}>Colaborate?</button> : <button className="button is-danger">Sent</button>}
           </div>
           <div className="skills-recipes">
-            <h2 className="title">SKILLS:</h2>
-            {skills.map((skill, i) => <p key={i}>{skill}</p>)}
-          </div>
-          <div className="rating">
-            <p>Rate {name}:</p>
-            <form onSubmit={this.handleSubmit}>
-              <input onChange={this.handleChange} name="rating" type="number" min="1" max="5"></input>
-              <button type="submit">Submit</button>
-            </form>
+            <div className="skills">
+              <h2 className="title">Skills</h2>
+              {skills.map((skill, i) => <p key={i}>{skill}</p>)}
+            </div>
+            <div className="rating">
+              <form onSubmit={this.handleSubmit} className="rating-form">
+                <h2>Leave a review</h2>
+                <div className="rate">
+                  <input onChange={this.handleChange} type="radio" id="star5" name="rating" value="5" />
+                  <label htmlFor="star5" title="text">5 stars</label>
+                  <input onChange={this.handleChange} type="radio" id="star4" name="rating" value="4" />
+                  <label htmlFor="star4" title="text">4 stars</label>
+                  <input onChange={this.handleChange} type="radio" id="star3" name="rating" value="3" />
+                  <label htmlFor="star3" title="text">3 stars</label>
+                  <input onChange={this.handleChange} type="radio" id="star2" name="rating" value="2" />
+                  <label htmlFor="star2" title="text">2 stars</label>
+                  <input onChange={this.handleChange} type="radio" id="star1" name="rating" value="1" />
+                  <label htmlFor="star1" title="text">1 star</label>
+                </div>
+                <input onChange={this.handleChange} name="review" type="text" maxLength="200" />
+                <button className="button is-fullwidth is-info" type="submit">Submit</button>
+              </form>
+              {/* <form onSubmit={this.handleReviewSubmit} className="ratingForm">
+                <button className="button is-fullwidth is-info" type="submit">Submit</button>
+              </form> */}
+            </div>
           </div>
         </div>
       </section>

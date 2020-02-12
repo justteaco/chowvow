@@ -29,6 +29,8 @@ class Auth {
 
   static getUser() {
     const { sub } = this.getPayload()
+    // console.log('full payload', this.getPayload())
+    // console.log('just sub', sub)
     return sub
   }
   
