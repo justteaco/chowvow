@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../lib/Auth'
+import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
+import UserEdit from '../users/UserEdit'
 
 class UserShow extends React.Component {
   state = {
@@ -46,39 +48,44 @@ class UserShow extends React.Component {
     const avg = (sum / ratingNums.length).toFixed(1)
     this.setState({ avgRating: avg, numOfRatings })
   }
-  
+
+
+
   offerPending = async () => {
     const chefId = this.props.match.params.id
     const loggedInUserID = Auth.getPayload()
     try {
       const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
       const interestedUser = loggedInUser.data
-      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } }) 
+      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } })
       await axios.get(`/api/chefs/${chefId}`)
     } catch (err) {
       console.log(err.response)
     }
   }
-  
 
-  // handleDelete = async () => {
-  //   const chefId = this.props.match.params.id
-  //   try {
-  //     await axios.delete(`/api/chefs/${chefId}`, {
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //     })
-  //     this.props.history.push('/chefs')
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
-  // }
+
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
 
   // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
 
   hasRatings = () => this.state.avgRating > 0
 
   render() {
-    const { name, city, image } = this.state.user
+    if (!this.state.user) return null
+    const { name, city, image, _id } = this.state.user
+    console.log(_id, 'user')
+    // console.log(this.state, 'state')
     if (!this.state.user) return null
     return (
       <section className="userSection">
@@ -96,8 +103,9 @@ class UserShow extends React.Component {
             <hr />
           </div>
           <div className="userImage">
-            <button className="button is-warning">EDIT</button>
-            <hr />
+            <Link to={`/chefs/${_id}/edit`} className="button is-warning">
+              Edit Profile
+            </Link>
             <figure className="imageContainer">
               <img className="chefImage" src={image} alt={name} />
             </figure>
@@ -113,6 +121,7 @@ class UserShow extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <input onChange={this.handleChange} name="rating" type="number" min="1" max="5"></input>
               <button type="submit">Submit</button>
+
             </form>
           </div>
         </div>

@@ -3,6 +3,8 @@ import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
 import ImageUpload from '../ImageUpload'
+
+
 class Register extends React.Component {
   state = {
     data: {
@@ -49,9 +51,8 @@ class Register extends React.Component {
     console.log('submitting', this.state.data)
     try {
       await axios.post('/api/register', this.state.data)
-      this.props.history.push('/chefs')
+      this.props.history.push('/login')
     } catch (err) {
-      console.log(err.response.data.errors) //Specific only to this API
       this.setState({ errors: err.response.data.errors })
     }
   }
