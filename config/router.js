@@ -13,8 +13,8 @@ router.route('/chefs/:id')
 router.route('/chefs/:id/rating')
   .post(users.ratingCreate)
 
-router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
+router.route('/chefs/:id/review')
+  .post(users.reviewCreate)
 
 router.route('/chefs/:id/offersPending')
   .post(users.offersPendingCreate)

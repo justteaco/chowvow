@@ -17,6 +17,7 @@ class Register extends React.Component {
     },
     errors: {}
   }
+
   options = [
     { value: 'African', label: 'African' },
     { value: 'Caribbean', label: 'Caribbean' },
@@ -34,16 +35,19 @@ class Register extends React.Component {
     { value: 'Vegan', label: 'Vegan' },
     { value: 'Vegetarian', label: 'Vegetarian' }
   ]
+
   handleChange = e => {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
     const errors = { ...this.state.errors, [e.target.name]: '' }
     this.setState({ data, errors })
   }
+
   handleMultiChange = (selected) => {
     const skills = selected ? selected.map(item => item.value) : []
     const data = { ...this.state.data, skills }
     this.setState({ data })
   }
+
   handleSubmit = async e => {
     e.preventDefault()
     console.log('submitting', this.state.data)
@@ -55,6 +59,7 @@ class Register extends React.Component {
       this.setState({ errors: err.response.data.errors })
     }
   }
+
   render() {
     return (
       <section className="userSection">
@@ -162,4 +167,5 @@ class Register extends React.Component {
     )
   }
 }
+
 export default Register

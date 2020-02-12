@@ -42,7 +42,19 @@ function offersPendingCreate(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, show, ratingCreate, offersPendingCreate }
+function reviewCreate(req, res) {
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found' })
+      user.review.push(req.body)
+      return user.save()
+    })
+    .then(user => res.status(201).json(user))
+    .catch(err => res.json(err))
+}
+
+module.exports = { index, show, ratingCreate, offersPendingCreate, reviewCreate }
 
 
 // create an update function that finds a cook by their id, updates it with the request body and re-saves (edit profile)

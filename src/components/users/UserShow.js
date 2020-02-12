@@ -1,13 +1,15 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../lib/Auth'
+import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
 
 class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
     avgRating: 0,
-    numOfRatings: 0
+    numOfRatings: 0,
+    review: ''
   }
 
   async componentDidMount() {
@@ -29,10 +31,14 @@ class UserShow extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault()
+    this.input.value = ''
     const chefId = this.props.match.params.id
     try {
       const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user)
       this.calculateAvgRating(res)
+      const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user)
+      this.submitReview(rev)
+      console.log('logging hello')
     } catch (err) {
       this.setState({ error: 'Invalid Credentials' })
     }
@@ -46,20 +52,34 @@ class UserShow extends React.Component {
     const avg = (sum / ratingNums.length).toFixed(1)
     this.setState({ avgRating: avg, numOfRatings })
   }
-  
+
+  submitReview = (rev) => {
+    const review = rev.data.review.length
+    // review.push(review)
+    this.setState({ review })
+    console.log('checking this works')
+  }
+
+  // submitReview = async () => {
+  //   const review = this.props.match.params.id
+  //   review.push(review)
+  //   console.log('checking')
+  //   // this.setState({ user })
+  // }
+
   offerPending = async () => {
     const chefId = this.props.match.params.id
     const loggedInUserID = Auth.getPayload()
     try {
       const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
       const interestedUser = loggedInUser.data
-      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } }) 
+      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } })
       await axios.get(`/api/chefs/${chefId}`)
     } catch (err) {
       console.log(err.response)
     }
   }
-  
+
 
   // handleDelete = async () => {
   //   const chefId = this.props.match.params.id
@@ -78,7 +98,7 @@ class UserShow extends React.Component {
   hasRatings = () => this.state.avgRating > 0
 
   render() {
-    const { name, city, image } = this.state.user
+    const { name, city, image, _id } = this.state.user
     if (!this.state.user) return null
     return (
       <section className="userSection">
@@ -90,6 +110,11 @@ class UserShow extends React.Component {
               {this.hasRatings() && <><h2>{this.state.avgRating} ★</h2><p>{this.state.numOfRatings} ratings</p></>}
               {!this.hasRatings() && <p>No ratings received yet</p>}
             </div>
+            <Link to={`/chefs/${_id}/review`}>
+              <div className="allReviews">
+                <p>Read reviews</p>
+              </div>
+            </Link>
             <hr />
             <h2 className="title">LOCATION:</h2>
             <p>{city}</p>
@@ -112,6 +137,7 @@ class UserShow extends React.Component {
             <p>Rate {name}:</p>
             <form onSubmit={this.handleSubmit}>
               <input onChange={this.handleChange} name="rating" type="number" min="1" max="5"></input>
+              <input onChange={this.handleChange} name="review" type="string" maxLength="200"></input>
               <button type="submit">Submit</button>
             </form>
           </div>

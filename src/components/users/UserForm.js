@@ -45,7 +45,7 @@ const UserForm = ({ data, handleChange, handleSubmit }) => {
           <ImageUpload
           // labelText="my custom label text"
             handleChange={this.handleChange}
-            fieldName="profileImage"
+            fieldName="image"
             // labelClassName="my-label-class"
             inputClassName="my-input-class"
           />
