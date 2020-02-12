@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
+// import UserEdit from '../users/UserEdit'
 
 class UserShow extends React.Component {
   state = {
@@ -49,7 +51,6 @@ class UserShow extends React.Component {
 
   offerPending = async () => {
     const chefId = this.props.match.params.id
-    const loggedInUserID = Auth.getPayload()
     try {
       const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
       const interestedUser = loggedInUser.data
@@ -60,25 +61,23 @@ class UserShow extends React.Component {
     }
   }
 
-  // handleDelete = async () => {
-  //   const chefId = this.props.match.params.id
-  //   try {
-  //     await axios.delete(`/api/chefs/${chefId}`, {
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //     })
-  //     this.props.history.push('/chefs')
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
-  // }
-
-  // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
 
   hasRatings = () => this.state.user.avgRating > 0
 
   render() {
-    console.log(this.state.user)
-    const { name, city, image, avgRating } = this.state.user
+    const { name, city, image, avgRating, _id } = this.state.user
+    const { numOfRatings } = this.state
     if (!this.state.user) return null
     return (
       <section className="user-section">
@@ -87,16 +86,19 @@ class UserShow extends React.Component {
             <h2 className="username">{name}</h2>
             <hr />
             <div className="star-rating">
-              {this.hasRatings() && <div><h2>{avgRating} <span className="star">★</span></h2><p>{this.state.ratingsCount} ratings</p></div>}
-              {!this.hasRatings() && <p>No ratings received yet</p>}
+              {numOfRatings ?
+                <><h2>{avgRating} ★</h2><p>{numOfRatings} ratings</p></>
+                :
+                <p>No ratings received</p>}
             </div>
             <hr />
             <h2>{city}</h2>
             <hr />
           </div>
           <div className="user-image">
-            <button className="button is-warning">Edit</button>
-            <hr />
+            <Link to={`/chefs/${_id}/edit`} className="button is-warning">
+              Edit Profile
+            </Link>
             <figure className="image-container">
               <img className="chef-image" src={image} alt={name} />
             </figure>
