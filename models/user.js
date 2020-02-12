@@ -28,13 +28,28 @@ const userSchema = new mongoose.Schema({
   postcode: { type: String, required: true },
   password: { type: String, required: true },
   rating: [ ratingSchema ],
-  avgRating: { type: Number },
   offersPending: [ offersPendingSchema ],
   offersAccepted: { type: Array },
   review: [ reviewSchema ]
 }, {
   timestamps: true
 })
+
+userSchema
+  .virtual('avgRating')
+  .get(function () {
+    const mappedUsers = [...this.rating]
+    if (mappedUsers.length) {
+      const newMappedUsers = mappedUsers.map(rating => {
+        return rating.rating
+      })
+      const sum = newMappedUsers.reduce((previous, current) => current += previous)
+      const avgRating = (sum / newMappedUsers.length).toFixed(1)
+      return avgRating
+    } else {
+      return null
+    }
+  })
 
 userSchema.set('toJSON', {
   transform(doc, json) {
@@ -70,5 +85,8 @@ userSchema
     }
     next() // now move on to saving
   })
+
+userSchema.set('toJSON', { virtuals: true })
+
 
 module.exports = mongoose.model('User', userSchema)

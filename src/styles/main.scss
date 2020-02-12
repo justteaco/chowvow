@@ -126,30 +126,43 @@ body {
   height: 90vh;
 }
 
-.userSection {
+.user-section {
   height: 93vh;
   padding: 40px;
   justify-content: center;
 }
 
-.userContainer {
+.user-container {
   display: flex;
   height: 85vh;
   justify-content: space-around;
   margin: 0;
-  .userInfo,
-  .userImage,
-  .skills-recipes,
+  .user-info,
+  .user-image,
   .column {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
   }
+  .skills-recipes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    // max-width: 200px;
+  }
 }
 
-.skills-recipes {
-  max-width: 200px;
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+
+  h2 {
+    font-size: 28px;
+  }
 }
 
 .image {
@@ -191,9 +204,6 @@ body {
   display: flex;
 }
 
-.skills-recipes {
-  max-width: 200px;
-}
 .info {
   display: flex;
   width: 100%;
@@ -201,6 +211,18 @@ body {
 
   .bio {
     margin-left: 120px;
+
+    .title{
+      font-size: 40px;
+    }
+
+    h3 {
+      font-size: 30px;
+    }
+
+    h4{
+      font-size: 26px;
+    }
   }
 
   .skills {
@@ -217,7 +239,7 @@ body {
   }
 }
 
-.chefImage {
+.chef-image {
   max-height: 400px;
   border: none;
   border-radius: 80%;
@@ -255,3 +277,66 @@ input {
   outline: none;
   border: none;
   }
+
+  *{
+    margin: 0;
+    padding: 0;
+}
+
+.rate:not(:checked) input {
+    position:absolute;
+    top:-9999px;
+}
+
+.rate:not(:checked) label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color :#ccc;
+}
+
+.rate:not(:checked) label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+
+.rate:not(:checked) label:hover,
+.rate:not(:checked) label:hover ~ label {
+    color: #deb217;  
+}
+
+.rate input:checked + label:hover,
+.rate input:checked + label:hover ~ label,
+.rate input:checked ~ label:hover,
+.rate input:checked ~ label:hover ~ label,
+.rate label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.star-rating {
+  p {
+    font-size: 20px;
+  }
+}
+
+.star {
+  color: #ffc700;
+  font-size: 40px;  
+}
+
+.user-info {
+  h2 {
+    font-size: 40px;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+}
+

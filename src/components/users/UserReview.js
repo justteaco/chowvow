@@ -14,7 +14,7 @@ class UserReview extends React.Component {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
-      this.setState({ user: res.data, review: res.data.review, rating: res.data.rating })
+      this.setState({ user: res.data, review: res.data.review })
     } catch (err) {
       this.props.history.push('/notfound')
     }

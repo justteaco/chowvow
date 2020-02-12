@@ -19,14 +19,17 @@ import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Offers from './components/users/OfferIndex'
 import SecureRoute from './components/common/SecureRoute'
+
 const App = () => (
   <BrowserRouter>
     <>
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/chefs/:id/offers" component={Offers} />
+        {/* <SecureRoute path="/chefs/:id/edit" component={UserEdit} />  */}
         <Route path="/chefs/:id/review" component={UserReview} />
+        <SecureRoute path="/chefs/:id" component={UserShow} /> 
+        <Route path="/chefs/:id/offers" component={Offers} />
         <SecureRoute path="/chefs/:id" component={UserShow} />
         <Route path="/map/:address" component={UserMap} />
         <Route path="/chefs" component={UserIndex} />

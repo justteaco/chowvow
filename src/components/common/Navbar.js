@@ -5,7 +5,12 @@ import Auth from '../../lib/auth'
 
 class Navbar extends React.Component {
 
-  state = { navbarOpen: false }
+  state = { 
+    
+    navbarOpen: false,
+    searchResult: null 
+
+  }
 
   toggleNavBar = () => {
     this.setState({ navbarOpen: !this.state.navbarOpen })
@@ -14,6 +19,14 @@ class Navbar extends React.Component {
   handleClick = (e) => {
     localStorage.setItem('skill', e.target.innerHTML)
   }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    localStorage.setItem('searchChefs', this.state.searchResult)
+    this.props.history.push('/chefs')
+  }
+
+  
 
   handleLogout = () => {
     Auth.logout()
@@ -35,10 +48,11 @@ class Navbar extends React.Component {
             <Link className="navbar-item" to="/">Chow Vow</Link>
           </div>
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" onClick={this.toggleNavBar}>Skills</a>
+            <a className="navbar-link has-text-white" onClick={this.toggleNavBar}>Skills</a>
             {
               navbarOpen &&
               <div className="navbar-dropdown">
+                <Link className="navbar-item" to="/chefs" onClick={this.handleSubmit}>All Skills</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>African</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Caribbean</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Chinese</Link>

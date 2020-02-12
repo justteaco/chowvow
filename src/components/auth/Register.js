@@ -3,6 +3,8 @@ import React from 'react'
 import axios from 'axios'
 import Select from 'react-select'
 import ImageUpload from '../ImageUpload'
+
+
 class Register extends React.Component {
   state = {
     data: {
@@ -53,19 +55,18 @@ class Register extends React.Component {
     console.log('submitting', this.state.data)
     try {
       await axios.post('/api/register', this.state.data)
-      this.props.history.push('/chefs')
+      this.props.history.push('/login')
     } catch (err) {
-      console.log(err.response.data.errors) //Specific only to this API
       this.setState({ errors: err.response.data.errors })
     }
   }
 
   render() {
     return (
-      <section className="userSection">
+      <section className="user-section">
         <h2 className="title">Register</h2>
-        <form onSubmit={this.handleSubmit} className="userContainer">
-          <div className="userInfo">
+        <form onSubmit={this.handleSubmit} className="user-container">
+          <div className="user-info">
             <div className="field">
               <label className="label">NAME</label>
               <div className="control">
@@ -117,7 +118,7 @@ class Register extends React.Component {
               {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
             </div>
           </div>
-          <div className="userImage">
+          <div className="user-image">
             <ImageUpload
               handleChange={this.handleChange}
               fieldName="image"
