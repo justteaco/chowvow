@@ -10,14 +10,14 @@ router.route('/chefs')
 router.route('/chefs/:id')
   .get(users.show)
   .put(secureRoute, users.update)
-  
+
 router.route('/chefs/:id/rating')
   .post(users.ratingCreate)
 
 router.route('/chefs/:id/review')
   .post(users.reviewCreate)
-  
-  // .delete(secureRoute, users.destroy)
+
+// .delete(secureRoute, users.destroy)
 
 router.route('/chefs/:id/offersPending')
   .post(users.offersPendingCreate)

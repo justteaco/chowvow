@@ -3,6 +3,7 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import UserForm from './UserForm'
 
+
 class UserEdit extends React.Component {
   state = {
     data: {
@@ -82,7 +83,9 @@ class UserEdit extends React.Component {
             errors={this.state.errors}
             options={this.options}
             handleMultiChange={this.handleMultiChange}
+          
           />
+          <button onClick={this.handleUpload} className="button is-danger">Edit Photo</button>
           <hr />
           <button onClick={this.handleDelete} className="button is-danger">Delete Profile</button>
           <hr />
