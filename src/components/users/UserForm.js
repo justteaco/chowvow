@@ -92,8 +92,4 @@
 //   )
 // }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4de55e938bb2e0348e40abc82cce0ededea8d872
 // export default UserForm

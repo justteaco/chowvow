@@ -15,7 +15,9 @@ class UserShow extends React.Component {
   async getData() {
     const chefId = this.props.match.params.id
     try {
-      const res = await axios.get(`/api/chefs/${chefId}`)
+      const res = await axios.get(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       this.setState({ user: res.data, skills: res.data.skills })
       this.countRatings(res)
     } catch (err) {
@@ -125,7 +127,7 @@ class UserShow extends React.Component {
             <hr />
             <div className="star-rating">
               {ratingsCount ?
-                <><h2>{avgRating} ★</h2><p>{ratingsCount} ratings</p></>
+                <><h2>{avgRating} ★</h2><p>{ratingsCount} reviews</p></>
                 :
                 <p>No ratings received</p>}
             </div>
@@ -139,9 +141,9 @@ class UserShow extends React.Component {
             <hr />
           </div>
           <div className="user-image">
-            <Link to={`/chefs/${_id}/edit`} className="button is-warning">
+            {/* <Link to={`/chefs/${_id}/edit`} className="button is-warning">
               Edit Profile
-            </Link>
+            </Link> */}
             <figure className="image-container">
               <img className="chef-image" src={image} alt={name} />
             </figure>

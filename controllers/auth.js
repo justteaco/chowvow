@@ -26,4 +26,13 @@ function login(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login }
+function showProfile(req, res) {
+  User
+    .findById(req.currentUser._id)
+    .populate('user')
+    .then(selectedUser => res.status(200).json(selectedUser))
+    .catch(err => res.json(err))
+
+}
+
+module.exports = { register, login, showProfile }
