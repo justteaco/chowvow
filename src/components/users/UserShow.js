@@ -16,10 +16,11 @@ class UserShow extends React.Component {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
+      console.log(res)
       this.setState({ user: res.data, skills: res.data.skills })
       this.countRatings(res)
     } catch (err) {
-      this.props.history.push('/notfound')
+      // this.props.history.push('/notfound')
     }
   }
 

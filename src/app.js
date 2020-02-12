@@ -26,17 +26,11 @@ const App = () => (
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-<<<<<<< HEAD
-        <SecureRoute path="/chefs/:id/edit" component={UserEdit} /> 
-        <Route path="/chefs/:id/offers" component={Offers} />
-        <SecureRoute path="/chefs/:id" component={UserShow} /> 
-=======
         {/* <SecureRoute path="/chefs/:id/edit" component={UserEdit} />  */}
         <Route path="/chefs/:id/review" component={UserReview} />
         <SecureRoute path="/chefs/:id" component={UserShow} /> 
         <Route path="/chefs/:id/offers" component={Offers} />
         <SecureRoute path="/chefs/:id" component={UserShow} />
->>>>>>> 4de55e938bb2e0348e40abc82cce0ededea8d872
         <Route path="/map/:address" component={UserMap} />
         <Route path="/chefs" component={UserIndex} />
         <Route path="/register" component={Register} />
