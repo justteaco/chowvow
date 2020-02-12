@@ -32,7 +32,8 @@ class Offers extends React.Component {
 
 
   render() {
-    const { offersPending, offersAccepted } = this.state
+    // const { offersPending, offersAccepted } = this.state
+    const { offersPending } = this.state
     return (
       <>
         <h2>My Offers</h2>
