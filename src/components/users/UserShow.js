@@ -6,20 +6,22 @@ class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
-    avgRating: 0,
-    countRatings: 0
+    ratingsCount: 0
   }
 
-  async componentDidMount() {
+  async getData() {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
       this.setState({ user: res.data, skills: res.data.skills })
-      if (res.data.rating.length < 1) return
-      this.calcAvgRating(res)
+      this.countRatings(res)
     } catch (err) {
       this.props.history.push('/notfound')
     }
+  }
+
+  componentDidMount() {
+    this.getData()
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -33,19 +35,16 @@ class UserShow extends React.Component {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user)
-      this.calcAvgRating(res)
+      this.getData()
+      this.countRatings(res)
     } catch (err) {
       this.setState({ error: 'Invalid Credentials' })
     }
   }
 
-  calcAvgRating = (res) => {
-    const countRatings = res.data.rating.length
-    const ratings = []
-    res.data.rating.map(rate => ratings.push(rate.rating))
-    const sum = ratings.reduce((previous, current) => current += previous)
-    const avgRating = (sum / ratings.length).toFixed(1)
-    this.setState({ avgRating, countRatings })
+  countRatings = (res) => {
+    const ratingsCount = res.data.rating.length
+    this.setState({ ratingsCount })
   }
 
   offerPending = async () => {
@@ -61,7 +60,6 @@ class UserShow extends React.Component {
     }
   }
 
-
   // handleDelete = async () => {
   //   const chefId = this.props.match.params.id
   //   try {
@@ -76,11 +74,11 @@ class UserShow extends React.Component {
 
   // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
 
-  hasRatings = () => this.state.avgRating > 0
+  hasRatings = () => this.state.user.avgRating > 0
 
   render() {
     console.log(this.state.user)
-    const { name, city, image } = this.state.user
+    const { name, city, image, avgRating } = this.state.user
     if (!this.state.user) return null
     return (
       <section className="user-section">
@@ -89,7 +87,7 @@ class UserShow extends React.Component {
             <h2 className="username">{name}</h2>
             <hr />
             <div className="star-rating">
-              {this.hasRatings() && <div><h2>{this.state.avgRating} <span className="star">★</span></h2><p>{this.state.countRatings} ratings</p></div>}
+              {this.hasRatings() && <div><h2>{avgRating} <span className="star">★</span></h2><p>{this.state.ratingsCount} ratings</p></div>}
               {!this.hasRatings() && <p>No ratings received yet</p>}
             </div>
             <hr />

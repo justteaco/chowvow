@@ -13,9 +13,6 @@ router.route('/chefs/:id')
 router.route('/chefs/:id/rating')
   .post(users.ratingCreate)
 
-router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
-
 router.route('/chefs/:id/offersPending')
   .post(users.offersPendingCreate)
   // .delete(users.)
