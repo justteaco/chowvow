@@ -7,7 +7,8 @@ class UserShow extends React.Component {
     user: {},
     skills: [],
     avgRating: 0,
-    numOfRatings: 0
+    numOfRatings: 0,
+    colab: true
   }
 
   async componentDidMount() {
@@ -50,12 +51,18 @@ class UserShow extends React.Component {
   offerPending = async () => {
     const chefId = this.props.match.params.id
     try {
-      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: Auth.getPayload() }) 
+      await axios.post(`/api/chefs/${chefId}/offersPending`, null ,{
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      }) 
+      this.changeButton()
     } catch (err) {
       console.log(err.response)
     }
   }
   
+  changeButton = () => {
+    this.setState({ colab: false })
+  }
 
   // handleDelete = async () => {
   //   const chefId = this.props.match.params.id
@@ -73,7 +80,8 @@ class UserShow extends React.Component {
 
   render() {
     const { name, city, image } = this.state.user
-    const { numOfRatings, avgRating, skills } = this.state
+    const { numOfRatings, avgRating, skills, colab } = this.state
+    console.log(this.state.user)
     if (!this.state.user) return null
     return (
       <section className="userSection">
@@ -96,7 +104,7 @@ class UserShow extends React.Component {
               <img className="chefImage" src={image} alt={name} />
             </figure>
             <hr />
-            <button className="button is-success" onClick={this.offerPending}>INTERESTED</button>
+            {colab ? <button className="button is-success" onClick={this.offerPending}>Colaborate?</button> : <button className="button is-danger">Sent</button>}
           </div>
           <div className="skills-recipes">
             <h2 className="title">SKILLS:</h2>
