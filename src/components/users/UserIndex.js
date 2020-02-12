@@ -16,7 +16,7 @@ class UserIndex extends React.Component {
       const skillFilter = localStorage.getItem('skill')
       console.log(res.data)
       res.data.filter(user => {
-        if (user.skills.includes(`${skillFilter}`)) {
+        if (user.skills.includes(`${skillFilter}`) && user._id !== Auth.getUser()) {
           filteredUsers = [...filteredUsers, user]
         }
         return filteredUsers
