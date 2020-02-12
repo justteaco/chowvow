@@ -9,17 +9,20 @@ class UserShow extends React.Component {
     user: {},
     skills: [],
     review: '',
-    ratingsCount: 0
+    ratingsCount: 0,
+    colab: true
   }
 
   async getData() {
     const chefId = this.props.match.params.id
     try {
-      const res = await axios.get(`/api/chefs/${chefId}`)
+      const res = await axios.get(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       this.setState({ user: res.data, skills: res.data.skills })
       this.countRatings(res)
     } catch (err) {
-      this.props.history.push('/notfound')
+      // this.props.history.push('/notfound')
     }
   }
 
@@ -80,24 +83,31 @@ class UserShow extends React.Component {
   offerPending = async () => {
     const chefId = this.props.match.params.id
     try {
-      await axios.post(`/api/chefs/${chefId}/offersPending`, { offeringUser: Auth.getUser() })
+      await axios.post(`/api/chefs/${chefId}/offersPending`, null ,{
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      }) 
+      this.changeButton()
     } catch (err) {
       console.log(err.response)
     }
   }
+  
+  changeButton = () => {
+    this.setState({ colab: false })
+  }
 
 
-  // handleDelete = async () => {
-  //   const chefId = this.props.match.params.id
-  //   try {
-  //     await axios.delete(`/api/chefs/${chefId}`, {
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //     })
-  //     this.props.history.push('/chefs')
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
-  // }
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
 
   handleDelete = async () => {
     const chefId = this.props.match.params.id
@@ -115,7 +125,7 @@ class UserShow extends React.Component {
 
   render() {
     const { name, city, image, avgRating, _id } = this.state.user
-    const { ratingsCount } = this.state
+    const { ratingsCount, skills, colab } = this.state
     if (!this.state.user) return null
     return (
       <section className="user-section">
@@ -139,19 +149,19 @@ class UserShow extends React.Component {
             <hr />
           </div>
           <div className="user-image">
-            <Link to={`/chefs/${_id}/edit`} className="button is-warning">
+            {/* <Link to={`/chefs/${_id}/edit`} className="button is-warning">
               Edit Profile
-            </Link>
+            </Link> */}
             <figure className="image-container">
               <img className="chef-image" src={image} alt={name} />
             </figure>
             <hr />
-            <button className="button is-success" onClick={this.offerPending}>Interested/Send Request</button>
+            {colab ? <button className="button is-success" onClick={this.offerPending}>Colaborate?</button> : <button className="button is-danger">Sent</button>}
           </div>
           <div className="skills-recipes">
             <div className="skills">
               <h2 className="title">Skills</h2>
-              {this.state.skills.map((skill, i) => <p key={i}>{skill}</p>)}
+              {skills.map((skill, i) => <p key={i}>{skill}</p>)}
             </div>
             <div className="rating">
               <form onSubmit={this.handleSubmit} className="rating-form">
