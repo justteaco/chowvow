@@ -38,7 +38,7 @@ class UserEdit extends React.Component {
     const UserId = this.props.match.params.id
     // console.log(this.props.match.params.id)
     try {
-      const res = await axios.get(`api/chefs/${UserId}`)
+      const res = await axios.get(`/api/chefs/${UserId}`)
       this.setState({ data: res.data })
     } catch (err) {
       console.log('something is wrong', err)
@@ -55,29 +55,38 @@ class UserEdit extends React.Component {
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
   }
+<<<<<<< HEAD
 
   handlesSubmit = async (e) => {
     e.preventDefualt()
     const UserId = this.props.match.params.id
+=======
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log(this.props.match.params.id)
+    const userId = this.props.match.params.id
+>>>>>>> 5e586d7f16b5ee6beac8c3ede0c02907d6ad0713
     try {
-      const { data } = await axios.put(`api/chefs/${UserId}`, this.state.data, {
+      const { data } = await axios.put(`/api/chefs/${userId}`, this.state.data, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       this.props.history.push(`/chefs/${data._id}`)
+      
     } catch (err) {
       this.setState(err.response.data.errors)
     }
+    
   }
 
   render() {
-    console.log('edit page')
+    if (!this.state.data.name) return null
     return (
       <section className="section">
         <div className="container">
           <UserForm
             data={this.state.data}
             handleChange={this.handleChange}
-            handleSubmit={this.handlesSubmit}
+            handleSubmit={this.handleSubmit}
             errors={this.state.errors}
             options={this.options}
             handleMultiChange={this.handleMultiChange}
