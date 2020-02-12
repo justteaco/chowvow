@@ -43,6 +43,7 @@ class UserIndex extends React.Component {
         <h2 className="skill-header">Skill : <span className="has-text-info">{localStorage.getItem('skill')}</span></h2>
         {this.state.users.map(user => (
           <Link to={`/chefs/${user._id}`} key={user._id}>
+            {console.log(user)}
             <div className="box">
               <article className="media">
                 <img src={user.image} alt={user.name} />

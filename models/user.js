@@ -8,7 +8,13 @@ const ratingSchema = new mongoose.Schema({
 })
 
 const offersPendingSchema = new mongoose.Schema({
-  offersPending: { type: Array, required: true }
+  offeringUser: { type: mongoose.Schema.ObjectId , ref: 'User', required: true }
+}, {
+  timestamps: true
+})
+
+const offersAcceptedSchema = new mongoose.Schema({
+  acceptedUser: { type: mongoose.Schema.ObjectId , ref: 'User', required: true }
 }, {
   timestamps: true
 })
@@ -29,7 +35,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   rating: [ ratingSchema ],
   offersPending: [ offersPendingSchema ],
-  offersAccepted: { type: Array },
+  offersAccepted: [ offersAcceptedSchema ],
   review: [ reviewSchema ]
 }, {
   timestamps: true

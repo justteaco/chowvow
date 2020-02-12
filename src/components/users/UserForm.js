@@ -1,95 +1,109 @@
-// import React from 'react'
-// import ImageUpload from '../ImageUpload'
-// import Select from 'react-select'
+import React from 'react'
+import ImageUpload from '../ImageUpload'
+import Select from 'react-select'
 
-// const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit, errors }) => {
+const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit, errors }) => {
+  
+  const prePopulateArray = data.skills.map(skill => {
+    return { value: skill, label: skill }
+  })
+ 
+  return (
+    <section className="user-section">
+      <h2 className="title">Register</h2>
+      <form onSubmit={handleSubmit} className="user-container">
+        <div className="user-info">
+          <div className="field">
+            <label className="label">NAME</label>
+            <div className="control">
+              <input
+                className={`input ${errors.name ? 'is-danger' : ''}`}
+                placeholder="Name"
+                name="name"
+                onChange={handleChange}
+                value={data.name}
+              />
+            </div>
+            {errors.name && <small className="help is-danger">{errors.name}</small>}
+          </div>
+          <div className="field">
+            <label className="label">EMAIL</label>
+            <div className="control">
+              <input
+                className={`input ${errors.email ? 'is-danger' : ''}`}
+                placeholder="Email"
+                name="email"
+                onChange={handleChange}
+                value={data.email}
+              />
+            </div>
+            {errors.email && <small className="help is-danger">{errors.email}</small>}
+          </div>
+        </div>
+        <div className="user-image">
+          {
+            data.image ?
+              <figure className="imageContainer">
+                <label className="label">Your photo</label>
+                <img className="image" src={data.image} alt={data.name} />
+              </figure>
+              :
+              <ImageUpload
+                // labelText="my custom label text"
+                handleChange={handleChange}
+                fieldName="image"
+                // labelClassName="my-label-class"
+                inputClassName="my-input-class"
+              />
+          }
+          
+          
+          <hr />
+          <button type="submit" className="button is-primary">SAVE</button>
+        </div>
+        <div className="skills-recipes">
+          <label className="label">What are your skills?</label>
+          <div className="control">
+            <Select
+              options={options}
+              isMulti
+              defaultValue={prePopulateArray}
+              onChange={handleMultiChange}
+            />
+          </div>
+          <hr />
+          <div className="field">
+            <label className="label">CITY</label>
+            <div className="control">
+              <input
+                className={`input ${errors.city ? 'is-danger' : ''}`}
+                placeholder="City"
+                name="city"
+                value={data.city}
+                onChange={handleChange}
+              />
+            </div>
+            {errors.city && <small className="help is-danger">{errors.city}</small>}
+          </div>
+          <hr />
+          <div className="field">
+            <label className="label">POSTCODE</label>
+            <div className="control">
+              <input
+                className={`input ${errors.postcode ? 'is-danger' : ''}`}
+                placeholder="Postcode"
+                name="postcode"
+                value={data.postcode}
+                onChange={handleChange}
+              />
+            </div>
+            {errors.postcode && <small className="help is-danger">{errors.postcode}</small>}
+          </div>
+        </div>
+      </form>
+    </section>
+  )
+}
 
-//   return (
-//     <section className="user-section">
-//       <h2 className="title">Register</h2>
-//       <form onSubmit={handleSubmit} className="user-container">
-//         <div className="user-info">
-//           <div className="field">
-//             <label className="label">NAME</label>
-//             <div className="control">
-//               <input
-//                 className={`input ${errors.name ? 'is-danger' : ''}`}
-//                 placeholder="Name"
-//                 name="name"
-//                 onChange={handleChange}
-//                 value={data.name}
-//               />
-//             </div>
-//             {errors.name && <small className="help is-danger">{errors.name}</small>}
-//           </div>
-//           <div className="field">
-//             <label className="label">EMAIL</label>
-//             <div className="control">
-//               <input
-//                 className={`input ${errors.email ? 'is-danger' : ''}`}
-//                 placeholder="Email"
-//                 name="email"
-//                 onChange={handleChange}
-//                 value={data.email}
-//               />
-//             </div>
-//             {errors.email && <small className="help is-danger">{errors.email}</small>}
-//           </div>
-//         </div>
-//         <div className="user-image">
-//           {/* <figure className="imageContainer">
-//           <label className="label">Your photo</label>
-//           <img className="image" src='https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png' alt='Placeholder image' />
-//         </figure> */}
-//           <ImageUpload
-//             // labelText="my custom label text"
-//             handleChange={this.handleChange}
-//             fieldName="image"
-//             // labelClassName="my-label-class"
-//             inputClassName="my-input-class"
-//           />
-//           <hr />
-//           <button type="submit" className="button is-primary">SAVE</button>
-//         </div>
-//         <div className="skills-recipes">
-//           <label className="label">What are your skills?</label>
-//           <div className="control">
-//             <Select
-//               options={options}
-//               isMulti
-//               onChange={handleMultiChange}
-//             />
-//           </div>
-//           <hr />
-//           <div className="field">
-//             <label className="label">CITY</label>
-//             <div className="control">
-//               <input
-//                 className={`input ${errors.city ? 'is-danger' : ''}`}
-//                 placeholder="City"
-//                 name="city"
-//                 onChange={handleChange}
-//               />
-//             </div>
-//             {errors.city && <small className="help is-danger">{errors.city}</small>}
-//           </div>
-//           <hr />
-//           <div className="field">
-//             <label className="label">POSTCODE</label>
-//             <div className="control">
-//               <input
-//                 className={`input ${errors.postcode ? 'is-danger' : ''}`}
-//                 placeholder="Postcode"
-//                 name="postcode"
-//                 onChange={handleChange}
-//               />
-//             </div>
-//             {errors.postcode && <small className="help is-danger">{errors.postcode}</small>}
-//           </div>
-//         </div>
-//       </form>
-//     </section>
-//   )
-// }
+export default UserForm
 
-// export default UserForm
