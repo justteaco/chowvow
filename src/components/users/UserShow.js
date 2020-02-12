@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import Auth from '../../lib/auth'
+import Auth from '../../lib/auth'
 import { Link } from 'react-router-dom'
 // import UserEdit from '../users/UserEdit'
 
@@ -8,6 +8,7 @@ class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
+    review: '',
     ratingsCount: 0
   }
 
@@ -39,27 +40,52 @@ class UserShow extends React.Component {
       const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user)
       this.getData()
       this.countRatings(res)
+      const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user)
+      this.submitReview(rev)
     } catch (err) {
       this.setState({ error: 'Invalid Credentials' })
     }
   }
+
+  // handleReviewSubmit = async e => {
+  //   e.preventDefault()
+  //   const chefId = this.props.match.params.id
+  //   try {
+  //     const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user)
+  //     this.submitReview(rev)
+  //   } catch (err) {
+  //     this.setState({ error: 'Invalid Credentials' })
+  //   }
+  // }
 
   countRatings = (res) => {
     const ratingsCount = res.data.rating.length
     this.setState({ ratingsCount })
   }
 
-  // offerPending = async () => {
-  //   const chefId = this.props.match.params.id
-  //   try {
-  //     const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
-  //     const interestedUser = loggedInUser.data
-  //     await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } })
-  //     await axios.get(`/api/chefs/${chefId}`)
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
+  submitReview = (rev) => {
+    const review = rev.data.review.length
+    // review.push(review)
+    this.setState({ review })
+    console.log('checking this works')
+  }
+
+  // submitReview = async () => {
+  //   const review = this.props.match.params.id
+  //   review.push(review)
+  //   console.log('checking')
+  //   // this.setState({ user })
   // }
+
+  offerPending = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.post(`/api/chefs/${chefId}/offersPending`, { offeringUser: Auth.getUser() })
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
+
 
   // handleDelete = async () => {
   //   const chefId = this.props.match.params.id
@@ -72,6 +98,18 @@ class UserShow extends React.Component {
   //     console.log(err.response)
   //   }
   // }
+
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
 
   hasRatings = () => this.state.user.avgRating > 0
 
@@ -91,6 +129,11 @@ class UserShow extends React.Component {
                 :
                 <p>No ratings received</p>}
             </div>
+            <Link to={`/chefs/${_id}/review`}>
+              <div className="allReviews">
+                <p>Read reviews</p>
+              </div>
+            </Link>
             <hr />
             <h2>{city}</h2>
             <hr />
@@ -125,8 +168,12 @@ class UserShow extends React.Component {
                   <input onChange={this.handleChange} type="radio" id="star1" name="rating" value="1" />
                   <label htmlFor="star1" title="text">1 star</label>
                 </div>
+                <input onChange={this.handleChange} name="review" type="text" maxLength="200" />
                 <button className="button is-fullwidth is-info" type="submit">Submit</button>
               </form>
+              {/* <form onSubmit={this.handleReviewSubmit} className="ratingForm">
+                <button className="button is-fullwidth is-info" type="submit">Submit</button>
+              </form> */}
             </div>
           </div>
         </div>

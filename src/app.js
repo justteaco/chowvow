@@ -9,7 +9,8 @@ import Home from './components/common/Home'
 import UserMap from './components/users/UserMap'
 import UserIndex from './components/users/UserIndex'
 import UserShow from './components/users/UserShow'
-import UserEdit from './components/users/UserEdit'
+import UserReview from './components/users/UserReview'
+//import UserEdit from './components/users/UserEdit'
 
 
 import Navbar from './components/common/Navbar'
@@ -25,7 +26,8 @@ const App = () => (
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <SecureRoute path="/chefs/:id/edit" component={UserEdit} /> 
+        {/* <SecureRoute path="/chefs/:id/edit" component={UserEdit} />  */}
+        <Route path="/chefs/:id/review" component={UserReview} />
         <Route path="/chefs/:id/offers" component={Offers} />
         <SecureRoute path="/chefs/:id" component={UserShow} /> 
         <Route path="/map/:address" component={UserMap} />

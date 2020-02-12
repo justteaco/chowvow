@@ -13,6 +13,12 @@ const offersPendingSchema = new mongoose.Schema({
   timestamps: true
 })
 
+const reviewSchema = new mongoose.Schema({
+  review: { type: String, required: true }
+}, {
+  timestamps: true
+})
+
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -21,9 +27,10 @@ const userSchema = new mongoose.Schema({
   city: { type: String, required: true },
   postcode: { type: String, required: true },
   password: { type: String, required: true },
-  rating: [ratingSchema],
-  offersPending: [offersPendingSchema],
-  offersAccepted: { type: Array }
+  rating: [ ratingSchema ],
+  offersPending: [ offersPendingSchema ],
+  offersAccepted: { type: Array },
+  review: [ reviewSchema ]
 }, {
   timestamps: true
 })

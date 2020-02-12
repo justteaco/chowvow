@@ -9,6 +9,15 @@ router.route('/chefs')
 
 router.route('/chefs/:id')
   .get(users.show)
+<<<<<<< HEAD
+=======
+  
+router.route('/chefs/:id/rating')
+  .post(users.ratingCreate)
+
+router.route('/chefs/:id/review')
+  .post(users.reviewCreate)
+>>>>>>> 4de55e938bb2e0348e40abc82cce0ededea8d872
   // .put(users.update)
   // .delete(secureRoute, users.destroy)
 
