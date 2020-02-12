@@ -2,7 +2,6 @@ const router = require('express').Router()
 const users = require('../controllers/users')
 const auth = require('../controllers/auth')
 // const secureRoute = require('../lib/secureRoute')
-console.log(auth.login)
 
 router.route('/chefs')
   .get(users.index)

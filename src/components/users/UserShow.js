@@ -49,12 +49,8 @@ class UserShow extends React.Component {
   
   offerPending = async () => {
     const chefId = this.props.match.params.id
-    const loggedInUserID = Auth.getPayload()
     try {
-      const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
-      const interestedUser = loggedInUser.data
-      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } }) 
-      await axios.get(`/api/chefs/${chefId}`)
+      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: Auth.getPayload() }) 
     } catch (err) {
       console.log(err.response)
     }
@@ -75,10 +71,9 @@ class UserShow extends React.Component {
 
   // isOwner = () => Auth.getPayload().sub === this.state.chef._id // Subject is the user id
 
-  hasRatings = () => this.state.avgRating > 0
-
   render() {
     const { name, city, image } = this.state.user
+    const { numOfRatings, avgRating, skills } = this.state
     if (!this.state.user) return null
     return (
       <section className="userSection">
@@ -87,8 +82,7 @@ class UserShow extends React.Component {
             <h2 className="title">{name}</h2>
             <hr />
             <div className="starRating">
-              {this.hasRatings() && <><h2>{this.state.avgRating} ★</h2><p>{this.state.numOfRatings} ratings</p></>}
-              {!this.hasRatings() && <p>No ratings received yet</p>}
+              {numOfRatings ? (<><h2>{avgRating} ★</h2><p>{numOfRatings} ratings</p></>) : <p>No ratings received</p>}
             </div>
             <hr />
             <h2 className="title">LOCATION:</h2>
@@ -106,7 +100,7 @@ class UserShow extends React.Component {
           </div>
           <div className="skills-recipes">
             <h2 className="title">SKILLS:</h2>
-            {this.state.skills.map((skill, i) => <p key={i}>{skill}</p>)}
+            {skills.map((skill, i) => <p key={i}>{skill}</p>)}
           </div>
           <div className="rating">
             <p>Rate {name}:</p>
