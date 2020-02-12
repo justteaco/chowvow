@@ -17,7 +17,7 @@ router.route('/chefs/:id/rating')
 router.route('/chefs/:id/review')
   .post(users.reviewCreate)
   
-  // .delete(secureRoute, users.destroy)
+// .delete(secureRoute, users.destroy)
 
 router.route('/chefs/:id/offersPending')
   .post(users.offersPendingCreate)
