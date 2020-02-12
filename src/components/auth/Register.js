@@ -82,6 +82,7 @@ class Register extends React.Component {
             <div className="field">
               <label className="label">EMAIL</label>
               <div className="control">
+                
                 <input
                   className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
                   placeholder="Email"

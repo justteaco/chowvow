@@ -27,7 +27,7 @@ function update(req, res, next) {
     .then(user => {
       console.log(user)
       if (!user) throw new Error('Not Found')
-      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
+      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
       Object.assign(user, req.body) 
       return user.save()  
     })

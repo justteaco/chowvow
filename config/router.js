@@ -32,8 +32,8 @@ router.route('/chefs/:id/offers')
 //   .post(users.)
 //   .delete(users.)
 
-router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
+// router.route('/chefs/:id/rating')
+//   .post(users.ratingCreate)
 
 router.route('/register')
   .post(authUsers.register)

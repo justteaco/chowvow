@@ -178,7 +178,7 @@ class UserShow extends React.Component {
                   <input onChange={this.handleChange} type="radio" id="star1" name="rating" value="1" />
                   <label htmlFor="star1" title="text">1 star</label>
                 </div>
-                <input onChange={this.handleChange} name="review" type="text" maxLength="200" />
+                <textarea className="textarea is-primary" onChange={this.handleChange} placeholder="Enter your review.." name="review" type="text" maxLength="200" />
                 <button className="button is-fullwidth is-info" type="submit">Submit</button>
               </form>
               {/* <form onSubmit={this.handleReviewSubmit} className="ratingForm">
