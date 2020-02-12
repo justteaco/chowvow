@@ -44,6 +44,7 @@ class UserEdit extends React.Component {
       console.log('something is wrong', err)
     }
   }
+  
   handleMultiChange = (selected) => {
     const skills = selected ? selected.map(item => item.value) : []
     const data = { ...this.state.data, skills }
@@ -54,6 +55,7 @@ class UserEdit extends React.Component {
     const data = { ...this.state.data, [name]: value }
     this.setState({ data })
   }
+
   handlesSubmit = async (e) => {
     e.preventDefualt()
     const UserId = this.props.match.params.id

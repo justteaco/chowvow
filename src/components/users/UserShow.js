@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Auth from '../../lib/auth'
+// import Auth from '../../lib/auth'
 import { Link } from 'react-router-dom'
 // import UserEdit from '../users/UserEdit'
 
@@ -49,35 +49,35 @@ class UserShow extends React.Component {
     this.setState({ ratingsCount })
   }
 
-  offerPending = async () => {
-    const chefId = this.props.match.params.id
-    try {
-      const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
-      const interestedUser = loggedInUser.data
-      await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } })
-      await axios.get(`/api/chefs/${chefId}`)
-    } catch (err) {
-      console.log(err.response)
-    }
-  }
+  // offerPending = async () => {
+  //   const chefId = this.props.match.params.id
+  //   try {
+  //     const loggedInUser = await axios.get(`/api/chefs/${loggedInUserID.sub}`)
+  //     const interestedUser = loggedInUser.data
+  //     await axios.post(`/api/chefs/${chefId}/offersPending`, { offersPending: { interestedUser } })
+  //     await axios.get(`/api/chefs/${chefId}`)
+  //   } catch (err) {
+  //     console.log(err.response)
+  //   }
+  // }
 
-  handleDelete = async () => {
-    const chefId = this.props.match.params.id
-    try {
-      await axios.delete(`/api/chefs/${chefId}`, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      })
-      this.props.history.push('/chefs')
-    } catch (err) {
-      console.log(err.response)
-    }
-  }
+  // handleDelete = async () => {
+  //   const chefId = this.props.match.params.id
+  //   try {
+  //     await axios.delete(`/api/chefs/${chefId}`, {
+  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //     })
+  //     this.props.history.push('/chefs')
+  //   } catch (err) {
+  //     console.log(err.response)
+  //   }
+  // }
 
   hasRatings = () => this.state.user.avgRating > 0
 
   render() {
     const { name, city, image, avgRating, _id } = this.state.user
-    const { numOfRatings } = this.state
+    const { ratingsCount } = this.state
     if (!this.state.user) return null
     return (
       <section className="user-section">
@@ -86,8 +86,8 @@ class UserShow extends React.Component {
             <h2 className="username">{name}</h2>
             <hr />
             <div className="star-rating">
-              {numOfRatings ?
-                <><h2>{avgRating} ★</h2><p>{numOfRatings} ratings</p></>
+              {ratingsCount ?
+                <><h2>{avgRating} ★</h2><p>{ratingsCount} ratings</p></>
                 :
                 <p>No ratings received</p>}
             </div>
