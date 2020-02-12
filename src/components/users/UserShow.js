@@ -125,7 +125,7 @@ class UserShow extends React.Component {
             <hr />
             <div className="star-rating">
               {ratingsCount ?
-                <><h2>{avgRating} ★</h2><p>{ratingsCount} ratings</p></>
+                <><h2>{avgRating} ★</h2><p>{ratingsCount} reviews</p></>
                 :
                 <p>No ratings received</p>}
             </div>

@@ -14,7 +14,7 @@ class UserReview extends React.Component {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
-      this.setState({ user: res.data, review: res.data.review })
+      this.setState({ user: res.data, review: res.data.review, avgRating: res.data.avgRating })
     } catch (err) {
       this.props.history.push('/notfound')
     }
@@ -22,7 +22,7 @@ class UserReview extends React.Component {
 
   render() {
     if (!this.state.user.name) return null
-    const { name, _id, image, timestamps } = this.state.user
+    const { name, _id, image, avgRating } = this.state.user
     console.log(this.state.user)
     return (
       <>
@@ -37,8 +37,8 @@ class UserReview extends React.Component {
                     {/* {this.state.rating.reduce(rate => (
                     <h3 key={rate._id} className="subtitle">{rate.rating}</h3>
                   ))} */}
-                    {/* <h3 className="subtitle">★ ★ ★ ★ ☆</h3> */}
-                    <h3 className="subtitle">Date reviewed: {timestamps}</h3>
+                    <h3>{avgRating} <span className="star">★</span></h3>
+                    {/* <h3 className="subtitle">Date reviewed: {timestamps}</h3> */}
                     {this.state.review.map((rev, i) => (
                       <h3 key={i} className="subtitle">Comments: {rev.review}</h3>
                     ))}

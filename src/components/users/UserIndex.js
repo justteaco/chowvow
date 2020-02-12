@@ -13,12 +13,12 @@ class UserIndex extends React.Component {
       const res = await axios.get('/api/chefs')
       let filteredUsers = []
       const skillFilter = localStorage.getItem('skill')
-      console.log(res.data)
+      // const allSkills = localStorage.getItem('allSkills')
+      console.log('hi guys')
       res.data.filter(user => {
         if (user.skills.includes(`${skillFilter}`)) {
           filteredUsers = [...filteredUsers, user]
-        }
-        return filteredUsers
+        } return res.data
       })
       this.setState({ users: filteredUsers, skillFilter })
     } catch (err) {

@@ -6,7 +6,6 @@ const authUsers = require('../controllers/auth')
 router.route('/chefs')
   .get(users.index)
 
-
 router.route('/chefs/:id')
   .get(users.show)
   
