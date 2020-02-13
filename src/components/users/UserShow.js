@@ -111,17 +111,7 @@ class UserShow extends React.Component {
     }
   }
 
-  handleDelete = async () => {
-    const chefId = this.props.match.params.id
-    try {
-      await axios.delete(`/api/chefs/${chefId}`, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      })
-      this.props.history.push('/chefs')
-    } catch (err) {
-      console.log(err.response)
-    }
-  }
+
 
   hasRatings = () => this.state.user.avgRating > 0
 
