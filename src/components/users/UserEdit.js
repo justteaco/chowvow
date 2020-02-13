@@ -63,7 +63,7 @@ class UserEdit extends React.Component {
       const { data } = await axios.put(`/api/chefs/${userId}`, this.state.data, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      this.props.history.push(`/chefs/${data._id}`)
+      this.props.history.push('/profile')
       
     } catch (err) {
       this.setState(err.response.data.errors)

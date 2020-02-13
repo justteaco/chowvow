@@ -8,6 +8,7 @@ class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
+    // recipes: [],
     review: '',
     ratingsCount: 0,
     colab: true
@@ -20,6 +21,7 @@ class UserShow extends React.Component {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       this.setState({ user: res.data, skills: res.data.skills })
+      // this.setState({ user: res.data, skills: res.data.skills, recipes: res.data.recipes })
       this.countRatings(res)
     } catch (err) {
       // this.props.history.push('/notfound')
@@ -83,15 +85,15 @@ class UserShow extends React.Component {
   offerPending = async () => {
     const chefId = this.props.match.params.id
     try {
-      await axios.post(`/api/chefs/${chefId}/offersPending`, null ,{
+      await axios.post(`/api/chefs/${chefId}/offersPending`, null, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      }) 
+      })
       this.changeButton()
     } catch (err) {
       console.log(err.response)
     }
   }
-  
+
   changeButton = () => {
     this.setState({ colab: false })
   }
@@ -126,6 +128,7 @@ class UserShow extends React.Component {
   render() {
     const { name, city, image, avgRating, _id } = this.state.user
     const { ratingsCount, skills, colab } = this.state
+    // const { ratingsCount, skills, colab, recipes } = this.state
     if (!this.state.user) return null
     return (
       <section className="user-section">
@@ -156,13 +159,22 @@ class UserShow extends React.Component {
               <img className="chef-image" src={image} alt={name} />
             </figure>
             <hr />
-            {colab ? <button className="button is-success" onClick={this.offerPending}>Colaborate?</button> : <button className="button is-danger">Sent</button>}
+            {colab ? <button className="button is-success" onClick={this.offerPending}>Collaborate?</button> : <button className="button is-danger">Sent</button>}
           </div>
           <div className="skills-recipes">
             <div className="skills">
               <h2 className="title">Skills</h2>
               {skills.map((skill, i) => <p key={i}>{skill}</p>)}
             </div>
+            {/* <h2 className="title">Favourite Recipes:</h2>
+            {recipes.map((recipe, i) => (
+              <div key={i}>
+                <img src={recipe.image} alt={recipe.name} />
+                <h3>{recipe.name}</h3>
+                <p>Serves {recipe.serving}</p>
+                <p>{recipe.cookTime} mins</p>
+              </div>
+            ))} */}
             <div className="rating">
               <form onSubmit={this.handleSubmit} className="rating-form">
                 <h2>Leave a review</h2>

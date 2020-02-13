@@ -15,31 +15,18 @@ router.route('/chefs/:id/rating')
 
 router.route('/chefs/:id/review')
   .post(users.reviewCreate)
-  // .put(users.update)
-  // .delete(secureRoute, users.destroy)
+// .delete(secureRoute, users.destroy)
 
 router.route('/profile')
   .get(authUsers.showProfile)
 
 router.route('/chefs/:id/offersPending')
-  .post(secureRoute, users.offersPendingCreate)
-  .delete(secureRoute, users.offersPendingDelete)
-  
-router.route('/chefs/:id/offers')
-  .get(secureRoute, authUsers.offers)
-
-// router.route('/chefs/:id/offersAccepted')
-//   .post(users.)
-//   .delete(users.)
-
-router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
+  .post(users.offersPendingCreate)
 
 router.route('/register')
   .post(authUsers.register)
 
 router.route('/login')
   .post(authUsers.login)
-
 
 module.exports = router
