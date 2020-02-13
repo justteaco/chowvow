@@ -8,16 +8,25 @@ const ratingSchema = new mongoose.Schema({
 })
 
 const offersPendingSchema = new mongoose.Schema({
-  offeringUser: { type: mongoose.Schema.ObjectId , ref: 'User', required: true }
+  offeringUser: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })
 
 const offersAcceptedSchema = new mongoose.Schema({
-  acceptedUser: { type: mongoose.Schema.ObjectId , ref: 'User', required: true }
+  acceptedUser: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })
+
+// const recipeSchema = new mongoose.Schema({
+//   name: { type: String, required: true },
+//   image: { type: String, required: true },
+//   serving: { type: Number, required: true, min: 1, max: 20 },
+//   cookTime: { type: Number, required: true },
+//   ingredients: { type: Array, required: true }
+//   // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+// })
 
 const reviewSchema = new mongoose.Schema({
   review: { type: String, required: true }
@@ -39,14 +48,21 @@ const userSchema = new mongoose.Schema({
   city: { type: String, required: true },
   postcode: { type: String, required: true },
   password: { type: String, required: true },
-  rating: [ ratingSchema ],
-  offersPending: [ offersPendingSchema ],
-  offersAccepted: [ offersAcceptedSchema ],
-  review: [ reviewSchema ]
+  rating: [ratingSchema],
+  offersPending: [offersPendingSchema],
+  offersAccepted: [offersAcceptedSchema],
+  review: [reviewSchema]
+  // recipes: [ recipeSchema ]
   // message: [ messageSchema ]
 }, {
   timestamps: true
 })
+
+// userSchema.virtual('ownedRecipes', {
+//   ref: 'Recipe',
+//   localField: '_id',
+//   foreignField: 'owner'
+// })
 
 userSchema
   .virtual('avgRating')

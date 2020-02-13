@@ -13,7 +13,6 @@ function login(req, res) {
   User
     .findOne({ email: req.body.email })
     .then(user => {
-      console.log(user)
       if (!user || !user.validatePassword(req.body.password)) {
         return res.status(401).json({ message: 'Unauthorized' })
       }
@@ -43,15 +42,6 @@ function showProfile(req, res) {
 //       return user.save()
 //     })
 //     .then(user => res.status(201).json(user))
-//     .catch(err => res.json(err))
-// }
-
-// module.exports = { register, login, showProfile }
-// function profile(req, res) {
-//   User
-//     .findById(req.currentUSer._id)
-//     .populate('createdUser')
-//     .then(user => res.status(200).json(user))
 //     .catch(err => res.json(err))
 // }
 

@@ -82,6 +82,7 @@ class UserMap extends React.Component {
 
   render() {
     const { viewport, userswithco, userPicked, display } = this.state
+    console.log(userPicked)
     if (!userswithco.length) return null
     console.log(userPicked)
     return (
@@ -124,6 +125,10 @@ class UserMap extends React.Component {
             <Link to={`/chefs/${userPicked._id}`}>
               {userPicked.name}
               <br />
+              {userPicked.avgRating > 0 ?
+                <h3>{userPicked.avgRating} <span className="star">★</span></h3>
+                :
+                <h2>No Rating</h2>}
                 Skills:
               {' '}{userPicked.skills.slice(0, userPicked.skills.length).join(', ')}
             </Link>

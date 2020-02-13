@@ -29,10 +29,10 @@ class UserProfile extends React.Component {
     this.getData()
   }
 
-  // handleChange = ({ target: { name, value } }) => {
-  //   const user = { ...this.state.user, [name]: value }
-  //   this.setState({ user })
-  // }
+  handleChange = ({ target: { name, value } }) => {
+    const user = { ...this.state.user, [name]: value }
+    this.setState({ user })
+  }
 
   countRatings = (res) => {
     const ratingsCount = res.data.rating.length

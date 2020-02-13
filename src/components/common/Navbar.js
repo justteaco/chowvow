@@ -35,13 +35,14 @@ class Navbar extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link className="navbar-item" to="/">Chow Vow</Link>
+            <Link className="navbar-item" to="/map/london">Map</Link>
           </div>
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" onClick={this.toggleNavBar}>Skills</a>
+            <a className="navbar-link has-text-white" onClick={this.toggleNavBar}>Skills</a>
             {
               navbarOpen &&
               <div className="navbar-dropdown">
-                <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>All Skills</Link>
+                <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>All</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>African</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Caribbean</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Chinese</Link>
@@ -66,6 +67,7 @@ class Navbar extends React.Component {
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">Sign up</Link>}
             {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login">Login</Link>}
             {/* {Auth.isAuthenticated() && <Link className="navbar-item" to="/messages">Inbox</Link>} */}
+            {Auth.isAuthenticated() && <Link className="navbar-item" to="/offers">Offers</Link>}
             {Auth.isAuthenticated() && <Link className="navbar-item" to="/profile">Profile</Link>}
             {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.handleLogout}>Logout</a>}
           </div>
