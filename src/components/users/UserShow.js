@@ -68,9 +68,7 @@ class UserShow extends React.Component {
 
   submitReview = (rev) => {
     const review = rev.data.review.length
-    // review.push(review)
     this.setState({ review })
-    console.log('checking this works')
   }
 
   // submitReview = async () => {

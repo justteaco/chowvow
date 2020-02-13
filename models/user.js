@@ -25,6 +25,12 @@ const reviewSchema = new mongoose.Schema({
   timestamps: true
 })
 
+// const messageSchema = new mongoose.Schema({
+//   message: { type: String, required: true }
+// }, {
+//   timestamps: true
+// })
+
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -37,6 +43,7 @@ const userSchema = new mongoose.Schema({
   offersPending: [ offersPendingSchema ],
   offersAccepted: [ offersAcceptedSchema ],
   review: [ reviewSchema ]
+  // message: [ messageSchema ]
 }, {
   timestamps: true
 })

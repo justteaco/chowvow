@@ -87,6 +87,7 @@ function offersPendingDelete(req, res) {
     
     .catch(err => res.status(401).json(err)) //send any errors
 }
+
 function reviewCreate(req, res) {
   User
     .findById(req.params.id)
@@ -98,6 +99,7 @@ function reviewCreate(req, res) {
     .then(user => res.status(201).json(user))
     .catch(err => res.json(err))
 }
+
 
 module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete }
 

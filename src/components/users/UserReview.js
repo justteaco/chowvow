@@ -7,7 +7,6 @@ class UserReview extends React.Component {
     user: {},
     review: '',
     timestamps: ''
-    // avgRating: ''
   }
 
   async componentDidMount() {
@@ -22,32 +21,30 @@ class UserReview extends React.Component {
 
   render() {
     if (!this.state.user.name) return null
-    const { name, _id, image, avgRating } = this.state.user
+    const { name, _id, image, avgRating, ratingsCount } = this.state.user
     console.log(this.state.user)
     return (
       <>
         {/* {this.state.user.map(user => ( */}
-          <Link to={`/chefs/${_id}`} key={_id}>
-            <div className="box">
-              <h1>{name}</h1>
-              <article className="media">
-                <img src={image} alt={name} />
-                <div className="info">
-                  <div className="bio">
-                    {/* {this.state.rating.reduce(rate => (
-                    <h3 key={rate._id} className="subtitle">{rate.rating}</h3>
-                  ))} */}
-                    <h3>{avgRating} <span className="star">★</span></h3>
-                    {/* <h3 className="subtitle">Date reviewed: {timestamps}</h3> */}
-                    {this.state.review.map((rev, i) => (
-                      <h3 key={i} className="subtitle">Comments: {rev.review}</h3>
-                    ))}
-                    {/* <h3 className="subtitle">{this.state.review}</h3> */}
-                  </div>
+        <Link to={`/chefs/${_id}`} key={_id}>
+          <div className="box">
+            <h1>{name}</h1>
+            <article className="media">
+              <img src={image} alt={name} />
+              <div className="info">
+                <div className="bio">
+                  {avgRating ?
+                    <><h3>{avgRating}<span className="star">★</span></h3><p>{ratingsCount}</p></>
+                    :
+                    <p>No reviews yet, be the first!</p>}
+                  {this.state.review.map((rev, i) => (
+                    <h3 key={i} className="subtitle">Comments: {rev.review}</h3>
+                  ))}
                 </div>
-              </article>
-            </div>
-          </Link>
+              </div>
+            </article>
+          </div>
+        </Link>
         {/* ))} */}
       </>
     )
