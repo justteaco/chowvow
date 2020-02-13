@@ -21,8 +21,16 @@ router.route('/chefs/:id/review')
 router.route('/profile')
   .get(authUsers.showProfile)
 
+router.route('/chefs/:id/offersAccepted')
+  .post(secureRoute, users.offersAccepted)
+
+router.route('/chefs/:id/offersAccepted/:offereyid')
+  .delete(secureRoute, users.offersAcceptDelete)
+
 router.route('/chefs/:id/offersPending')
   .post(secureRoute, users.offersPendingCreate)
+
+router.route('/chefs/:id/offersPending/:offereyid')
   .delete(secureRoute, users.offersPendingDelete)
   
 router.route('/chefs/:id/offers')
