@@ -13,7 +13,6 @@ function login(req, res) {
   User
     .findOne({ email: req.body.email })
     .then(user => {
-      console.log(user)
       if (!user || !user.validatePassword(req.body.password)) {
         return res.status(401).json({ message: 'Unauthorized' })
       }

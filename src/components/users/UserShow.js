@@ -8,6 +8,7 @@ class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
+    // recipes: [],
     review: '',
     ratingsCount: 0,
     pending: false,
@@ -21,6 +22,7 @@ class UserShow extends React.Component {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       this.setState({ user: res.data, skills: res.data.skills })
+      // this.setState({ user: res.data, skills: res.data.skills, recipes: res.data.recipes })
       this.countRatings(res)
     } catch (err) {
       // this.props.history.push('/notfound')
@@ -87,15 +89,15 @@ class UserShow extends React.Component {
     this.setState({ pending: true })
     const chefId = this.props.match.params.id
     try {
-      await axios.post(`/api/chefs/${chefId}/offersPending`, null ,{
+      await axios.post(`/api/chefs/${chefId}/offersPending`, null, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      }) 
+      })
       this.changeButton()
     } catch (err) {
       console.log(err.response)
     }
   }
-  
+
   changeButton = () => {
     this.setState({ colab: false })
   }
@@ -187,6 +189,15 @@ class UserShow extends React.Component {
               <h2 className="title">Skills</h2>
               {skills.map((skill, i) => <p key={i}>{skill}</p>)}
             </div>
+            {/* <h2 className="title">Favourite Recipes:</h2>
+            {recipes.map((recipe, i) => (
+              <div key={i}>
+                <img src={recipe.image} alt={recipe.name} />
+                <h3>{recipe.name}</h3>
+                <p>Serves {recipe.serving}</p>
+                <p>{recipe.cookTime} mins</p>
+              </div>
+            ))} */}
             <div className="rating">
               <form onSubmit={this.handleSubmit} className="rating-form">
                 <h2>Leave a review</h2>

@@ -9,6 +9,7 @@ router.route('/chefs')
 router.route('/chefs/:id')
   .get(users.show)
   .put(secureRoute, users.update)
+  .delete(secureRoute, users.destroy)
 
 router.route('/chefs/:id/rating')
   .post(users.ratingCreate)
@@ -40,14 +41,10 @@ router.route('/chefs/:id/offers')
 //   .post(users.)
 //   .delete(users.)
 
-router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
-
 router.route('/register')
   .post(authUsers.register)
 
 router.route('/login')
   .post(authUsers.login)
-
 
 module.exports = router

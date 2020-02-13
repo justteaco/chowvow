@@ -6,17 +6,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
   if (err) return console.log(err)
   db.dropDatabase()
     .then(() => {
-    //   return User.create([
-    //     {
-    //       username: 'xxx',
-    //       email: 'xxx',
-    //       password: 'xxx',
-    //       passwordConfiramtion: 'xxx'
-    //     }
-    //   ])
-    // })
-    // .then(createdUsers => {
-    //   console.log(`${'👩‍🚒'.repeat(createdUsers.length)} users created`)
       return User.create([
         {
           name: 'Ben Parker',
@@ -378,10 +367,19 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'EH1 2BU',
           password: 'pass',
           passwordConfirmation: 'pass'
+          // recipes: [{
+          //   name: 'Spaghetti Carbonara',
+          //   image: 'https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+          //   serving: 4,
+          //   cookTime: 35,
+          //   ingredients: ['100g pancetta', '50g parmesan', '3 large eggs', '350g spaghetti', 'garlic', '50g unsalted butter', 'salt', 'black pepper']
+          // }]
         }
       ])
     })
-    .then(createdUser => console.log(`${createdUser.length} users created `))
+    .then(createdUsers => {
+      console.log(`${createdUsers.length} users created `)
+    })
     .catch(err => console.log(err))
     .finally(() => mongoose.connection.close())
 })

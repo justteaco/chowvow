@@ -38,11 +38,11 @@ class Navbar extends React.Component {
             <Link className="navbar-item" to="/map/london">Map</Link>
           </div>
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link" onClick={this.toggleNavBar}>Skills</a>
+            <a className="navbar-link has-text-white" onClick={this.toggleNavBar}>Skills</a>
             {
               navbarOpen &&
               <div className="navbar-dropdown">
-                <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>All Skills</Link>
+                <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>All</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>African</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Caribbean</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Chinese</Link>

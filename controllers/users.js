@@ -25,26 +25,23 @@ function update(req, res, next) {
       console.log(user)
       if (!user) throw new Error('Not Found')
       if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
-      Object.assign(user, req.body) 
-      return user.save()  
+      Object.assign(user, req.body)
+      return user.save()
     })
-    .then(updatedUser => res.status(202).json(updatedUser)) 
+    .then(updatedUser => res.status(202).json(updatedUser))
     .catch(next)
 }
 
-// function destroy(req, res) {
-//   User
-//     .findById(req.params.id)
-//     .then(user => {
-//       if (!user) return res.status(404).json({ message: 'Not Found ' })
-//       if (!user.user.equals(req.currentUser._id)) {
-//         res.status(401).json({ message: 'Unauthorised' })
-//       } else {
-//         user.remove().then(() => res.sendStatus(204))
-//       }
-//     })
-//     .catch(err => res.json(err))
-// }
+function destroy(req, res) {
+  User
+    .findById(req.params.id)
+    .then(user => {
+      if (!user) return res.status(404).json({ message: 'Not Found ' })
+      user.remove().then(() => res.sendStatus(204))
+
+    })
+    .catch(err => res.json(err))
+}
 
 function ratingCreate(req, res) {
   User
@@ -122,4 +119,4 @@ function reviewCreate(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete, offersAccepted, offersAcceptDelete }
+module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete, offersAccepted, offersAcceptDelete, destroy }
