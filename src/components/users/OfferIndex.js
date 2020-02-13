@@ -1,45 +1,57 @@
 import React from 'react'
 import axios from 'axios'
-
+import Auth from '../../lib/auth'
 class Offers extends React.Component {
   state = {
     offersPending: null,
     offersAccepted: null
   }
 
-  getOffers = sub => {
-    return axios.get(`/api/chefs/${sub}`)
+  getOffers = user => {
+    return (axios.get(`/api/chefs/${user.offeringUser}`))
   }
 
   findOffers = async user => {
-    Promise.all(user.data.offersPending.map(offer => {
-      return this.getOffers(offer.offersPending[0].sub)
+    console.log(user.data.offersPending)
+    Promise.all(user.data.offersPending.map(info => {
+      return this.getOffers(info)
     }))
       .then(user => {
+        console.log(user)
         this.setState({ offersPending: user })
       })
   }
 
   async componentDidMount() {
     const chefId = this.props.match.params.id
-    const user = await axios.get(`/api/chefs/${chefId}`)
+    const user = await axios.get(`/api/chefs/${chefId}/offers`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+    console.log(user)
     await this.findOffers(user)
   }
 
-  handleDelete = user => {
-    console.log(user)
-  }
+  // handleDelete = async user => {
+  //   console.log(user)
+  //   const userId = this.props.match.params.id
+  //   try {
+  //     await axios.delete(`/api/chefs/${userId}/offersPending`, {
+  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //     })
+  //   } catch (err) {
+  //     console.log(err.response)
+  //   }
+  // }
 
 
   render() {
-    // const { offersPending, offersAccepted } = this.state
     const { offersPending } = this.state
+    // const { offersPending, offersAccepted } = this.state
     return (
       <>
         <h2>My Offers</h2>
         <h2>Pending:</h2>
         {offersPending ? offersPending.map((user, i) => {
-          {console.log(user.data)}
           return  <div key={i}>
             <img src={user.data.image} alt={user.data.id} />
             <div>
