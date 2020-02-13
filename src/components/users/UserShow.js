@@ -8,9 +8,11 @@ class UserShow extends React.Component {
   state = {
     user: {},
     skills: [],
+    // recipes: [],
     review: '',
     ratingsCount: 0,
-    colab: true
+    pending: false,
+    accepted: false
   }
 
   async getData() {
@@ -20,6 +22,7 @@ class UserShow extends React.Component {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       this.setState({ user: res.data, skills: res.data.skills })
+      // this.setState({ user: res.data, skills: res.data.skills, recipes: res.data.recipes })
       this.countRatings(res)
     } catch (err) {
       // this.props.history.push('/notfound')
@@ -28,6 +31,8 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     this.getData()
+    this.isPending()
+    this.isAccepted()
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -68,9 +73,7 @@ class UserShow extends React.Component {
 
   submitReview = (rev) => {
     const review = rev.data.review.length
-    // review.push(review)
     this.setState({ review })
-    console.log('checking this works')
   }
 
   // submitReview = async () => {
@@ -81,17 +84,18 @@ class UserShow extends React.Component {
   // }
 
   offerPending = async () => {
+    this.setState({ pending: true })
     const chefId = this.props.match.params.id
     try {
-      await axios.post(`/api/chefs/${chefId}/offersPending`, null ,{
+      await axios.post(`/api/chefs/${chefId}/offersPending`, null, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      }) 
+      })
       this.changeButton()
     } catch (err) {
       console.log(err.response)
     }
   }
-  
+
   changeButton = () => {
     this.setState({ colab: false })
   }
@@ -109,23 +113,43 @@ class UserShow extends React.Component {
     }
   }
 
-  handleDelete = async () => {
+  isPending =  async () => {
     const chefId = this.props.match.params.id
     try {
-      await axios.delete(`/api/chefs/${chefId}`, {
+      const res = await axios.get(`/api/chefs/${chefId}`, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      this.props.history.push('/chefs')
+      const isPending = res.data.offersPending.find(offer => offer.offeringUser === Auth.getUser())
+      if (isPending) {
+        this.setState({ pending: true })
+      }
     } catch (err) {
-      console.log(err.response)
+      console.log(err)
     }
   }
+
+  isAccepted = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      const res = await axios.get(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      const isAccepted = res.data.offersAccepted.find(offer => offer.acceptedUser === Auth.getUser())
+      console.log(isAccepted)
+      if (isAccepted) {
+        this.setState({ accepted: true })
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
 
   hasRatings = () => this.state.user.avgRating > 0
 
   render() {
-    const { name, city, image, avgRating, _id } = this.state.user
-    const { ratingsCount, skills, colab } = this.state
+    const { name, city, image, avgRating, _id, email } = this.state.user
+    const { ratingsCount, skills, pending, accepted } = this.state
     if (!this.state.user) return null
     return (
       <section className="user-section">
@@ -156,13 +180,22 @@ class UserShow extends React.Component {
               <img className="chef-image" src={image} alt={name} />
             </figure>
             <hr />
-            {colab ? <button className="button is-success" onClick={this.offerPending}>Colaborate?</button> : <button className="button is-danger">Sent</button>}
+            {accepted ? <div>{email}</div> : (pending ? <button className="button is-danger">Sent</button> : <button className="button is-success" onClick={this.offerPending}>Colaborate?</button>)}
           </div>
           <div className="skills-recipes">
             <div className="skills">
               <h2 className="title">Skills</h2>
               {skills.map((skill, i) => <p key={i}>{skill}</p>)}
             </div>
+            {/* <h2 className="title">Favourite Recipes:</h2>
+            {recipes.map((recipe, i) => (
+              <div key={i}>
+                <img src={recipe.image} alt={recipe.name} />
+                <h3>{recipe.name}</h3>
+                <p>Serves {recipe.serving}</p>
+                <p>{recipe.cookTime} mins</p>
+              </div>
+            ))} */}
             <div className="rating">
               <form onSubmit={this.handleSubmit} className="rating-form">
                 <h2>Leave a review</h2>

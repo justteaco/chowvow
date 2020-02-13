@@ -3,7 +3,8 @@ import axios from 'axios'
 
 class ImageUpload extends React.Component {
   state = {
-    image: null
+    image: null,
+    selectedImage: null 
   }
 
   handleUpload = async ({ target: { files } }) => {
