@@ -29,10 +29,17 @@ class UserProfile extends React.Component {
     this.getData()
   }
 
+<<<<<<< HEAD
   handleChange = ({ target: { name, value } }) => {
     const user = { ...this.state.user, [name]: value }
     this.setState({ user })
   }
+=======
+  // handleChange = ({ target: { name, value } }) => {
+  //   const user = { ...this.state.user, [name]: value }
+  //   this.setState({ user })
+  // }
+>>>>>>> development
 
   countRatings = (res) => {
     const ratingsCount = res.data.rating.length
@@ -48,7 +55,21 @@ class UserProfile extends React.Component {
     }
   }
 
+<<<<<<< HEAD
 
+=======
+  // handleDelete = async () => {
+  //   const chefId = this.props.match.params.id
+  //   try {
+  //     await axios.delete(`/api/chefs/${chefId}`, {
+  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
+  //     })
+  //     this.props.history.push('/chefs')
+  //   } catch (err) {
+  //     console.log(err.response)
+  //   }
+  // }
+>>>>>>> development
 
   hasRatings = () => this.state.user.avgRating > 0
 

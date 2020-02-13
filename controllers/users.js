@@ -35,6 +35,7 @@ function update(req, res, next) {
     .catch(next)
 }
 
+<<<<<<< HEAD
 function destroy(req, res) {
   User
     .findById(req.params.id)
@@ -45,6 +46,21 @@ function destroy(req, res) {
     })
     .catch(err => res.json(err))
 }
+=======
+// function destroy(req, res) {
+//   User
+//     .findById(req.params.id)
+//     .then(user => {
+//       if (!user) return res.status(404).json({ message: 'Not Found ' })
+//       if (!user.user.equals(req.currentUser._id)) {
+//         res.status(401).json({ message: 'Unauthorised' })
+//       } else {
+//         user.remove().then(() => res.sendStatus(204))
+//       }
+//     })
+//     .catch(err => res.json(err))
+// }
+>>>>>>> development
 
 function ratingCreate(req, res) {
   User
@@ -80,8 +96,13 @@ function offersPendingDelete(req, res) {
       offerToDelete.remove()
       return user.save()
     })
+<<<<<<< HEAD
     .then(() => res.sendStatus(204))
 
+=======
+    .then(() => res.sendStatus(204)) 
+    
+>>>>>>> development
     .catch(err => res.status(401).json(err)) //send any errors
 }
 function reviewCreate(req, res) {
@@ -96,7 +117,11 @@ function reviewCreate(req, res) {
     .catch(err => res.json(err))
 }
 
+<<<<<<< HEAD
 module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete, destroy }
+=======
+module.exports = { index, show, update, ratingCreate, offersPendingCreate, reviewCreate, offersPendingDelete }
+>>>>>>> development
 
 // .then(user => {
 //   if (!user) return res.status(404).json({ message: 'Not Found' })
@@ -112,7 +137,11 @@ module.exports = { index, show, update, ratingCreate, offersPendingCreate, revie
 //the offerId is the ID of the offer that we are trying to reject (it's stored as a param on the request) 
 //check if my offers include the one we are trying to delete
 // if (user.offersPending.some(offer => offer._id.equals(req.params.offerId))) {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> development
 //   //if so, then pick out the offer..
 //   const offer = user.offersPending.filter(offer => offer._id.equals(req.params.offerId))[0]
 
