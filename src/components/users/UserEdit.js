@@ -45,6 +45,7 @@ class UserEdit extends React.Component {
       console.log('something is wrong', err)
     }
   }
+  
   handleMultiChange = (selected) => {
     const skills = selected ? selected.map(item => item.value) : []
     const data = { ...this.state.data, skills }

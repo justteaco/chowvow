@@ -26,4 +26,21 @@ function login(req, res) {
     .catch(err => res.json(err))
 }
 
-module.exports = { register, login }
+function profile(req, res) {
+  User
+    .findById(req.currentUSer._id)
+    .populate('createdUser')
+    .then(user => res.status(200).json(user))
+    .catch(err => res.json(err))
+}
+
+function offers(req, res) {
+  User
+    .findById(req.currentUser._id)
+    .populate('offeringUser')
+    .populate('acceptedUser')
+    .then(user => res.status(200).json(user))
+    .catch(err => res.json(err))
+}
+
+module.exports = { register, login, profile, offers }

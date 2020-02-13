@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Auth from '../../lib/auth'
 
 class UserIndex extends React.Component {
   state = {
@@ -13,12 +14,12 @@ class UserIndex extends React.Component {
       const res = await axios.get('/api/chefs')
       let filteredUsers = []
       const skillFilter = localStorage.getItem('skill')
-      console.log(res.data)
+      // const allSkills = localStorage.getItem('allSkills')
+      console.log('hi guys')
       res.data.filter(user => {
-        if (user.skills.includes(`${skillFilter}`)) {
+        if (user.skills.includes(`${skillFilter}`) && user._id !== Auth.getUser()) {
           filteredUsers = [...filteredUsers, user]
-        }
-        return filteredUsers
+        } return res.data
       })
       this.setState({ users: filteredUsers, skillFilter })
     } catch (err) {
