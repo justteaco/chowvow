@@ -23,22 +23,12 @@ const testDataCorrect = {
   passwordConfirmation: 'test'
 }
 
-const testDataDuplicateEmail = {
-  name: 'test',
-  email: 'test.test.com',
-  image: 'image.jpg',
-  skills: ['indian'],
-  city: 'london',
-  postcode: 'br20hg',
-  password: 'test',
-  passwordConfirmation: 'test'
-}
 
 describe('Test to check if email already exists /register', () => {
   beforeEach(done => {
     User.create({
       name: 'test',
-      email: 'test.test.com',
+      email: 'testCorrect@test.test',
       image: 'image.jpg',
       skills: ['indian'],
       city: 'london',
@@ -50,7 +40,7 @@ describe('Test to check if email already exists /register', () => {
   })
   it('should return a 422 response if email already exists', done => {
     api.post('/api/register')
-      .send(testDataDuplicateEmail)
+      .send(testDataCorrect)
       .end((err, res) => {
         expect(res.status).to.eq(422)
         done()

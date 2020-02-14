@@ -66,6 +66,10 @@ class Register extends React.Component {
       <section className="user-section">
         <form onSubmit={this.handleSubmit} className="user-container">
           <div className="user-info">
+            <div className="registerlayer">
+              <img className="food-image img-five" src="./../assets/background/veggie.png"></img>
+              <img className="food-image img-six" src="./../assets/background/gyoza.png"></img>
+            </div>
             <h2 className="title">Register</h2>
             <br />
             <div className="fieldContainer">
@@ -129,7 +133,7 @@ class Register extends React.Component {
               inputClassName="my-input-class"
             />
             <hr />
-            <button type="submit" className="button is-primary">SAVE</button>
+            <button type="submit" className="button is-rounded  is-primary">SAVE</button>
           </div>
           <div className="skills-recipes">
             <div className="fieldContainer">

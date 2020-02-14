@@ -2,7 +2,7 @@ const mongoose = require('mongoose') // This is needed to create a new schema an
 const bcrypt = require('bcrypt') // Our chosen our library used to hash passwords
 
 const ratingSchema = new mongoose.Schema({
-  rating: { type: Number, required: true }
+  rating: { type: String, required: true }
 }, {
   timestamps: true
 })
@@ -58,11 +58,14 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 })
 
+userSchema.plugin(require('mongoose-unique-validator'))
+
 // userSchema.virtual('ownedRecipes', {
 //   ref: 'Recipe',
 //   localField: '_id',
 //   foreignField: 'owner'
 // })
+
 
 userSchema
   .virtual('avgRating')
@@ -76,20 +79,21 @@ userSchema
       const avgRating = (sum / newMappedUsers.length).toFixed(1)
       return avgRating
     } else {
-      return null
+      return ''
     }
   })
 
-userSchema.set('toJSON', {
-  transform(doc, json) {
-    delete json.password
-    return json
-  }
-})
+userSchema
+  .set('toJSON', {
+    virtuals: true,
+    transform(doc, json) {
+      delete json.password
+      return json
+    }
+  })
 
 // This validates whether a password is correct at login
 userSchema.methods.validatePassword = function validatePassword(password) {
-
   return bcrypt.compareSync(password, this.password) // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome
 }
 
@@ -114,8 +118,6 @@ userSchema
     }
     next() // now move on to saving
   })
-
-userSchema.set('toJSON', { virtuals: true })
 
 
 module.exports = mongoose.model('User', userSchema)

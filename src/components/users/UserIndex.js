@@ -14,7 +14,7 @@ class UserIndex extends React.Component {
       const res = await axios.get('/api/chefs')
       let filteredUsers = []
       const skillFilter = localStorage.getItem('skill')
-      if (skillFilter === 'All') {
+      if (skillFilter === 'ALL') {
         filteredUsers = [...res.data]
       } else {
         res.data.filter(user => {
@@ -40,8 +40,10 @@ class UserIndex extends React.Component {
 
   render() {
     return (
-      <>
-        <h2 className="skill-header">Skill : <span className="has-text-info">{localStorage.getItem('skill')}</span></h2>
+      <section className="hero is-fullheight-with-navbar">
+        <div className="hero-body-index">
+        </div>
+        <h2 className="skill-header">SKILL : <span>{localStorage.getItem('skill')}</span></h2>
         {this.state.users.map(user => (
           <Link to={`/chefs/${user._id}`} key={user._id}>
             <div className="box">
@@ -53,7 +55,7 @@ class UserIndex extends React.Component {
                     {user.avgRating > 0 ?
                       <h3>{user.avgRating} <span className="star">★</span></h3>
                       :
-                      null}
+                      'Not yet rated'}
                     <h4>{user.city}</h4>
                   </div>
                   <div className="skills">
@@ -65,7 +67,7 @@ class UserIndex extends React.Component {
           </Link>
         ))
         }
-      </>
+      </section>
     )
   }
 }
