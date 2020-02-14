@@ -12,8 +12,6 @@ class Auth {
     localStorage.removeItem('token')
   }
 
-  
-
   static getPayload() {
     const token = this.getToken() // try and get the token
     if (!token) return false // if its not there, return false

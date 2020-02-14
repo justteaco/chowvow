@@ -25,7 +25,7 @@ class UserShow extends React.Component {
       // this.setState({ user: res.data, skills: res.data.skills, recipes: res.data.recipes })
       this.countRatings(res)
     } catch (err) {
-      // this.props.history.push('/notfound')
+      this.props.history.push('/notfound')
     }
   }
 

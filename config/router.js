@@ -7,20 +7,20 @@ router.route('/chefs')
   .get(users.index)
 
 router.route('/chefs/:id')
-  .get(users.show)
+  .get(secureRoute, users.show)
   .put(secureRoute, users.update)
   .delete(secureRoute, users.destroy)
 
 router.route('/chefs/:id/rating')
-  .post(users.ratingCreate)
+  .post(secureRoute, users.ratingCreate)
 
 router.route('/chefs/:id/review')
-  .post(users.reviewCreate)
+  .post(secureRoute, users.reviewCreate)
 // .put(users.update)
 // .delete(secureRoute, users.destroy)
 
 router.route('/profile')
-  .get(authUsers.showProfile)
+  .get(secureRoute, authUsers.showProfile)
 
 router.route('/chefs/:id/offersAccepted')
   .post(secureRoute, users.offersAccepted)
@@ -34,7 +34,7 @@ router.route('/chefs/:id/offersPending')
 router.route('/chefs/:id/offersPending/:offereyid')
   .delete(secureRoute, users.offersPendingDelete)
 
-router.route('/chefs/:id/offers')
+router.route('/offers')
   .get(secureRoute, authUsers.offers)
 
 // router.route('/chefs/:id/offersAccepted')

@@ -34,7 +34,14 @@ html {
 
 .arrow {
   width: 200px;
- 
+}
+
+.offers {
+  font-size: 40px;
+}
+
+.pending, .accepted {
+  font-size: 25px;
 }
 
 .wrapper {
@@ -238,6 +245,7 @@ body {
     }
   }
 }
+
 
 .chef-image {
   max-height: 400px;
