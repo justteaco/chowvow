@@ -20,9 +20,9 @@ function update(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) throw new Error('Not Found')
-      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
-      Object.assign(user, req.body)
-      return user.save()
+      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      Object.assign(user, req.body) 
+      return user.save()  
     })
     .then(updatedUser => res.status(202).json(updatedUser))
     .catch(err => res.status(401).json(err))

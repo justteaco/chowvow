@@ -38,7 +38,6 @@ router.route('/chefs/:id/offersPending/:offereyid')
 router.route('/offers')
   .get(secureRoute, authUsers.offers)
 
-
 router.route('/register')
   .post(authUsers.register)
 
