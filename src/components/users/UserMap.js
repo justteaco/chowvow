@@ -34,9 +34,11 @@ class UserMap extends React.Component {
     }))
       .then(res => {
         const newArr = users.map((user, i) => {
+          const cen = res[i].data.features[0].center
+          if (!cen) return null
           return {
-            ...user,
-            latlng: res[i].data.features[0].center
+            latlng: cen,
+            ...user
           }
         })
         this.setState({ userswithco: newArr })
@@ -101,7 +103,7 @@ class UserMap extends React.Component {
             mapRef={this.myMap}
             mapboxApiAccessToken={token}
             onViewportChange={this.handleViewportChange}
-            position="top-left"
+            position="bottom-left"
           />
           {userswithco[0].latlng && userswithco.map((user, i) => (
             <Marker 

@@ -28,10 +28,10 @@ class UserProfile extends React.Component {
     this.getData()
   }
 
-  // handleChange = ({ target: { name, value } }) => {
-  //   const user = { ...this.state.user, [name]: value }
-  //   this.setState({ user })
-  // }
+  handleChange = ({ target: { name, value } }) => {
+    const user = { ...this.state.user, [name]: value }
+    this.setState({ user })
+  }
 
   countRatings = (res) => {
     const ratingsCount = res.data.rating.length
@@ -47,17 +47,17 @@ class UserProfile extends React.Component {
     }
   }
 
-  // handleDelete = async () => {
-  //   const chefId = this.props.match.params.id
-  //   try {
-  //     await axios.delete(`/api/chefs/${chefId}`, {
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //     })
-  //     this.props.history.push('/chefs')
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
-  // }
+  handleDelete = async () => {
+    const chefId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/chefs')
+    } catch (err) {
+      console.log(err.response)
+    }
+  }
 
   hasRatings = () => this.state.user.avgRating > 0
 
@@ -67,10 +67,11 @@ class UserProfile extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
-        {/* <div className="profilelayer">
+        <div className="profilelayer">
           <img className="profile-image img-seven" src="./../assets/background/falafal.png"></img>
           <img className="profile-image img-eight" src="./../assets/background/mexican.png"></img>
-        </div> */}
+          <img className="profile-image img-nine" src="./../assets/background/heartybreak.png"></img>
+        </div>
         <div className="user-container">
           <div className="user-info fadeInLeft">
             <h2 className="username">{name}</h2>
@@ -96,7 +97,7 @@ class UserProfile extends React.Component {
               <img className="chef-image" src={image} alt={name} />
             </figure>
             <br />
-            <Link to={`/chefs/${_id}/edit`} className="button is-medium is-warning">
+            <Link to={`/chefs/${_id}/edit`} className="button is-rounded is-medium is-warning">
               Edit Profile
             </Link>
           </div>

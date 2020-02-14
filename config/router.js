@@ -38,13 +38,17 @@ router.route('/chefs/:id/offersPending/:offereyid')
 router.route('/offers')
   .get(secureRoute, authUsers.offers)
 
+// router.route('/chefs/:id/offersAccepted')
+//   .post(users)
+//   .delete(users)
+
 router.route('/register')
   .post(authUsers.register)
 
 router.route('/login')
   .post(authUsers.login)
-
+  
 // router.route('/message')
-//   .post(authUsers.message)
+// .post(authUsers.message)
 
 module.exports = router

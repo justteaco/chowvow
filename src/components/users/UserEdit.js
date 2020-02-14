@@ -104,24 +104,5 @@ class UserEdit extends React.Component {
   }
 }
 
-{/* <section className="section">
-<div className="container">
-  <UserForm
-    data={this.state.data}
-    handleChange={this.handleChange}
-    handleSubmit={this.handleSubmit}
-    errors={this.state.errors}
-    options={this.options}
-    handleMultiChange={this.handleMultiChange}
-  />
-  <hr />
-  <button onClick={this.handleDelete} className="button is-rounded ">Delete Profile</button>
-</div>
-<div>
-  {/* <ImageUpload>
-    <button onClick={this.ImageUpload} className="button is-primamy">Image Upload</button>
-  </ImageUpload> */}
-// </div>
-// </section> */}
 
 export default UserEdit

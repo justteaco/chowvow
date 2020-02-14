@@ -79,7 +79,7 @@ userSchema
       const avgRating = (sum / newMappedUsers.length).toFixed(1)
       return avgRating
     } else {
-      return ''
+      return 0
     }
   })
 

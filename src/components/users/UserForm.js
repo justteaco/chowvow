@@ -17,7 +17,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
             <label className="label">NAME</label>
             <div className="control">
               <input
-                className={`input ${errors.name ? 'is-danger' : ''}`}
+                className={`input is-rounded ${errors.name ? 'is-danger' : ''}`}
                 placeholder="Name"
                 name="name"
                 onChange={handleChange}
@@ -30,7 +30,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
             <label className="label">EMAIL</label>
             <div className="control">
               <input
-                className={`input ${errors.email ? 'is-danger' : ''}`}
+                className={`input is-rounded ${errors.email ? 'is-danger' : ''}`}
                 placeholder="Email"
                 name="email"
                 onChange={handleChange}
@@ -43,7 +43,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
             <label className="label">PASSWORD</label>
             <div className="control">
               <input
-                className={`input ${errors.password ? 'is-danger' : ''}`}
+                className={`input is-rounded ${errors.password ? 'is-danger' : ''}`}
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -56,7 +56,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
             <label className="label">PASSWORD CONFIRMATION</label>
             <div className="control">
               <input
-                className={`input ${errors.passwordConfirmation ? 'is-danger' : ''}`}
+                className={`input is-rounded ${errors.passwordConfirmation ? 'is-danger' : ''}`}
                 type="password"
                 placeholder="Password Confirmation"
                 name="passwordConfirmation"
@@ -85,8 +85,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
                 <button onClick={ImageUpload} className="button is-danger">Image Upload</button>
               </ImageUpload>
           }
-          <hr />
-          <button type="submit" className="button is-primary">SAVE</button>
+          <button type="submit" className="button  is-rounded is-primary">SAVE</button>
           <br />
           <button onClick={handleDelete} className="button is-danger">Delete Profile</button>
         </div>
@@ -105,7 +104,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
               <label className="label">CITY</label>
               <div className="control">
                 <input
-                  className={`input ${errors.city ? 'is-danger' : ''}`}
+                  className={`input is-rounded ${errors.city ? 'is-danger' : ''}`}
                   placeholder="City"
                   name="city"
                   value={data.city}
@@ -118,7 +117,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
               <label className="label">POSTCODE</label>
               <div className="control">
                 <input
-                  className={`input ${errors.postcode ? 'is-danger' : ''}`}
+                  className={`input is-rounded ${errors.postcode ? 'is-danger' : ''}`}
                   placeholder="Postcode"
                   name="postcode"
                   value={data.postcode}

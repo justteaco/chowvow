@@ -98,7 +98,7 @@ describe('Test to show an individual user', () => {
         expect(user.offersPending).to.be.an('array')
         expect(user.offersAccepted).to.be.an('array')
         expect(user.review).to.be.an('array')
-        expect(user.avgRating).to.be.an('string')
+        expect(user.avgRating).to.be.an('number')
         done()
       })
   })

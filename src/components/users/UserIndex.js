@@ -55,7 +55,7 @@ class UserIndex extends React.Component {
                     {user.avgRating > 0 ?
                       <h3>{user.avgRating} <span className="star">★</span></h3>
                       :
-                      'Not yet rated'}
+                      <h5>Not yet rated</h5>}
                     <h4>{user.city}</h4>
                   </div>
                   <div className="skills">
