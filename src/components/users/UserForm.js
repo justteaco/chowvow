@@ -3,11 +3,11 @@ import ImageUpload from '../ImageUpload'
 import Select from 'react-select'
 
 const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit, errors }) => {
-  
+
   const prePopulateArray = data.skills.map(skill => {
     return { value: skill, label: skill }
   })
- 
+
   return (
     <section className="user-section">
       <h2 className="title">Register</h2>
@@ -56,20 +56,22 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit
                 inputClassName="my-input-class"
               />
           }
-          
-          
+
+
           <hr />
           <button type="submit" className="button is-primary">SAVE</button>
         </div>
         <div className="skills-recipes">
-          <label className="label">What are your skills?</label>
-          <div className="control">
-            <Select
-              options={options}
-              isMulti
-              defaultValue={prePopulateArray}
-              onChange={handleMultiChange}
-            />
+          <div className="skills-img">
+            <label className="label">What are your skills?</label>
+            <div className="control">
+              <Select
+                options={options}
+                isMulti
+                defaultValue={prePopulateArray}
+                onChange={handleMultiChange}
+              />
+            </div>
           </div>
           <hr />
           <div className="field">

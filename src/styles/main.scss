@@ -126,11 +126,63 @@ body {
   height: 90vh;
 }
 
+
+//register and profile
+
 .user-section {
   height: 93vh;
   padding: 40px;
   justify-content: center;
+  object-fit: fill;
 }
+
+.registerlayer {
+  position: absolute;
+  justify-content: flex-end;
+  display: flex;
+
+}
+.food-image {
+  position: relative;
+  height: 400px;
+  width: auto;
+}
+.img-five {
+  top: 40px;
+  left: 75px;
+  height: 400px;
+}
+.img-six {
+  top: 20px;
+  left: 690px;
+  height: 350px;
+}
+
+.profilelayer {
+  position: absolute;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.profile-image {
+  position: relative;
+  height: 400px;
+  width: auto;
+}
+
+
+.img-seven {
+  top: 40px;
+  left: 75px;
+  height: 400px;
+}
+
+.img-eight {
+  top: 40px;
+  left: 75px;
+  height: 400px;
+}
+
 
 .user-container {
   display: flex;
@@ -146,10 +198,13 @@ body {
     justify-content: center;
   }
   .skills-recipes {
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     justify-content: space-around;
     // max-width: 200px;
+    // background-image: url('../assets/background/slider-1-slide-3-left-bottom.png');
+    // background-repeat: no-repeat;
+    // background-size: 150px;
   }
 }
 
@@ -331,12 +386,89 @@ input {
 }
 
 .user-info {
+  
+     background-repeat: no-repeat;
+     background-size: 200px;
+    // display: flex;
+    // flex: 10px;
+    // align-items: flex-end;
   h2 {
     font-size: 40px;
   }
+
   
   .username {
     font-weight: bold;
   }
 }
+
+
+//login 
+.loginsection {
+  align-items: baseline;
+  background-image: url('../assets/background/finalbg.jpg');
+  background-size: 900vh;
+  align-items: center;
+  
+  
+}
+
+.logintitle {
+font-size: 50px;
+color: salmon;
+font-family: montserrat;
+justify-content: space-between;
+align-items: center;
+display: flex;
+}
+
+
+
+
+.logincontainer {
+     height: 100vh;
+     padding: 350px;
+     margin: 10px;
+    // justify-content: center;
+    // align-items: center;
+
+}
+
+.imagelayer {
+  position: absolute;
+  justify-content: flex-end;
+  display: flex;
+
+}
+
+.floating-image {
+  position: relative;
+  height: 400px;
+  width: auto;
+}
+
+.img-one {
+  top: 40px;
+  left: 75px;
+  height: 400px;
+}
+
+.img-two {
+  top: 20px;
+  left: 690px;
+  height: 350px;
+}
+
+.img-three {
+  top: 350px;
+  left: 300px;
+  height: 250px;
+}
+.img-four {
+  top: 20px;
+  left: 100px;
+  height: 180px;
+  right: 278px;
+}
+
 

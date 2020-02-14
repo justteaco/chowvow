@@ -83,15 +83,15 @@ class UserShow extends React.Component {
   offerPending = async () => {
     const chefId = this.props.match.params.id
     try {
-      await axios.post(`/api/chefs/${chefId}/offersPending`, null ,{
+      await axios.post(`/api/chefs/${chefId}/offersPending`, null, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      }) 
+      })
       this.changeButton()
     } catch (err) {
       console.log(err.response)
     }
   }
-  
+
   changeButton = () => {
     this.setState({ colab: false })
   }
@@ -119,6 +119,11 @@ class UserShow extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
+        <div className="imageShowlayer">
+          
+          <img className="floating-image img-three" src="./../assets/background/strawberries.png"></img>
+          <img className="floating-image img-three" src="./../assets/background/mexican.png"></img>
+        </div>
         <div className="user-container">
           <div className="user-info">
             <h2 className="username">{name}</h2>

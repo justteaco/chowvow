@@ -26,27 +26,14 @@ function login(req, res) {
     .catch(err => res.json(err))
 }
 
-<<<<<<< HEAD
 function showProfile(req, res) {
   User
     .findById(req.currentUser._id)
     .populate('user')
     .then(selectedUser => res.status(200).json(selectedUser))
     .catch(err => res.json(err))
-
 }
 
-
-=======
-function profile(req, res) {
-  User
-    .findById(req.currentUSer._id)
-    .populate('createdUser')
-    .then(user => res.status(200).json(user))
-    .catch(err => res.json(err))
-}
-
->>>>>>> development
 function offers(req, res) {
   User
     .findById(req.currentUser._id)
@@ -56,9 +43,4 @@ function offers(req, res) {
     .catch(err => res.json(err))
 }
 
-<<<<<<< HEAD
-
 module.exports = { register, login, showProfile, offers }
-=======
-module.exports = { register, login, profile, offers }
->>>>>>> development

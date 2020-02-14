@@ -29,17 +29,10 @@ class UserProfile extends React.Component {
     this.getData()
   }
 
-<<<<<<< HEAD
-  handleChange = ({ target: { name, value } }) => {
-    const user = { ...this.state.user, [name]: value }
-    this.setState({ user })
-  }
-=======
   // handleChange = ({ target: { name, value } }) => {
   //   const user = { ...this.state.user, [name]: value }
   //   this.setState({ user })
   // }
->>>>>>> development
 
   countRatings = (res) => {
     const ratingsCount = res.data.rating.length
@@ -55,9 +48,6 @@ class UserProfile extends React.Component {
     }
   }
 
-<<<<<<< HEAD
-
-=======
   // handleDelete = async () => {
   //   const chefId = this.props.match.params.id
   //   try {
@@ -69,7 +59,6 @@ class UserProfile extends React.Component {
   //     console.log(err.response)
   //   }
   // }
->>>>>>> development
 
   hasRatings = () => this.state.user.avgRating > 0
 
@@ -79,6 +68,11 @@ class UserProfile extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
+        <div className="profilelayer">
+          <img className="profile-image img-seven" src="./../assets/background/falafal.png"></img>
+          <img className="profile-image img-eight" src="./../assets/background/mexican.png"></img>
+
+        </div>
         <div className="user-container">
           <div className="user-info">
             <h2 className="username">{name}</h2>
