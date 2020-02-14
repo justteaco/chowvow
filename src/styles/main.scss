@@ -9,6 +9,18 @@ html {
   object-fit: cover;
 }
 
+.usersSkills {
+  margin: 15px;
+  padding: 15px;
+  background-color: #727171;
+  border: 1px solid #727171;
+  border-radius: 3px;
+  p,
+  h2 {
+    color: white;
+  }
+}
+
 .hero-body {
   background-image: url("https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
   background-size: cover;
@@ -34,7 +46,6 @@ html {
 
 .arrow {
   width: 200px;
- 
 }
 
 .wrapper {
@@ -127,9 +138,11 @@ body {
 }
 
 .user-section {
-  height: 93vh;
+  height: 94vh;
+  width: 100vw;
   padding: 40px;
   justify-content: center;
+  background-color: #727171;
 }
 
 .user-container {
@@ -137,6 +150,8 @@ body {
   height: 85vh;
   justify-content: space-around;
   margin: 0;
+  padding: 10px;
+  background-color: #f7fff7;
   .user-info,
   .user-image,
   .column {
@@ -148,8 +163,7 @@ body {
   .skills-recipes {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    // max-width: 200px;
+    justify-content: space-evenly;
   }
 }
 
@@ -158,8 +172,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
-
+  padding: 20px;
+  // height: 150px;
   h2 {
     font-size: 28px;
   }
@@ -212,7 +226,7 @@ body {
   .bio {
     margin-left: 120px;
 
-    .title{
+    .title {
       font-size: 40px;
     }
 
@@ -220,7 +234,7 @@ body {
       font-size: 30px;
     }
 
-    h4{
+    h4 {
       font-size: 26px;
     }
   }
@@ -245,25 +259,38 @@ body {
   border-radius: 80%;
 }
 
-.my-input-class {
-  background-image: url(https://www.chalktalksports.com/on/demandware.static/Sites-ChalkTalkSports-Site/-/default/dw619b9d39/images/Placeholder.jpg);
+.my-input-class-edit {
   background-size: 100%;
-  border: solid 50px;
-  border-color: #E9EEF1;
   border-radius: 80%;
-  height: 400px;
-  width: 400px;
+  height: 440px;
+  width: 440px;
   cursor: pointer;
-  // input:focus { outline: none; }
   .skill-header {
     margin: 40px;
     font-size: 40px;
-
     span {
       margin-left: 20px;
     }
   }
 }
+
+.my-input-class {
+  background-image: url("../assets/profile/placeholder.jpg");
+  background-size: 100%;
+
+  border-radius: 80%;
+  height: 440px;
+  width: 440px;
+  cursor: pointer;
+  .skill-header {
+    margin: 40px;
+    font-size: 40px;
+    span {
+      margin-left: 20px;
+    }
+  }
+}
+
 .media {
   img {
     height: 200px;
@@ -276,39 +303,39 @@ body {
 input {
   outline: none;
   border: none;
-  }
+}
 
-  *{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .rate:not(:checked) input {
-    position:absolute;
-    top:-9999px;
+  position: absolute;
+  top: -9999px;
 }
 
 .rate:not(:checked) label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color :#ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 40px;
+  color: #ccc;
 }
 
 .rate:not(:checked) label:before {
-    content: '★ ';
+  content: "★ ";
 }
 
 .rate > input:checked ~ label {
-    color: #ffc700;    
+  color: #ffc700;
 }
 
 .rate:not(:checked) label:hover,
 .rate:not(:checked) label:hover ~ label {
-    color: #deb217;  
+  color: #deb217;
 }
 
 .rate input:checked + label:hover,
@@ -316,7 +343,7 @@ input {
 .rate input:checked ~ label:hover,
 .rate input:checked ~ label:hover ~ label,
 .rate label:hover ~ input:checked ~ label {
-    color: #c59b08;
+  color: #c59b08;
 }
 
 .star-rating {
@@ -327,16 +354,155 @@ input {
 
 .star {
   color: #ffc700;
-  font-size: 40px;  
+  font-size: 40px;
+}
+
+h2.username {
+  color: white;
 }
 
 .user-info {
-  h2 {
-    font-size: 40px;
-  }
-  
-  .username {
-    font-weight: bold;
+  max-width: 380px;
+  margin: 40px;
+  opacity: 0.9;
+  background-color: #727171;
+  padding: 15px;
+  border: solid 1px #727171;
+  border-radius: 3px;
+  color: white;
+  p, label {
+    color: white;
+    font-size: 30px;
+    h2 {
+      font-size: 40px;
+    }
   }
 }
 
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-evenly;
+  h2 {
+    font-size: 40px;
+  }
+}
+
+.usersSkills {
+  p {
+    font-size: 25px;
+  }
+}
+
+.username {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+h2.skills {
+  display: flex;
+  justify-content: center;
+  margin-inline-start: 0;
+  margin-inline-start: 0;
+}
+
+div.profileSkills {
+  margin: 15px;
+  padding: 15px;
+  background-color: #727171;
+  border: 1px solid #727171;
+  border-radius: 3px;
+  p,
+  h2 {
+    color: white;
+  }
+}
+
+.skills-recipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 280px;
+  margin: 40px;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
+
+.user-info {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-200px);
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+.allReviews {
+  p {
+    text-decoration: underline;
+  }
+}

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import UserForm from './UserForm'
 //import Select from 'react-select'
-import ImageUpload from '../ImageUpload'
+// import ImageUpload from '../ImageUpload'
 
 
 class UserEdit extends React.Component {
@@ -89,26 +89,14 @@ class UserEdit extends React.Component {
   render() {
     if (!this.state.data.name) return null
     return (
-      <section className="section">
-        <div className="container">
-          <UserForm
-            data={this.state.data}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            errors={this.state.errors}
-            options={this.options}
-            handleMultiChange={this.handleMultiChange}
-          />
-          <hr />
-          <button onClick={this.handleDelete} className="button is-danger">Delete Profile</button>
-          <hr />
-        </div>
-        <div>
-          <ImageUpload>
-            <button onClick={this.ImageUpload} className="button is-danger">Image Upload</button>
-          </ImageUpload>
-        </div>
-      </section>
+      <UserForm
+        data={this.state.data}
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        errors={this.state.errors}
+        options={this.options}
+        handleMultiChange={this.handleMultiChange}
+      />
     )
   }
 }

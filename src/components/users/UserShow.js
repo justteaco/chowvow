@@ -71,9 +71,10 @@ class UserShow extends React.Component {
     this.setState({ ratingsCount })
   }
 
-  submitReview = (rev) => {
+  submitReview = (rev, res) => {
     const review = rev.data.review.length
-    this.setState({ review })
+    const ratingsCount = res.data.rating.length
+    this.setState({ review, ratingsCount })
   }
 
   // submitReview = async () => {
@@ -113,7 +114,7 @@ class UserShow extends React.Component {
     }
   }
 
-  isPending =  async () => {
+  isPending = async () => {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`, {
@@ -154,23 +155,24 @@ class UserShow extends React.Component {
     return (
       <section className="user-section">
         <div className="user-container">
-          <div className="user-info">
-            <h2 className="username">{name}</h2>
-            <hr />
-            <div className="star-rating">
-              {ratingsCount ?
-                <><h2>{avgRating} ★</h2><p>{ratingsCount} reviews</p></>
-                :
-                <p>No ratings received</p>}
-            </div>
-            <Link to={`/chefs/${_id}/review`}>
-              <div className="allReviews">
-                <p>Read reviews</p>
+          <div className="user-info fadeInLeft">
+            <div className="userInfo">
+              <hr />
+              <h2 className="username">{name}</h2>
+              <hr />
+              <div className="star-rating">
+                {ratingsCount ?
+                  <><h2>{avgRating} ★</h2><p>{ratingsCount} reviews</p></>
+                  :
+                  <p>No ratings received</p>}
               </div>
-            </Link>
-            <hr />
-            <h2>{city}</h2>
-            <hr />
+              <Link to={`/chefs/${_id}/review`}>
+                <div className="allReviews">
+                  <p>Read reviews</p>
+                </div>
+              </Link>
+              <p>{city}</p>
+            </div>
           </div>
           <div className="user-image">
             {/* <Link to={`/chefs/${_id}/edit`} className="button is-warning">
@@ -182,10 +184,10 @@ class UserShow extends React.Component {
             <hr />
             {accepted ? <div>{email}</div> : (pending ? <button className="button is-danger">Sent</button> : <button className="button is-success" onClick={this.offerPending}>Colaborate?</button>)}
           </div>
-          <div className="skills-recipes">
-            <div className="skills">
+          <div className="skills-recipes fadeInRight">
+            <div className="usersSkills">
               <h2 className="title">Skills</h2>
-              {skills.map((skill, i) => <p key={i}>{skill}</p>)}
+              {skills.map((skill, i) => <p key={i}>- {skill}</p>)}
             </div>
             {/* <h2 className="title">Favourite Recipes:</h2>
             {recipes.map((recipe, i) => (
@@ -198,7 +200,7 @@ class UserShow extends React.Component {
             ))} */}
             <div className="rating">
               <form onSubmit={this.handleSubmit} className="rating-form">
-                <h2>Leave a review</h2>
+                <h2 className="title">Leave a review!</h2>
                 <div className="rate">
                   <input onChange={this.handleChange} type="radio" id="star5" name="rating" value="5" />
                   <label htmlFor="star5" title="text">5 stars</label>
@@ -211,8 +213,10 @@ class UserShow extends React.Component {
                   <input onChange={this.handleChange} type="radio" id="star1" name="rating" value="1" />
                   <label htmlFor="star1" title="text">1 star</label>
                 </div>
+                <br />
                 <textarea className="textarea is-primary" onChange={this.handleChange} placeholder="Enter your review.." name="review" type="text" maxLength="200" />
-                <button className="button is-fullwidth is-info" type="submit">Submit</button>
+                <br />
+                <button className="button is-info" type="submit">Submit</button>
               </form>
               {/* <form onSubmit={this.handleReviewSubmit} className="ratingForm">
                 <button className="button is-fullwidth is-info" type="submit">Submit</button>
