@@ -41,7 +41,9 @@ class UserEdit extends React.Component {
     const UserId = this.props.match.params.id
     // console.log(this.props.match.params.id)
     try {
-      const res = await axios.get(`/api/chefs/${UserId}`)
+      const res = await axios.get(`/api/chefs/${UserId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       this.setState({ data: res.data })
     } catch (err) {
       console.log('something is wrong', err)
@@ -80,7 +82,7 @@ class UserEdit extends React.Component {
       await axios.delete(`/api/chefs/${chefId}`, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      this.props.history.push('/chefs')
+      this.props.history.push('/')
     } catch (err) {
       console.log(err.response)
     }
@@ -93,6 +95,7 @@ class UserEdit extends React.Component {
         data={this.state.data}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        handleDelete={this.handleDelete}
         errors={this.state.errors}
         options={this.options}
         handleMultiChange={this.handleMultiChange}
@@ -101,24 +104,5 @@ class UserEdit extends React.Component {
   }
 }
 
-{/* <section className="section">
-<div className="container">
-  <UserForm
-    data={this.state.data}
-    handleChange={this.handleChange}
-    handleSubmit={this.handleSubmit}
-    errors={this.state.errors}
-    options={this.options}
-    handleMultiChange={this.handleMultiChange}
-  />
-  <hr />
-  <button onClick={this.handleDelete} className="button is-rounded ">Delete Profile</button>
-</div>
-<div>
-  {/* <ImageUpload>
-    <button onClick={this.ImageUpload} className="button is-primamy">Image Upload</button>
-  </ImageUpload> */}
-// </div>
-// </section> */}
 
 export default UserEdit

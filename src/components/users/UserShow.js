@@ -155,7 +155,6 @@ class UserShow extends React.Component {
     return (
       <section className="user-section">
         <div className="imageShowlayer">
-          
           <img className="floating-image img-three" src="./../assets/background/strawberries.png"></img>
           <img className="floating-image img-three" src="./../assets/background/mexican.png"></img>
         </div>
@@ -187,7 +186,7 @@ class UserShow extends React.Component {
               <img className="chef-image" src={image} alt={name} />
             </figure>
             <hr />
-            {accepted ? <div>{email}</div> : (pending ? <button className="button is-danger">Sent</button> : <button className="button is-success" onClick={this.offerPending}>Colaborate?</button>)}
+            {accepted ? <div>{email}</div> : (pending ? <button className="button is-danger">Sent</button> : <button className="button is-success" onClick={this.offerPending}>Collaborate?</button>)}
           </div>
           <div className="skills-recipes fadeInRight">
             <div className="usersSkills">

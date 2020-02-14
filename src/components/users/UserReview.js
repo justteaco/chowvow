@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Auth from '../../lib/auth'
 
 class UserReview extends React.Component {
   state = {
@@ -13,8 +14,10 @@ class UserReview extends React.Component {
   async componentDidMount() {
     const chefId = this.props.match.params.id
     try {
-      const res = await axios.get(`/api/chefs/${chefId}`)
-      this.setState({ user: res.data, review: res.data.review, rating: res.data.rating })
+      const res = await axios.get(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.setState({ user: res.data, review: res.data.review })
     } catch (err) {
       this.props.history.push('/notfound')
     }
@@ -26,31 +29,35 @@ class UserReview extends React.Component {
     console.log(this.state.user)
     return (
       <>
-        {/* {this.state.user.map(user => ( */}
-        <Link to={`/chefs/${_id}`} key={_id}>
-          <div className="box">
-            <h1>{name}</h1>
-            <article className="media">
-              <img src={image} alt={name} />
-              <div className="info">
-                <div className="bio">
-                  {avgRating ?
-                    <><h3>{avgRating}<span className="star">★</span></h3><p>{ratingsCount}</p></>
-                    :
-                    <p>No reviews yet, be the first!</p>}
-                  {this.state.review.map((rev, i) => (
-                    this.state.rating.map((rate) => (
-                      <h3 key={i} className="subtitle">{rate.rating} Comments: {rev.review}</h3>
+        <section className="hero is-fullheight-with-navbar">
+          <div className="hero-body-index">
+          </div>
+          <h2 className="skill-header">REVIEWS : </h2>
+          {/* {this.state.user.map(user => ( */}
+          <Link to={`/chefs/${_id}`} key={_id}>
+            <div className="box">
+              <h1>{name}</h1>
+              <article className="media">
+                <img src={image} alt={name} />
+                <div className="info">
+                  <div className="bio">
+                    {avgRating ?
+                      <><h3>{avgRating}<span className="star">★</span></h3><p>{ratingsCount}</p></>
+                      :
+                      <p>No reviews yet, be the first!</p>}
+                    {this.state.review.map((rev, i) => (
+                      <h3 key={i} className="subtitle"> Comments: {rev.review}</h3>
                     ))
-                  ))}
-                  {/* {this.state.rating.map((rat, i) => (
+                    }
+                    {/* {this.state.rating.map((rat, i) => (
                     <h3 key={i} className="subtitle">Comments: {rat.rating}</h3>
                   ))} */}
+                  </div>
                 </div>
-              </div>
-            </article>
-          </div>
-        </Link>
+              </article>
+            </div>
+          </Link>
+        </section>
         {/* ))} */}
       </>
     )
@@ -61,7 +68,7 @@ export default UserReview
 
 // import React from 'react'
 // import axios from 'axios'
-// import { Link } from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 // class UserReview extends React.Component {
 //   state = {

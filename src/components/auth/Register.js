@@ -67,8 +67,8 @@ class Register extends React.Component {
         <form onSubmit={this.handleSubmit} className="user-container">
           <div className="user-info">
             <div className="registerlayer">
-              <img className="food-image img-five" src="./../assets/background/veggie.png"></img>
-              <img className="food-image img-six" src="./../assets/background/gyoza.png"></img>
+              <img className="food-image img-five" src="./../assets/background/waffles.png"></img>
+              <img className="food-image img-six" src="./../assets/background/japaneses.png"></img>
             </div>
             <h2 className="title">Register</h2>
             <br />
@@ -77,7 +77,7 @@ class Register extends React.Component {
                 <label className="label">NAME</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.errors.name ? 'is-danger' : ''}`}
+                    className={`input is-rounded ${this.state.errors.name ? 'is-danger' : ''}`}
                     placeholder="Name"
                     name="name"
                     onChange={this.handleChange}
@@ -90,7 +90,7 @@ class Register extends React.Component {
                 <div className="control">
 
                   <input
-                    className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
+                    className={`input is-rounded ${this.state.errors.email ? 'is-danger' : ''}`}
                     placeholder="Email"
                     name="email"
                     onChange={this.handleChange}
@@ -102,7 +102,7 @@ class Register extends React.Component {
                 <label className="label">PASSWORD</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.errors.password ? 'is-danger' : ''}`}
+                    className={`input is-rounded ${this.state.errors.password ? 'is-danger' : ''}`}
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -115,7 +115,7 @@ class Register extends React.Component {
                 <label className="label">PASSWORD CONFIRMATION</label>
                 <div className="control">
                   <input
-                    className={`input ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
+                    className={`input is-rounded ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
                     type="password"
                     placeholder="Password Confirmation"
                     name="passwordConfirmation"

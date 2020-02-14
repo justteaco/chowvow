@@ -1,24 +1,23 @@
 import React from 'react'
 import axios from 'axios'
+// import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
+
 class Offers extends React.Component {
   state = {
     offersPending: [],
     offersAccepted: []
   }
-
   getOffers = user => {
     return (axios.get(`/api/chefs/${user.offeringUser}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     }))
   }
-
   getAccepted = user => {
     return (axios.get(`/api/chefs/${user.acceptedUser}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     }))
   }
-
   findOffers = async user => {
     Promise.all(user.data.offersPending.map(info => {
       return this.getOffers(info)
@@ -33,7 +32,6 @@ class Offers extends React.Component {
         this.setState({ offersAccepted: user })
       })
   }
-
   async componentDidMount() {
     try {
       const user = await axios.get('/api/offers', {
@@ -44,7 +42,6 @@ class Offers extends React.Component {
       console.log(err)
     }
   }
-
   handleDelete = async offerery => {
     try {
       await axios.delete(`/api/chefs/${Auth.getUser()}/offersPending/${offerery.data._id}`, {
@@ -59,7 +56,6 @@ class Offers extends React.Component {
       await this.findOffers(user)
     }
   }
-
   handleDeleteAccepted = async offerery => {
     try {
       await axios.delete(`/api/chefs/${Auth.getUser()}/offersAccepted/${offerery.data._id}`, {
@@ -74,7 +70,6 @@ class Offers extends React.Component {
       await this.findOffers(user)
     }
   }
-
   handleAccept = async offerery => {
     this.handleDelete(offerery)
     try {
@@ -90,70 +85,78 @@ class Offers extends React.Component {
       await this.findOffers(user)
     }
   }
-
-
   render() {
     const { offersPending, offersAccepted } = this.state
     return (
-      <section className="slate">
+      <section className="hero is-fullheight-with-navbar">
+        <div className="hero-body-offers">
+        </div>
         <h2 className="offers">My Offers</h2>
         <h2 className="pending">Pending:</h2>
         {offersPending.length ? offersPending.map((user, i) => {
-          return  <div key={i} className="box">
+          return <div key={i} className="box">
             <article className="media">
+              {/* <Link to={`/chefs/${user.data._id}`} key={user.data._id}> */}
               <img src={user.data.image} alt={user.data.id} />
+              {/* </Link> */}
               <div className="info">
-                <h2 className="title">{user.data.name}</h2>
-                <h4>{user.avgRating > 0 ?
-                  <h3>{user.avgRating} <span className="star">★</span></h3>
-                  :
-                  'Not yet rated'}</h4>
-                <h4>Location: <br /> <p className="pending">{user.data.city}</p></h4>
-                <div>
-                  <ul>
-                    <h4>Skills:</h4>
-                    {user.data.skills.map((skill, i) => (
-                      <li key={i} className="pending">{skill}</li>
-                    ))}
-                  </ul>
+                <div className="bio">
+                  <h3 className="title">{user.data.name}</h3>
+                  {user.data.avgRating > 0 ?
+                    <h3>{user.data.avgRating} <span className="star">★</span></h3>
+                    :
+                    <h5>Not yet rated</h5>}
+                  <h4>{user.data.city}</h4>
                 </div>
-                <button onClick={() => this.handleAccept(user)} className="button is-success">Accept</button>
-                <button onClick={() => this.handleDelete(user)} className="button is-danger">Delete</button>
+                <div className="skills-offers">
+                  {user.data.skills.map((skill, i) => (
+                    <p key={i} className="offer-skills">{skill}</p>
+                  ))}
+                </div>
+                <div className="offer-buttons">
+                  <button onClick={() => this.handleAccept(user)} className="button is-success">Accept</button>
+                  <button onClick={() => this.handleDelete(user)} className="button is-danger">Delete</button>
+                </div>
               </div>
             </article>
           </div>
         })
-          : <h2>None Pending</h2> }
+          : <h5 className="none">None Pending</h5>}
         <h2 className="accepted">Accepted:</h2>
         {offersAccepted.length ? offersAccepted.map((user, i) => {
-          return  <div key={i} className="box">
+          return <div key={i} className="box">
             <article className="media">
+              {/* <Link to={`/chefs/${user.data._id}`} key={user.data._id}> */}
               <img src={user.data.image} alt={user.data.id} />
+              {/* </Link> */}
               <div className="info">
-                <h2 className="title">{user.data.name}</h2>
-                <h4>{user.avgRating > 0 ?
-                  <h3>{user.avgRating} <span className="star">★</span></h3>
-                  :
-                  'Not yet rated'}</h4>
-                <h4>Location: <br /> <p className="accepted">{user.data.city}</p></h4>
-                <div>
-                  <ul>
-                    <h4>Skills:</h4>
-                    {user.data.skills.map((skill, i) => (
-                      <li key={i} className="accepted">{skill}</li>
-                    ))}
-                  </ul>
+                <div className="bio">
+                  <h3 className="title">{user.data.name}</h3>
+                  {user.data.avgRating > 0 ?
+                    <h3>{user.data.avgRating} <span className="star">★</span></h3>
+                    :
+                    <h5>Not yet rated</h5>}
+                  <h4>{user.data.city}</h4>
                 </div>
-                <h4>Get in contact:<p className="accepted">{user.data.email}</p></h4>
-                <button onClick={() => this.handleDeleteAccepted(user)} className="button is-danger">Delete</button>
+                <div className="skills-offers">
+                  {user.data.skills.map((skill, i) => (
+                    <p key={i} className="offer-skills">{skill}</p>
+                  ))}
+                </div>
+                <div className="contact">
+                  <h4>Get in contact:</h4>
+                  <p className="email">{user.data.email}</p>
+                  <div className="offer-buttons">
+                    <button onClick={() => this.handleDeleteAccepted(user)} className="button is-danger">Delete</button>
+                  </div>
+                </div>
               </div>
             </article>
           </div>
         })
-          : <h2>None Accepted</h2> }
+          : <h5 className="none">None Accepted</h5>}
       </section>
     )
   }
 }
-
 export default Offers

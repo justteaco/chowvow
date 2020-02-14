@@ -55,7 +55,18 @@ html {
 // }
 
 .hero-body-index {
-  background-image: url("../assets/photo14.jpeg");
+  background-image: url('../assets/back7.jpeg');
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  position: fixed;
+  z-index: -1;
+}
+
+.hero-body-offers {
+  background-image: url('../assets/back4.jpeg');
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -75,12 +86,49 @@ html {
 }
 
 .offers {
-  font-size: 40px;
+    font-size: 40px;
+    margin: 40px 40px 80px 40px;
+    padding-top: 150px;
+    font-family: 'Montserrat Subrayada', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    // font-family: 'Caveat', cursive;
+    // font-family: 'Kalam', cursive;
+    color: white;
+  }
+
+
+.pending, .accepted {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  color: white;
+  margin: 20px;
 }
 
-.pending,
-.accepted {
-  font-size: 25px;
+.offer-buttons {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+
+  button.is-success {
+  height: 60px;
+  width: 120px;
+  margin: 20px;
+  font-size: 20px;
+  }
+
+  button.is-danger {
+    height: 60px;
+    width: 120px;
+    margin: 20px;
+    font-size: 20px;
+  }
+}
+
+.none {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  color: white;
+  margin: 20px 20px 50px 20px;
 }
 
 .wrapper {
@@ -195,12 +243,13 @@ body {
 //register and profile
 
 .user-section {
-  height: 94vh;
+  display: flex;
+  height: 100vh;
   width: 100vw;
-  padding: 40px;
+  margin-top: 60px;
+  padding: 60px;
   justify-content: center;
-  background-color: #727171;
-  object-fit: fill;
+  align-content: center;
 }
 
 .registerlayer {
@@ -214,9 +263,9 @@ body {
   width: auto;
 }
 .img-five {
-  top: 40px;
-  left: 75px;
-  height: 400px;
+  top: 300px;
+  left: 325px;
+  height: 350px;
 }
 .img-six {
   top: 20px;
@@ -226,7 +275,7 @@ body {
 
 .profilelayer {
   position: absolute;
-  justify-content: flex-end;
+  justify-content: center;
   display: flex;
 }
 
@@ -237,25 +286,36 @@ body {
 }
 
 .img-seven {
-  top: 40px;
-  left: 75px;
-  height: 400px;
+  top: 20px;
+  left: 1500px;
+  height: 250px;
 }
 
 .img-eight {
   top: 40px;
-  left: 75px;
-  height: 400px;
+  left: 30px;
+  bottom: 200px;
+  height: 300px;
+
+}
+.img-nine {
+  top: 500px;
+  left: -100px;
+  bottom: 200px;
+  height: 200px;
+
 }
 
 .user-container {
   display: flex;
-  height: 85vh;
+  height: 90vh;
   justify-content: space-around;
+  background-size: cover;
   margin: 0;
-  padding: 10px;
-  background-color: #f7fff7;
-  .user-info,
+  padding: 20px;
+  background-image: url("../assets/background/finalbg.jpg");
+  background-repeat: no-repeat;
+  background-size: 900vh;
   .user-image,
   .column {
     display: flex;
@@ -274,6 +334,10 @@ body {
     // background-image: url('../assets/background/slider-1-slide-3-left-bottom.png');
     // background-repeat: no-repeat;
     // background-size: 150px;
+  }
+
+  .user-info{
+    opacity: 0.5;
   }
 }
 
@@ -348,9 +412,7 @@ div.box {
   background-color: rgba(10, 17, 27, 0.3);
   // background-color: rgba(0, 225, 255, 0.26);
 
-  h3,
-  h4,
-  p {
+  h3, h4, p, h5 {
     color: white;
   }
 }
@@ -359,9 +421,76 @@ div.box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 120px;
+
+  .title{
+      font-size: 40px;
+    }
+
+  h4{
+      font-size: 26px;
+    }
 
   h3 {
-    font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  }
+
+  h5 {
+    font-size: 16px;
+  }
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .skills {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+
+    p {
+      // border: 1px solid black;
+      background-color: $dark-blue;
+      height: fit-content;
+      margin: 20px;
+      padding: 20px 40px;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+    }
+  }
+
+  .skills-offers {
+    display: flex;
+    width: 30%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .offer-skills {
+      // border: 1px solid black;
+      background-color: $dark-blue;
+      height: fit-content;
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.contact {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+
+  .email {
+    font-size: 24px;
   }
 }
 
@@ -402,47 +531,6 @@ div.box {
   // font-family: 'Caveat', cursive;
   // font-family: 'Kalam', cursive;
   color: white;
-}
-
-.info {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-
-  .bio {
-    margin-left: 120px;
-
-    .title {
-      font-size: 40px;
-    }
-
-    h3 {
-      font-size: 30px;
-    }
-
-    h4 {
-      font-size: 26px;
-    }
-  }
-
-  .skills {
-    display: flex;
-    width: 50%;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    align-items: center;
-
-    p {
-      // border: 1px solid black;
-      background-color: $dark-blue;
-      height: fit-content;
-      margin: 20px;
-      padding: 20px 40px;
-      font-size: 20px;
-      font-family: "Montserrat", sans-serif;
-      text-transform: uppercase;
-    }
-  }
 }
 
 .chef-image {
@@ -558,18 +646,39 @@ h2.username {
 .user-info {
   max-width: 380px;
   margin: 40px;
-  opacity: 0.9;
   background-color: #727171;
+  // background: rgb(10, 17, 27);
+  // background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
   padding: 15px;
   border: solid 1px #727171;
   border-radius: 3px;
   color: white;
   p,
   label {
-    color: white;
+    color: #ffc700;
     font-size: 30px;
     h2 {
       font-size: 40px;
+    }
+  }
+}
+
+.user-info-profile {
+  max-width: 380px;
+  margin: 40px;
+  // background-color: #727171;
+  // background: rgb(10, 17, 27);
+  // background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
+  padding: 15px;
+  // border: solid 1px #727171;
+  // border-radius: 3px;
+  p,
+  label {
+    color: white;
+    font-size: 20px;
+    h2.title {
+      font-size: 40px;
+      color: white;
     }
   }
 }
@@ -603,6 +712,7 @@ h2.skills {
 }
 
 div.profileSkills {
+  opacity: 0.5;
   margin: 15px;
   padding: 15px;
   background-color: #727171;
@@ -610,7 +720,7 @@ div.profileSkills {
   border-radius: 3px;
   p,
   h2 {
-    color: white;
+    color: #ffc700
   }
 }
 
@@ -667,20 +777,20 @@ div.profileSkills {
     transform: translateX(-200px);
   }
   100% {
-    opacity: 1;
+    opacity: 0;
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
 }
 @keyframes fadeInLeft {
   0% {
-    opacity: 0;
+    opacity: 0.8;
     -webkit-transform: translateX(-200px);
     -ms-transform: translateX(-200px);
     transform: translateX(-200px);
   }
   100% {
-    opacity: 1;
+    opacity: 0.8;
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);
@@ -723,11 +833,15 @@ div.profileSkills {
   background-image: url("../assets/background/finalbg.jpg");
   background-size: 900vh;
   align-items: center;
-}
+  overflow: hidden;
+  position: fixed; 
+   overflow-y: scroll;
+   top: 0; right: 0; bottom: 0; left: 0; }
+
 
 .logintitle {
   font-size: 50px;
-  color: salmon;
+  color: #ffc700;
   font-family: montserrat;
   justify-content: space-between;
   align-items: center;
@@ -750,14 +864,14 @@ div.profileSkills {
 
 .floating-image {
   position: relative;
-  height: 400px;
+  height: 200px;
   width: auto;
 }
 
 .img-one {
-  top: 40px;
-  left: 75px;
-  height: 400px;
+  top: 150px;
+  left: -95px;
+
 }
 
 .img-two {
