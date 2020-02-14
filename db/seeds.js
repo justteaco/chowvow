@@ -498,7 +498,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
           skills: ['Mexican', 'Turkish/Middle-Eastern', 'Vegan'],
           city: 'Leicester',
-          postcode: 'LE5 OHJ',
+          postcode: 'LE15 OHJ',
           password: 'pass',
           passwordConfirmation: 'pass'
         }, {

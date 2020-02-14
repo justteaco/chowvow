@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Auth from '../../lib/auth'
 
 class UserReview extends React.Component {
   state = {
@@ -13,7 +14,9 @@ class UserReview extends React.Component {
   async componentDidMount() {
     const chefId = this.props.match.params.id
     try {
-      const res = await axios.get(`/api/chefs/${chefId}`)
+      const res = await axios.get(`/api/chefs/${chefId}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       this.setState({ user: res.data, review: res.data.review, rating: res.data.rating })
     } catch (err) {
       this.props.history.push('/notfound')

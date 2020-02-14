@@ -155,7 +155,6 @@ class UserShow extends React.Component {
     return (
       <section className="user-section">
         <div className="imageShowlayer">
-          
           <img className="floating-image img-three" src="./../assets/background/strawberries.png"></img>
           <img className="floating-image img-three" src="./../assets/background/mexican.png"></img>
         </div>
