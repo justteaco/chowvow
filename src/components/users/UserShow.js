@@ -154,11 +154,11 @@ class UserShow extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
-        <div className="imageShowlayer">
+        {/* <div className="imageShowlayer">
           
           <img className="floating-image img-three" src="./../assets/background/strawberries.png"></img>
           <img className="floating-image img-three" src="./../assets/background/mexican.png"></img>
-        </div>
+        </div> */}
         <div className="user-container">
           <div className="user-info fadeInLeft">
             <div className="userInfo">

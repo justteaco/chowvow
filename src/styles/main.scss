@@ -195,12 +195,13 @@ body {
 //register and profile
 
 .user-section {
-  height: 94vh;
+  display: flex;
+  height: 100vh;
   width: 100vw;
   padding: 40px;
+  margin-top: 60px;
   justify-content: center;
-  background-color: #727171;
-  object-fit: fill;
+  align-content: center;
 }
 
 .registerlayer {
@@ -224,37 +225,37 @@ body {
   height: 350px;
 }
 
-.profilelayer {
-  position: absolute;
-  justify-content: flex-end;
-  display: flex;
-}
-
-.profile-image {
-  position: relative;
-  height: 400px;
-  width: auto;
-}
-
-.img-seven {
-  top: 40px;
-  left: 75px;
-  height: 400px;
-}
-
-.img-eight {
-  top: 40px;
-  left: 75px;
-  height: 400px;
-}
+// .profilelayer {
+//   position: absolute;
+//   justify-content: center;
+//   display: flex;
+// }
+// .profile-image {
+//   position: relative;
+//   height: 400px;
+//   width: auto;
+// }
+// .img-seven {
+//   top: 20px;
+//   left: 1500px;
+//   height: 250px;
+// }
+// .img-eight {
+//   top: 40px;
+//   left: 30px;
+//   bottom: 200px;
+//   height: 300px;
+// }
 
 .user-container {
   display: flex;
-  height: 85vh;
+  height: 90vh;
   justify-content: space-around;
+  background-image: url("../assets/background/finalbg.jpg");
+  background-size: cover;
   margin: 0;
   padding: 10px;
-  background-color: #f7fff7;
+  // background-color: #f7fff7;
   .user-info,
   .user-image,
   .column {
@@ -558,8 +559,9 @@ h2.username {
 .user-info {
   max-width: 380px;
   margin: 40px;
-  opacity: 0.9;
   background-color: #727171;
+  // background: rgb(10, 17, 27);
+  // background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
   padding: 15px;
   border: solid 1px #727171;
   border-radius: 3px;
@@ -570,6 +572,26 @@ h2.username {
     font-size: 30px;
     h2 {
       font-size: 40px;
+    }
+  }
+}
+
+.user-info-profile {
+  max-width: 380px;
+  margin: 40px;
+  // background-color: #727171;
+  // background: rgb(10, 17, 27);
+  // background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
+  padding: 15px;
+  // border: solid 1px #727171;
+  // border-radius: 3px;
+  p,
+  label {
+    color: white;
+    font-size: 20px;
+    h2.title {
+      font-size: 40px;
+      color: white;
     }
   }
 }
@@ -667,20 +689,20 @@ div.profileSkills {
     transform: translateX(-200px);
   }
   100% {
-    opacity: 1;
+    opacity: 0;
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
 }
 @keyframes fadeInLeft {
   0% {
-    opacity: 0;
+    opacity: 0.8;
     -webkit-transform: translateX(-200px);
     -ms-transform: translateX(-200px);
     transform: translateX(-200px);
   }
   100% {
-    opacity: 1;
+    opacity: 0.8;
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0);

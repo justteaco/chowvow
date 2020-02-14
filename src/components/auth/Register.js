@@ -65,11 +65,11 @@ class Register extends React.Component {
     return (
       <section className="user-section">
         <form onSubmit={this.handleSubmit} className="user-container">
-          <div className="user-info">
-            <div className="registerlayer">
+          <div className="user-info-profile">
+            {/* <div className="registerlayer">
               <img className="food-image img-five" src="./../assets/background/veggie.png"></img>
               <img className="food-image img-six" src="./../assets/background/gyoza.png"></img>
-            </div>
+            </div> */}
             <h2 className="title">Register</h2>
             <br />
             <div className="fieldContainer">

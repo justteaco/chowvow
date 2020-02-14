@@ -65,8 +65,6 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
             </div>
             {errors.passwordConfirmation && <small className="help is-danger">{errors.passwordConfirmation}</small>}
           </div>
-          <br />
-          <button onClick={handleDelete} className="button is-danger">Delete Profile</button>
         </div>
         <div className="user-image">
           {
@@ -89,6 +87,8 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete
           }
           <hr />
           <button type="submit" className="button is-primary">SAVE</button>
+          <br />
+          <button onClick={handleDelete} className="button is-danger">Delete Profile</button>
         </div>
         <div className="skills-recipes">
           <div className="fieldContainer">

@@ -67,10 +67,10 @@ class UserProfile extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
-        <div className="profilelayer">
+        {/* <div className="profilelayer">
           <img className="profile-image img-seven" src="./../assets/background/falafal.png"></img>
           <img className="profile-image img-eight" src="./../assets/background/mexican.png"></img>
-        </div>
+        </div> */}
         <div className="user-container">
           <div className="user-info fadeInLeft">
             <h2 className="username">{name}</h2>

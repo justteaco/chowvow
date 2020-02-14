@@ -27,16 +27,13 @@ function update(req, res) {
     .then(updatedUser => res.status(202).json(updatedUser))
     .catch(err => res.status(401).json(err))
 }
+
 function destroy(req, res) {
   User
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found ' })
-      if (!user._id.equals(req.currentUser._id)) {
-        res.status(401).json({ message: 'Unauthorised' })
-      } else {
-        user.remove().then(() => res.sendStatus(204))
-      }
+      user.remove().then(() => res.sendStatus(204))
     })
     .catch(err => res.json(err))
 }
