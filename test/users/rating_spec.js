@@ -39,11 +39,6 @@ describe('Post a rating on anothers profile', () => {
       .then(() => done())
   })
 
-  afterEach(done => {
-    User.deleteMany()
-      .then(() => done())
-  })
-
   it('should return a 404 not found for an invalid chefs id', done => {
     api.post('/api/chefs/1234/rating')
       .set('Authorization', `Bearer ${token}`)

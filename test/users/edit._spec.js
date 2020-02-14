@@ -116,5 +116,4 @@ describe('Test editing user profile', () => {
         done()
       })
   })
-
 })

@@ -4,13 +4,24 @@ const jwt = require('jsonwebtoken') // again needed just like in create, we need
 const { secret } = require('../../config/environment') // and our secret to encode that token with
 
 const testUserData = [{ 
-  name: 'offering',
+  skills: [],
+  _id: '5e46922887cbf35acab54c40',
+  name: 'offer',
   email: 'offer@email',
-  password: 'pass',
-  passwordConfirmation: 'pass',
   image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364940/Chow%20Vow/james6_qxaho1.jpg',
   city: 'Manchester',
-  postcode: 'M1 1EZ'
+  postcode: 'M1 1EZ',
+  password: 'pass',
+  passwordConfirmation: 'pass',
+  rating: [],
+  offersPending: [],
+  offersAccepted: [],
+  review: [],
+  createdAt: '2020-02-14T12:27:20.500Z',
+  updatedAt: '2020-02-14T12:27:20.529Z',
+  __v: 1,
+  avgRating: 0,
+  id: '5e46922887cbf35acab54c40'
 }, {
   name: 'Jack',
   email: 'jack@email',
@@ -21,14 +32,14 @@ const testUserData = [{
   postcode: 'M1 1EZ'
 }]
 
-describe('Post to /chefs/:id/offersPending to create an offer of colaboration', () => {
+describe('Post to /chefs/:id/offersAccepted to create an offer of colaboration', () => {
   let token, incorrectToken, user
 
   beforeEach(done => {
     User.create(testUserData)
       .then(users => {
-        token = jwt.sign({ sub: users[0]._id }, secret, { expiresIn: '6h' })
-        incorrectToken = jwt.sign({ sub: users[1]._id }, secret, { expiresIn: '6h' })
+        token = jwt.sign({ sub: users[1]._id }, secret, { expiresIn: '6h' })
+        incorrectToken = jwt.sign({ sub: users[0]._id }, secret, { expiresIn: '6h' })
         user = users
         done()
       })
@@ -39,20 +50,20 @@ describe('Post to /chefs/:id/offersPending to create an offer of colaboration', 
       .then(() => done())
   })
 
-  it('should return a 201', done => {
-    api.post(`/api/chefs/${user[1]._id}/offersPending`)
+  it('should return a 201 for created accepted user', done => {
+    api.post(`/api/chefs/${user[1]._id}/offersAccepted`)
       .set('Authorization', `Bearer ${token}`)
-      .send(null)
+      .send(user[0])
       .end((err, res) => {
         expect(res.status).to.eq(201)
         done()
       })
   })
 
-  it('should return a 401 if the user is trying to give himself an offer', done => {
-    api.post(`/api/chefs/${user[0]._id}/offersPending`)
+  it('should return a 401 for trying to accept their own offer', done => {
+    api.post(`/api/chefs/${user[0]._id}/offersAccepted`)
       .set('Authorization', `Bearer ${token}`)
-      .send(null)
+      .send(user[0])
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
@@ -60,8 +71,8 @@ describe('Post to /chefs/:id/offersPending to create an offer of colaboration', 
   })
 
   it('should return a 401 if user is not logged in', done => {
-    api.post(`/api/chefs/${user[1]._id}/offersPending`)
-      .send(null)
+    api.post(`/api/chefs/${user[1]._id}/offersAccepted`)
+      .send(user[0])
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
@@ -69,9 +80,9 @@ describe('Post to /chefs/:id/offersPending to create an offer of colaboration', 
   })
 
   it('should return an object', done => {
-    api.post(`/api/chefs/${user[1]._id}/offersPending`)
+    api.post(`/api/chefs/${user[1]._id}/offersAccepted`)
       .set('Authorization', `Bearer ${token}`)
-      .send(null)
+      .send(user[0])
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -79,9 +90,9 @@ describe('Post to /chefs/:id/offersPending to create an offer of colaboration', 
   })
 
   it('should return the correct fields', done => {
-    api.post(`/api/chefs/${user[1]._id}/offersPending`)
+    api.post(`/api/chefs/${user[1]._id}/offersAccepted`)
       .set('Authorization', `Bearer ${token}`)
-      .send(null)
+      .send(user[0])
       .end((err, res) => {
         expect(res.body).to.contains.keys([
           '_id',
@@ -106,9 +117,9 @@ describe('Post to /chefs/:id/offersPending to create an offer of colaboration', 
   })
 
   it('should return the correct types', done => {
-    api.post(`/api/chefs/${user[1]._id}/offersPending`)
+    api.post(`/api/chefs/${user[1]._id}/offersAccepted`)
       .set('Authorization', `Bearer ${token}`)
-      .send(null)
+      .send(user[0])
       .end((err, res) => {
         const user = res.body
         expect(user._id).to.be.a('string')
@@ -127,18 +138,16 @@ describe('Post to /chefs/:id/offersPending to create an offer of colaboration', 
       })
   })
 
-  it('should increase the offerPending by one', done => {
-    api.post(`/api/chefs/${user[1]._id}/offersPending`)
+  it('should increase the offersAccepted by one', done => {
+    api.post(`/api/chefs/${user[1]._id}/offersAccepted`)
       .set('Authorization', `Bearer ${token}`)
-      .send(null)
+      .send(user[0])
       .end((err, res) => {
-        const offer = user[1].offersPending
-        expect(res.body.offersPending.length).to.eq(offer.length + 1)
+        const offer = user[1].offersAccepted
+        expect(res.body.offersAccepted.length).to.eq(offer.length + 1)
         done()
       })
   })
+
 })
-
-
-
 
