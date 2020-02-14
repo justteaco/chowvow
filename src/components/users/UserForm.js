@@ -2,7 +2,7 @@ import React from 'react'
 import ImageUpload from '../ImageUpload'
 import Select from 'react-select'
 
-const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit, errors }) => {
+const UserForm = ({ data, options, handleMultiChange, handleChange, handleDelete, handleSubmit, errors }) => {
 
   const prePopulateArray = data.skills.map(skill => {
     return { value: skill, label: skill }
@@ -10,9 +10,9 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit
 
   return (
     <section className="user-section">
-      <h2 className="title">Register</h2>
       <form onSubmit={handleSubmit} className="user-container">
         <div className="user-info">
+          <h2 className="title">Edit profile</h2>
           <div className="field">
             <label className="label">NAME</label>
             <div className="control">
@@ -39,31 +39,60 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit
             </div>
             {errors.email && <small className="help is-danger">{errors.email}</small>}
           </div>
+          <div className="field">
+            <label className="label">PASSWORD</label>
+            <div className="control">
+              <input
+                className={`input ${errors.password ? 'is-danger' : ''}`}
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+              />
+            </div>
+            {errors.password && <small className="help is-danger">{errors.password}</small>}
+          </div>
+          <div className="field">
+            <label className="label">PASSWORD CONFIRMATION</label>
+            <div className="control">
+              <input
+                className={`input ${errors.passwordConfirmation ? 'is-danger' : ''}`}
+                type="password"
+                placeholder="Password Confirmation"
+                name="passwordConfirmation"
+                onChange={handleChange}
+              />
+            </div>
+            {errors.passwordConfirmation && <small className="help is-danger">{errors.passwordConfirmation}</small>}
+          </div>
+          <br />
+          <button onClick={handleDelete} className="button is-danger">Delete Profile</button>
         </div>
         <div className="user-image">
           {
             data.image ?
-              <figure className="imageContainer">
-                <label className="label">Your photo</label>
-                <img className="image" src={data.image} alt={data.name} />
-              </figure>
-              :
               <ImageUpload
-                // labelText="my custom label text"
                 handleChange={handleChange}
                 fieldName="image"
-                // labelClassName="my-label-class"
                 inputClassName="my-input-class"
-              />
+              >
+                <button onClick={ImageUpload} className="button is-danger">Image Upload</button>
+              </ImageUpload>
+              :
+              <ImageUpload
+                handleChange={handleChange}
+                fieldName="image"
+                inputClassName="my-input-class"
+              >
+                <button onClick={ImageUpload} className="button is-danger">Image Upload</button>
+              </ImageUpload>
           }
-
-
           <hr />
           <button type="submit" className="button is-primary">SAVE</button>
         </div>
         <div className="skills-recipes">
-          <div className="skills-img">
-            <label className="label">What are your skills?</label>
+          <div className="fieldContainer">
+            <label className="label">Update skills</label>
             <div className="control">
               <Select
                 options={options}
@@ -72,34 +101,33 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit
                 onChange={handleMultiChange}
               />
             </div>
-          </div>
-          <hr />
-          <div className="field">
-            <label className="label">CITY</label>
-            <div className="control">
-              <input
-                className={`input ${errors.city ? 'is-danger' : ''}`}
-                placeholder="City"
-                name="city"
-                value={data.city}
-                onChange={handleChange}
-              />
+            <div className="field">
+              <label className="label">CITY</label>
+              <div className="control">
+                <input
+                  className={`input ${errors.city ? 'is-danger' : ''}`}
+                  placeholder="City"
+                  name="city"
+                  value={data.city}
+                  onChange={handleChange}
+                />
+              </div>
+              {errors.city && <small className="help is-danger">{errors.city}</small>}
             </div>
-            {errors.city && <small className="help is-danger">{errors.city}</small>}
-          </div>
-          <hr />
-          <div className="field">
-            <label className="label">POSTCODE</label>
-            <div className="control">
-              <input
-                className={`input ${errors.postcode ? 'is-danger' : ''}`}
-                placeholder="Postcode"
-                name="postcode"
-                value={data.postcode}
-                onChange={handleChange}
-              />
+            <div className="field">
+              <label className="label">POSTCODE</label>
+              <div className="control">
+                <input
+                  className={`input ${errors.postcode ? 'is-danger' : ''}`}
+                  placeholder="Postcode"
+                  name="postcode"
+                  value={data.postcode}
+                  onChange={handleChange}
+                />
+              </div>
+              <hr />
+              {errors.postcode && <small className="help is-danger">{errors.postcode}</small>}
             </div>
-            {errors.postcode && <small className="help is-danger">{errors.postcode}</small>}
           </div>
         </div>
       </form>

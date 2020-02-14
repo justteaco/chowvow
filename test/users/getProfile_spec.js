@@ -3,7 +3,7 @@ const User = require('../../models/user')
 const jwt = require('jsonwebtoken') 
 const { secret } = require('../../config/environment')
 
-describe('Test to get ones own profile infor', () => {
+describe('Test to get ones own profile info', () => {
 
   let user, token
 
@@ -86,6 +86,27 @@ describe('Test to get ones own profile infor', () => {
           'avgRating',
           'id'
         ])
+        done()
+      })
+  })
+
+  it('should return the correct fields', done => {
+    api.get('/api/profile')
+      .set('Authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        const user = res.body
+        expect(user._id).to.be.a('string')
+        expect(user.name).to.be.a('string')
+        expect(user.email).to.be.a('string')
+        expect(user.skills).to.be.an('array')
+        expect(user.city).to.be.a('string')
+        expect(user.image).to.be.a('string')
+        expect(user.postcode).to.be.an('string')
+        expect(user.rating).to.be.an('array')
+        expect(user.offersPending).to.be.an('array')
+        expect(user.offersAccepted).to.be.an('array')
+        expect(user.review).to.be.an('array')
+        expect(user.avgRating).to.be.an('number')
         done()
       })
   })

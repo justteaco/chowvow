@@ -101,7 +101,7 @@ describe('Test editing user profile', () => {
         expect(res.body.offersPending).to.be.an('array')
         expect(res.body.offersAccepted).to.be.an('array')
         expect(res.body.review).to.be.an('array')
-        expect(res.body.avgRating).to.be.an('string')
+        expect(res.body.avgRating).to.be.an('number')
         done()
       })
   })

@@ -47,7 +47,8 @@ router.route('/register')
 
 router.route('/login')
   .post(authUsers.login)
+  
 // router.route('/message')
-//   .post(authUsers.message)
+// .post(authUsers.message)
 
 module.exports = router

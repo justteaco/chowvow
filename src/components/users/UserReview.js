@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 class UserReview extends React.Component {
   state = {
     user: {},
+    rating: '',
     review: '',
     timestamps: ''
   }
@@ -13,7 +14,7 @@ class UserReview extends React.Component {
     const chefId = this.props.match.params.id
     try {
       const res = await axios.get(`/api/chefs/${chefId}`)
-      this.setState({ user: res.data, review: res.data.review, avgRating: res.data.avgRating })
+      this.setState({ user: res.data, review: res.data.review, rating: res.data.rating })
     } catch (err) {
       this.props.history.push('/notfound')
     }
@@ -38,8 +39,13 @@ class UserReview extends React.Component {
                     :
                     <p>No reviews yet, be the first!</p>}
                   {this.state.review.map((rev, i) => (
-                    <h3 key={i} className="subtitle">Comments: {rev.review}</h3>
+                    this.state.rating.map((rate) => (
+                      <h3 key={i} className="subtitle">{rate.rating} Comments: {rev.review}</h3>
+                    ))
                   ))}
+                  {/* {this.state.rating.map((rat, i) => (
+                    <h3 key={i} className="subtitle">Comments: {rat.rating}</h3>
+                  ))} */}
                 </div>
               </div>
             </article>

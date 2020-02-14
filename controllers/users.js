@@ -20,9 +20,9 @@ function update(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) throw new Error('Not Found')
-      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorised' })
-      Object.assign(user, req.body)
-      return user.save()
+      if (!user._id.equals(req.currentUser._id)) return res.status(401).json({ message: 'Unauthorized' })
+      Object.assign(user, req.body) 
+      return user.save()  
     })
     .then(updatedUser => res.status(202).json(updatedUser))
     .catch(err => res.status(401).json(err))
@@ -47,6 +47,7 @@ function ratingCreate(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found ' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.rating.push(req.body)
       return user.save()
     })
@@ -58,6 +59,7 @@ function offersPendingCreate(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.offersPending.push({ offeringUser: req.currentUser })
       return user.save()
     })
@@ -83,6 +85,7 @@ function offersAccepted(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.offersAccepted.push({ acceptedUser: req.body.data })
       console.log(user)
       return user.save()
@@ -109,6 +112,7 @@ function reviewCreate(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.review.push(req.body)
       return user.save()
     })

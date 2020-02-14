@@ -464,7 +464,71 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'BT54 6QB',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }
+        }, {
+          name: 'Tom Nichol',
+          email: 'Tom12@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Caribbean', 'Chinese', 'African', 'Korean'],
+          city: 'Leicester',
+          postcode: 'LE3 2GP',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        },{
+          name: 'James Marcus',
+          email: 'James12@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Moroccan', 'Turkish/Middle-Eastern', 'Korean', 'Spanish'],
+          city: 'Leicester',
+          postcode: 'LE2 8QY',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, 
+        {
+          name: 'Jane Clarence',
+          email: 'Jane12@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Moroccan', 'South-East Asian', 'Vegan'],
+          city: 'Leicester',
+          postcode: 'LE2 6TQ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Gary Clates',
+          email: 'Gaz12@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Mexican', 'Turkish/Middle-Eastern', 'Vegan'],
+          city: 'Leicester',
+          postcode: 'LE15 OHJ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Sally Santos',
+          email: 'Bigsal@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Japanese', 'Turkish/Middle-Eastern', 'Chinese'],
+          city: 'Leicester',
+          postcode: 'LE3 9EE',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        },{
+          name: 'Jake Gowan',
+          email: 'Jake@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Moroccan', 'Greek', 'Italian'],
+          city: 'Leicester',
+          postcode: 'LE18 1GD',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Matt Wykes',
+          email: 'Mattw@email.com',
+          image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
+          skills: ['Greek', 'Japanese', 'Korean'],
+          city: 'Leicester',
+          postcode: 'LE18 9FN',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }  
       ])
     })
     .then(createdUsers => {
