@@ -13,6 +13,18 @@ html {
   object-fit: cover;
 }
 
+.usersSkills {
+  margin: 15px;
+  padding: 15px;
+  background-color: #727171;
+  border: 1px solid #727171;
+  border-radius: 3px;
+  p,
+  h2 {
+    color: white;
+  }
+}
+
 .hero-body {
   background-image: url("https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
   background-size: cover;
@@ -43,7 +55,7 @@ html {
 // }
 
 .hero-body-index {
-  background-image: url('../assets/photo14.jpeg');
+  background-image: url("../assets/photo14.jpeg");
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -66,12 +78,13 @@ html {
   font-size: 40px;
 }
 
-.pending, .accepted {
+.pending,
+.accepted {
   font-size: 25px;
 }
 
 .wrapper {
-  background-image: url('../assets/blackboard-texture_1205-375.jpg');
+  background-image: url("../assets/blackboard-texture_1205-375.jpg");
   background-size: 1600px;
   padding: 60px;
 }
@@ -175,17 +188,18 @@ body {
   // background-image: url('../assets/photo21.jpeg');
   // background-color: rgba(255, 145, 0, 0.5);
   // background-size: cover;
-  background: rgb(10,17,27);
-  background: linear-gradient(180deg, rgba(10,17,27,0.5) 35%, rgba(255,145,0,0.85) 100%);
+  background: rgb(10, 17, 27);
+  background: linear-gradient(180deg, rgba(10, 17, 27, 0.5) 35%, rgba(255, 145, 0, 0.85) 100%);
 }
-
 
 //register and profile
 
 .user-section {
-  height: 93vh;
+  height: 94vh;
+  width: 100vw;
   padding: 40px;
   justify-content: center;
+  background-color: #727171;
   object-fit: fill;
 }
 
@@ -193,7 +207,6 @@ body {
   position: absolute;
   justify-content: flex-end;
   display: flex;
-
 }
 .food-image {
   position: relative;
@@ -223,7 +236,6 @@ body {
   width: auto;
 }
 
-
 .img-seven {
   top: 40px;
   left: 75px;
@@ -236,12 +248,13 @@ body {
   height: 400px;
 }
 
-
 .user-container {
   display: flex;
   height: 85vh;
   justify-content: space-around;
   margin: 0;
+  padding: 10px;
+  background-color: #f7fff7;
   .user-info,
   .user-image,
   .column {
@@ -251,9 +264,12 @@ body {
     justify-content: center;
   }
   .skills-recipes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     // display: flex;
     // flex-direction: column;
-    justify-content: space-around;
+    // justify-content: space-around;
     // max-width: 200px;
     // background-image: url('../assets/background/slider-1-slide-3-left-bottom.png');
     // background-repeat: no-repeat;
@@ -266,8 +282,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
-
+  padding: 20px;
+  // height: 150px;
   h2 {
     font-size: 28px;
   }
@@ -310,19 +326,19 @@ body {
 
 nav.nav {
   background-color: $orange;
-  
-  .container{
-  margin-left: 20px;
 
-  .navbar-brand {
-    margin-right: 20px;
-  
-    img {
-      margin-top: 10px;
-      width: 60px;
-      height: 55px;
-     }
-  }
+  .container {
+    margin-left: 20px;
+
+    .navbar-brand {
+      margin-right: 20px;
+
+      img {
+        margin-top: 10px;
+        width: 60px;
+        height: 55px;
+      }
+    }
   }
 }
 
@@ -332,7 +348,9 @@ div.box {
   background-color: rgba(10, 17, 27, 0.3);
   // background-color: rgba(0, 225, 255, 0.26);
 
-  h3, h4, p {
+  h3,
+  h4,
+  p {
     color: white;
   }
 }
@@ -343,32 +361,32 @@ div.box {
   justify-content: center;
 
   h3 {
-  font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 }
 
 .navbar-brand .navbar-item {
   h1 {
-  font-size: 40px;
-  font-family: 'Sriracha', cursive;
-  color: white;
-  // font-family: 'Montserrat Subrayada', sans-serif;
-  // font-family: 'Acme', sans-serif;
-  // font-family: 'Caveat', cursive;
-  // font-weight: bold;
-  // font-family: 'Permanent Marker', cursive;
-  // font-family: 'Kalam', cursive;
+    font-size: 40px;
+    font-family: "Sriracha", cursive;
+    color: white;
+    // font-family: 'Montserrat Subrayada', sans-serif;
+    // font-family: 'Acme', sans-serif;
+    // font-family: 'Caveat', cursive;
+    // font-weight: bold;
+    // font-family: 'Permanent Marker', cursive;
+    // font-family: 'Kalam', cursive;
   }
 }
 
 .container .navbar-item {
   font-size: 22px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .navbar-end .navbar-item {
   font-size: 22px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .map {
@@ -379,7 +397,7 @@ div.box {
   font-size: 40px;
   margin: 40px 40px 80px 40px;
   padding-top: 150px;
-  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: "Montserrat Subrayada", sans-serif;
   // font-family: 'Montserrat', sans-serif;
   // font-family: 'Caveat', cursive;
   // font-family: 'Kalam', cursive;
@@ -394,7 +412,7 @@ div.box {
   .bio {
     margin-left: 120px;
 
-    .title{
+    .title {
       font-size: 40px;
     }
 
@@ -402,7 +420,7 @@ div.box {
       font-size: 30px;
     }
 
-    h4{
+    h4 {
       font-size: 26px;
     }
   }
@@ -421,12 +439,11 @@ div.box {
       margin: 20px;
       padding: 20px 40px;
       font-size: 20px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       text-transform: uppercase;
     }
   }
 }
-
 
 .chef-image {
   max-height: 400px;
@@ -434,20 +451,32 @@ div.box {
   border-radius: 80%;
 }
 
-.my-input-class {
-  background-image: url(https://www.chalktalksports.com/on/demandware.static/Sites-ChalkTalkSports-Site/-/default/dw619b9d39/images/Placeholder.jpg);
+.my-input-class-edit {
   background-size: 100%;
-  border: solid 50px;
-  border-color: #E9EEF1;
   border-radius: 80%;
-  height: 400px;
-  width: 400px;
+  height: 440px;
+  width: 440px;
   cursor: pointer;
-  // input:focus { outline: none; }
   .skill-header {
     margin: 40px;
     font-size: 40px;
+    span {
+      margin-left: 20px;
+    }
+  }
+}
 
+.my-input-class {
+  background-image: url("../assets/profile/placeholder.jpg");
+  background-size: 100%;
+
+  border-radius: 80%;
+  height: 440px;
+  width: 440px;
+  cursor: pointer;
+  .skill-header {
+    margin: 40px;
+    font-size: 40px;
     span {
       margin-left: 20px;
     }
@@ -468,39 +497,39 @@ div.box {
 input {
   outline: none;
   border: none;
-  }
+}
 
-  *{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 .rate:not(:checked) input {
-    position:absolute;
-    top:-9999px;
+  position: absolute;
+  top: -9999px;
 }
 
 .rate:not(:checked) label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color :#ccc;
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 40px;
+  color: #ccc;
 }
 
 .rate:not(:checked) label:before {
-    content: '★ ';
+  content: "★ ";
 }
 
 .rate > input:checked ~ label {
-    color: #ffc700;    
+  color: #ffc700;
 }
 
 .rate:not(:checked) label:hover,
 .rate:not(:checked) label:hover ~ label {
-    color: #deb217;  
+  color: #deb217;
 }
 
 .rate input:checked + label:hover,
@@ -508,7 +537,7 @@ input {
 .rate input:checked ~ label:hover,
 .rate input:checked ~ label:hover ~ label,
 .rate label:hover ~ input:checked ~ label {
-    color: #c59b08;
+  color: #c59b08;
 }
 
 .star-rating {
@@ -519,63 +548,204 @@ input {
 
 .star {
   color: #ffc700;
-  font-size: 40px;  
+  font-size: 40px;
+}
+
+h2.username {
+  color: white;
 }
 
 .user-info {
-  
-     background-repeat: no-repeat;
-     background-size: 200px;
-    // display: flex;
-    // flex: 10px;
-    // align-items: flex-end;
+  max-width: 380px;
+  margin: 40px;
+  opacity: 0.9;
+  background-color: #727171;
+  padding: 15px;
+  border: solid 1px #727171;
+  border-radius: 3px;
+  color: white;
+  p,
+  label {
+    color: white;
+    font-size: 30px;
+    h2 {
+      font-size: 40px;
+    }
+  }
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-evenly;
   h2 {
     font-size: 40px;
   }
+}
 
-  
-  .username {
-    font-weight: bold;
+.usersSkills {
+  p {
+    font-size: 25px;
   }
 }
 
+.username {
+  font-weight: bold;
+  font-size: 40px;
+}
 
-//login 
+h2.skills {
+  display: flex;
+  justify-content: center;
+  margin-inline-start: 0;
+  margin-inline-start: 0;
+}
+
+div.profileSkills {
+  margin: 15px;
+  padding: 15px;
+  background-color: #727171;
+  border: 1px solid #727171;
+  border-radius: 3px;
+  p,
+  h2 {
+    color: white;
+  }
+}
+
+.skills-recipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 280px;
+  margin: 40px;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
+
+.user-info {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-200px);
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+
+    background-repeat: no-repeat;
+    background-size: 200px;
+    // display: flex;
+    // flex: 10px;
+    // align-items: flex-end;
+  }
+}
+
+// h2 {
+//   font-size: 40px;
+// }
+
+.username {
+  font-weight: bold;
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+.allReviews {
+  p {
+    text-decoration: underline;
+  }
+}
+
+//login
 .loginsection {
   align-items: baseline;
-  background-image: url('../assets/background/finalbg.jpg');
+  background-image: url("../assets/background/finalbg.jpg");
   background-size: 900vh;
   align-items: center;
-  
-  
 }
 
 .logintitle {
-font-size: 50px;
-color: salmon;
-font-family: montserrat;
-justify-content: space-between;
-align-items: center;
-display: flex;
+  font-size: 50px;
+  color: salmon;
+  font-family: montserrat;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
 }
 
-
-
-
 .logincontainer {
-     height: 100vh;
-     padding: 350px;
-     margin: 10px;
-    // justify-content: center;
-    // align-items: center;
-
+  height: 100vh;
+  padding: 350px;
+  margin: 10px;
+  // justify-content: center;
+  // align-items: center;
 }
 
 .imagelayer {
   position: absolute;
   justify-content: flex-end;
   display: flex;
-
 }
 
 .floating-image {
@@ -607,5 +777,3 @@ display: flex;
   height: 180px;
   right: 278px;
 }
-
-

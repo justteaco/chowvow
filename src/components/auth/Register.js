@@ -64,62 +64,66 @@ class Register extends React.Component {
   render() {
     return (
       <section className="user-section">
-        <div className="registerlayer">
-          <img className="food-image img-five" src="./../assets/background/veggie.png"></img>
-          <img className="food-image img-six" src="./../assets/background/gyoza.png"></img>
-        </div>
-        <h2 className="title">Register</h2>
         <form onSubmit={this.handleSubmit} className="user-container">
           <div className="user-info">
-            <div className="field">
-              <label className="label">NAME</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.errors.name ? 'is-danger' : ''}`}
-                  placeholder="Name"
-                  name="name"
-                  onChange={this.handleChange}
-                />
-              </div>
-              {this.state.errors.name && <small className="help is-danger">{this.state.errors.name}</small>}
+            <div className="registerlayer">
+              <img className="food-image img-five" src="./../assets/background/veggie.png"></img>
+              <img className="food-image img-six" src="./../assets/background/gyoza.png"></img>
             </div>
-            <div className="field">
-              <label className="label">EMAIL</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded ${this.state.errors.email ? 'is-danger' : ''}`}
-                  placeholder="Email"
-                  name="email"
-                  onChange={this.handleChange}
-                />
+            <h2 className="title">Register</h2>
+            <br />
+            <div className="fieldContainer">
+              <div className="field">
+                <label className="label">NAME</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.name ? 'is-danger' : ''}`}
+                    placeholder="Name"
+                    name="name"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.errors.name && <small className="help is-danger">{this.state.errors.name}</small>}
               </div>
-              {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
-            </div>
-            <div className="field">
-              <label className="label">PASSWORD</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded  ${this.state.errors.password ? 'is-danger' : ''}`}
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
+              <div className="field">
+                <label className="label">EMAIL</label>
+                <div className="control">
+
+                  <input
+                    className={`input ${this.state.errors.email ? 'is-danger' : ''}`}
+                    placeholder="Email"
+                    name="email"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.errors.email && <small className="help is-danger">{this.state.errors.email}</small>}
               </div>
-              {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
-            </div>
-            <div className="field">
-              <label className="label">PASSWORD CONFIRMATION</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded  ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
-                  type="password"
-                  placeholder="Password Confirmation"
-                  name="passwordConfirmation"
-                  onChange={this.handleChange}
-                />
+              <div className="field">
+                <label className="label">PASSWORD</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.password ? 'is-danger' : ''}`}
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.errors.password && <small className="help is-danger">{this.state.errors.password}</small>}
               </div>
-              {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
+              <div className="field">
+                <label className="label">PASSWORD CONFIRMATION</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.passwordConfirmation ? 'is-danger' : ''}`}
+                    type="password"
+                    placeholder="Password Confirmation"
+                    name="passwordConfirmation"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.errors.passwordConfirmation && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
+              </div>
             </div>
           </div>
           <div className="user-image">
@@ -132,39 +136,39 @@ class Register extends React.Component {
             <button type="submit" className="button is-rounded  is-primary">SAVE</button>
           </div>
           <div className="skills-recipes">
-            <label className="label">WHAT ARE YOUR SKILLS?</label>
-            <div className="control">
-              <Select
-                options={this.options}
-                isMulti
-                onChange={this.handleMultiChange}
-              />
-            </div>
-            <hr />
-            <div className="field">
-              <label className="label">CITY</label>
+            <div className="fieldContainer">
+              <label className="label">What are your skills?</label>
               <div className="control">
-                <input
-                  className={`input is-rounded  ${this.state.errors.city ? 'is-danger' : ''}`}
-                  placeholder="City"
-                  name="city"
-                  onChange={this.handleChange}
+                <Select
+                  options={this.options}
+                  isMulti
+                  onChange={this.handleMultiChange}
                 />
               </div>
-              {this.state.errors.city && <small className="help is-danger">{this.state.errors.city}</small>}
-            </div>
-            <hr />
-            <div className="field">
-              <label className="label">POSTCODE</label>
-              <div className="control">
-                <input
-                  className={`input is-rounded  ${this.state.errors.postcode ? 'is-danger' : ''}`}
-                  placeholder="Postcode"
-                  name="postcode"
-                  onChange={this.handleChange}
-                />
+              <div className="field">
+                <label className="label">CITY</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.city ? 'is-danger' : ''}`}
+                    placeholder="City"
+                    name="city"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.errors.city && <small className="help is-danger">{this.state.errors.city}</small>}
               </div>
-              {this.state.errors.postcode && <small className="help is-danger">{this.state.errors.postcode}</small>}
+              <div className="field">
+                <label className="label">POSTCODE</label>
+                <div className="control">
+                  <input
+                    className={`input ${this.state.errors.postcode ? 'is-danger' : ''}`}
+                    placeholder="Postcode"
+                    name="postcode"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.errors.postcode && <small className="help is-danger">{this.state.errors.postcode}</small>}
+              </div>
             </div>
           </div>
         </form>
