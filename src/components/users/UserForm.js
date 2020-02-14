@@ -43,7 +43,7 @@ const UserForm = ({ data, options, handleMultiChange, handleChange, handleSubmit
         <div className="user-image">
           {
             data.image ?
-              <figure className="imageContainer">
+              <figure className="imagecontainer">
                 <label className="label">Your photo</label>
                 <img className="image" src={data.image} alt={data.name} />
               </figure>

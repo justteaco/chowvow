@@ -8,6 +8,97 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     .then(() => {
       return User.create([
         {
+          name: 'Asha Sessay',
+          email: 'asha@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581676612/new_phot_oft23d.jpg',
+          skills: ['Chinese', 'French', 'African'],
+          city: 'Queens Park',
+          postcode: 'RH7 6JB',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'David Campbell',
+          email: 'david@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581676608/david_f9gcp8.jpg',
+          skills: ['Turkish/Middle-Eastern'],
+          city: 'Luton',
+          postcode: ' LS25 6QE',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'North Kardashian ',
+          email: 'north@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675491/teaten_xlw652.jpg',
+          skills: ['South-East Asian', 'Caribbean'],
+          city: 'Hackney Downs',
+          postcode: 'SW20 0ED',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Robyn Fenty',
+          email: 'robyn@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675490/teafive_vcv8df.jpg',
+          skills: ['Spanish'],
+          city: 'Notting Hill',
+          postcode: ' L12 8QL ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Victoria Beckham',
+          email: 'victoria@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675490/teafoour_g3yzsa.jpg',
+          skills: ['Vegetarian', 'South-East Asian', 'Vegan'],
+          city: 'Wembley',
+          postcode: 'DE3 0TQ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Philo Ever',
+          email: 'philo@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675490/teanine_qxp7b7.jpg',
+          skills: ['Spanish', 'Vegan', 'Italian'],
+          city: 'London',
+          postcode: 'KT12 2NZ',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Conner Jenkins',
+          email: 'Conner@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675491/teasix_fq9uzu.jpg',
+          skills: ['Mexican', 'Japanese'],
+          city: 'Birmingham',
+          postcode: 'RG7 8HA',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Rosa Parks',
+          email: 'rosa@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675490/teaeight_lk3zob.jpg',
+          skills: ['Turkish/Middle-Eastern'],
+          city: 'Liverpool',
+          postcode: ' SS17 0ND',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Martin Luther King',
+          email: 'martin@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675491/teathree_hndhue.jpg',
+          skills: ['Caribbean'],
+          city: 'Manchester',
+          postcode: 'IP7 6HX',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, {
+          name: 'Marcus Garvey',
+          email: 'marcusgarvey@email.com',
+          image: 'https://res.cloudinary.com/dsa3peayb/image/upload/v1581675491/teatwo_oo5iwn.jpg',
+          skills: ['African', 'Vegan'],
+          city: 'The Ends',
+          postcode: ' LE18 3TF',
+          password: 'pass',
+          passwordConfirmation: 'pass'
+        }, 
+        {
           name: 'Ben Parker',
           email: 'ben@email.com',
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
