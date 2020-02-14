@@ -3,78 +3,147 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 class Offers extends React.Component {
   state = {
-    offersPending: null,
-    offersAccepted: null
+    offersPending: [],
+    offersAccepted: []
   }
 
   getOffers = user => {
     return (axios.get(`/api/chefs/${user.offeringUser}`))
   }
 
+  getAccepted = user => {
+    return (axios.get(`/api/chefs/${user.acceptedUser}`))
+  }
+
   findOffers = async user => {
-    console.log(user.data.offersPending)
     Promise.all(user.data.offersPending.map(info => {
       return this.getOffers(info)
     }))
       .then(user => {
-        console.log(user)
         this.setState({ offersPending: user })
+      })
+    Promise.all(user.data.offersAccepted.map(info => {
+      return this.getAccepted(info)
+    }))
+      .then(user => {
+        this.setState({ offersAccepted: user })
       })
   }
 
   async componentDidMount() {
-    const chefId = this.props.match.params.id
-    const user = await axios.get(`/api/chefs/${chefId}/offers`, {
+    const user = await axios.get('/api/offers', {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
-    console.log(user)
     await this.findOffers(user)
   }
 
-  // handleDelete = async user => {
-  //   console.log(user)
-  //   const userId = this.props.match.params.id
-  //   try {
-  //     await axios.delete(`/api/chefs/${userId}/offersPending`, {
-  //       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-  //     })
-  //   } catch (err) {
-  //     console.log(err.response)
-  //   }
-  // }
+  handleDelete = async offerery => {
+    try {
+      await axios.delete(`/api/chefs/${Auth.getUser()}/offersPending/${offerery.data._id}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+    } catch (err) {
+      console.log(err.response)
+    } finally {
+      const user = await axios.get('/api/offers', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      await this.findOffers(user)
+    }
+  }
+
+  handleDeleteAccepted = async offerery => {
+    try {
+      await axios.delete(`/api/chefs/${Auth.getUser()}/offersAccepted/${offerery.data._id}`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+    } catch (err) {
+      console.log(err.response)
+    } finally {
+      const user = await axios.get('/api/offers', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      await this.findOffers(user)
+    }
+  }
+
+  handleAccept = async offerery => {
+    this.handleDelete(offerery)
+    try {
+      await axios.post(`/api/chefs/${Auth.getUser()}/offersAccepted`, offerery, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+    } catch (err) {
+      console.log(err.response)
+    } finally {
+      const user = await axios.get('/api/offers', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      await this.findOffers(user)
+    }
+  }
 
 
   render() {
-    const { offersPending } = this.state
-    // const { offersPending, offersAccepted } = this.state
+    const { offersPending, offersAccepted } = this.state
     return (
-      <>
-        <h2>My Offers</h2>
-        <h2>Pending:</h2>
-        {offersPending ? offersPending.map((user, i) => {
-          return  <div key={i}>
-            <img src={user.data.image} alt={user.data.id} />
-            <div>
-              <h2>{user.data.name}</h2>
-              <h4>Rating:</h4>
-              <h4>Location:</h4>
-              <h4>{user.data.city}</h4>
-              <div>
-                <ul>
-                  <h4>Skills:</h4>
-                  {user.data.skills.map((skill, i) => (
-                    <li key={i}>{skill}</li>
-                  ))}
-                </ul>
+      <section className="slate">
+        <h2 className="offers">My Offers</h2>
+        <h2 className="pending">Pending:</h2>
+        {offersPending.length ? offersPending.map((user, i) => {
+          return  <div key={i} className="box">
+            <article className="media">
+              <img src={user.data.image} alt={user.data.id} />
+              <div className="info">
+                <h2 className="title">{user.data.name}</h2>
+                <h4>{user.avgRating > 0 ?
+                  <h3>{user.avgRating} <span className="star">★</span></h3>
+                  :
+                  'Not yet rated'}</h4>
+                <h4>Location: <br /> <p className="pending">{user.data.city}</p></h4>
+                <div>
+                  <ul>
+                    <h4>Skills:</h4>
+                    {user.data.skills.map((skill, i) => (
+                      <li key={i} className="pending">{skill}</li>
+                    ))}
+                  </ul>
+                </div>
+                <button onClick={() => this.handleAccept(user)} className="button is-success">Accept</button>
+                <button onClick={() => this.handleDelete(user)} className="button is-danger">Delete</button>
               </div>
-            </div>
-            <button onClick={() => this.handleDelete(user)} name={user.data.id}>Delete</button>
-            <button onClick={this.handleAccept} name={user.data.id}>Accept</button>
+            </article>
           </div>
         })
-          : <h2>No offers</h2> }
-          <h2>Accepted:</h2>
-      </>
+          : <h2>None Pending</h2> }
+        <h2 className="accepted">Accepted:</h2>
+        {offersAccepted.length ? offersAccepted.map((user, i) => {
+          return  <div key={i} className="box">
+            <article className="media">
+              <img src={user.data.image} alt={user.data.id} />
+              <div className="info">
+                <h2 className="title">{user.data.name}</h2>
+                <h4>{user.avgRating > 0 ?
+                  <h3>{user.avgRating} <span className="star">★</span></h3>
+                  :
+                  'Not yet rated'}</h4>
+                <h4>Location: <br /> <p className="accepted">{user.data.city}</p></h4>
+                <div>
+                  <ul>
+                    <h4>Skills:</h4>
+                    {user.data.skills.map((skill, i) => (
+                      <li key={i} className="accepted">{skill}</li>
+                    ))}
+                  </ul>
+                </div>
+                <h4>Get in contact:<p className="accepted">{user.data.email}</p></h4>
+                <button onClick={() => this.handleDeleteAccepted(user)} className="button is-danger">Delete</button>
+              </div>
+            </article>
+          </div>
+        })
+          : <h2>None Accepted</h2> }
+      </section>
     )
   }
 }

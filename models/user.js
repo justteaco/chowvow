@@ -2,28 +2,43 @@ const mongoose = require('mongoose') // This is needed to create a new schema an
 const bcrypt = require('bcrypt') // Our chosen our library used to hash passwords
 
 const ratingSchema = new mongoose.Schema({
-  rating: { type: Number, required: true }
+  rating: { type: String, required: true }
 }, {
   timestamps: true
 })
 
 const offersPendingSchema = new mongoose.Schema({
-  offeringUser: { type: mongoose.Schema.ObjectId , ref: 'User', required: true }
+  offeringUser: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })
 
 const offersAcceptedSchema = new mongoose.Schema({
-  acceptedUser: { type: mongoose.Schema.ObjectId , ref: 'User', required: true }
+  acceptedUser: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true
 })
+
+// const recipeSchema = new mongoose.Schema({
+//   name: { type: String, required: true },
+//   image: { type: String, required: true },
+//   serving: { type: Number, required: true, min: 1, max: 20 },
+//   cookTime: { type: Number, required: true },
+//   ingredients: { type: Array, required: true }
+//   // user: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
+// })
 
 const reviewSchema = new mongoose.Schema({
   review: { type: String, required: true }
 }, {
   timestamps: true
 })
+
+// const messageSchema = new mongoose.Schema({
+//   message: { type: String, required: true }
+// }, {
+//   timestamps: true
+// })
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -33,13 +48,24 @@ const userSchema = new mongoose.Schema({
   city: { type: String, required: true },
   postcode: { type: String, required: true },
   password: { type: String, required: true },
-  rating: [ ratingSchema ],
-  offersPending: [ offersPendingSchema ],
-  offersAccepted: [ offersAcceptedSchema ],
-  review: [ reviewSchema ]
+  rating: [ratingSchema],
+  offersPending: [offersPendingSchema],
+  offersAccepted: [offersAcceptedSchema],
+  review: [reviewSchema]
+  // recipes: [ recipeSchema ]
+  // message: [ messageSchema ]
 }, {
   timestamps: true
 })
+
+userSchema.plugin(require('mongoose-unique-validator'))
+
+// userSchema.virtual('ownedRecipes', {
+//   ref: 'Recipe',
+//   localField: '_id',
+//   foreignField: 'owner'
+// })
+
 
 userSchema
   .virtual('avgRating')
@@ -53,20 +79,21 @@ userSchema
       const avgRating = (sum / newMappedUsers.length).toFixed(1)
       return avgRating
     } else {
-      return null
+      return ''
     }
   })
 
-userSchema.set('toJSON', {
-  transform(doc, json) {
-    delete json.password
-    return json
-  }
-})
+userSchema
+  .set('toJSON', {
+    virtuals: true,
+    transform(doc, json) {
+      delete json.password
+      return json
+    }
+  })
 
 // This validates whether a password is correct at login
 userSchema.methods.validatePassword = function validatePassword(password) {
-
   return bcrypt.compareSync(password, this.password) // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome
 }
 
@@ -91,8 +118,6 @@ userSchema
     }
     next() // now move on to saving
   })
-
-userSchema.set('toJSON', { virtuals: true })
 
 
 module.exports = mongoose.model('User', userSchema)

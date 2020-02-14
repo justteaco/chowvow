@@ -58,16 +58,16 @@ class UserEdit extends React.Component {
     const data = { ...this.state.data, [name]: value, [image]: value }
     this.setState({ data })
   }
+
   handleSubmit = async (e) => {
     e.preventDefault()
     console.log(this.props.match.params.id)
     const userId = this.props.match.params.id
     try {
-      const { data } = await axios.put(`/api/chefs/${userId}`, this.state.data, {
+      await axios.put(`/api/chefs/${userId}`, this.state.data, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      this.props.history.push(`/chefs/${data._id}`)
-
+      this.props.history.push('/profile')
     } catch (err) {
       this.setState(err.response.data.errors)
     }

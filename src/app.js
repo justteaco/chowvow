@@ -12,6 +12,7 @@ import UserShow from './components/users/UserShow'
 import UserProfile from './components/users/UserProfile'
 import UserReview from './components/users/UserReview'
 import UserEdit from './components/users/UserEdit'
+// import UserMessages from './components/users/UserMessages'
 
 import Navbar from './components/common/Navbar'
 import FailedPage from './components/common/FailedPage'
@@ -28,13 +29,14 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <SecureRoute path="/chefs/:id/edit" component={UserEdit} />
         <Route path="/chefs/:id/review" component={UserReview} />
-        <Route path="/chefs/:id/offers" component={Offers} />
         <SecureRoute path="/chefs/:id" component={UserShow} />
         <Route path="/map/:address" component={UserMap} />
+        <SecureRoute path="/offers" component={Offers} />
         <Route path="/chefs" component={UserIndex} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/profile" component={UserProfile} />
+        {/* <Route path="/messages" component={UserMessages} /> */}
         <Route path="/*" component={FailedPage} />
       </Switch>
     </>
