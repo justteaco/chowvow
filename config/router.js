@@ -7,7 +7,7 @@ router.route('/chefs')
   .get(users.index)
 
 router.route('/chefs/:id')
-  .get(users.show)
+  .get(secureRoute, users.show)
   .put(secureRoute, users.update)
   .delete(secureRoute, users.destroy)
 

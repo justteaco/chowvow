@@ -37,7 +37,7 @@ class Home extends React.Component {
         <section>
           <div className="wrapper" id="skills">
             <div className="columns is-mobile is-multiline">
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/african.jpeg" alt="African" id="African" />
                   <div className="border" id="African">
@@ -45,7 +45,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/caribbean.jpeg" alt="Caribbean" id="Caribbean"/>
                   <div className="border" id="Caribbean">
@@ -53,7 +53,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/chinese.jpeg" alt="Chinese" id="Chinese"/>
                   <div className="border" id="Chinese">
@@ -61,7 +61,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/french.jpeg" alt="French" id="French"/>
                   <div className="border" id="French">
@@ -69,7 +69,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/greek.jpeg" alt="Greek" id="Greek"/>
                   <div className="border" id="Greek">
@@ -77,7 +77,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/indian.jpeg" alt="Indian" id="Indian"/>
                   <div className="border" id="Indian">
@@ -85,7 +85,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/italian.jpeg" alt="Italian" id="Italian"/>
                   <div className="border" id="Italian">
@@ -93,7 +93,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/japanese.jpeg" alt="Japanese" id="Japanese"/>
                   <div className="border" id="Japanese">
@@ -101,7 +101,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/korean.jpeg" alt="Korean" id="Korean"/>
                   <div className="border" id="Korean">
@@ -109,7 +109,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/mexican.jpg" alt="Mexican" id="Mexican"/>
                   <div className="border" id="Mexican">
@@ -117,7 +117,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/moroccan.jpeg" alt="Moroccan" id="Moroccan" />
                   <div className="border" id="Moroccan">
@@ -125,7 +125,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/asian.jpeg" alt="South-East Asian" id="South-East Asian"/>
                   <div className="border" id="South-East Asian">
@@ -133,7 +133,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/spanish.jpg" alt="Spanish" id="Spanish"/>
                   <div className="border" id="Spanish">
@@ -141,7 +141,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/turkish.jpg" alt="Turkish/Middle-Eastern" id="Turkish/Middle-Eastern"/>
                   <div className="border" id="Turkish/Middle-Eastern">
@@ -149,7 +149,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/vegan.jpeg" alt="Vegan" id="Vegan" />
                   <div className="border" id="Vegan">
@@ -157,7 +157,7 @@ class Home extends React.Component {
                   </div>
                 </Link>
               </div>
-              <div className="skill column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+              <div className="skill column is-one-quarter-desktop is-half-tablet is-full-mobile">
                 <Link onClick={this.handleClick} to="/chefs">
                   <img src="../../assets/vegetarian.jpg" alt="Vegetarian" id="Vegetarian"/>
                   <div className="border" id="Vegetarian">

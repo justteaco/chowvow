@@ -31,18 +31,21 @@ class Navbar extends React.Component {
   render() {
     const { navbarOpen } = this.state
     return (
-      <nav className="navbar is-dark">
+      <nav className="navbar nav is-transparent is-fixed-top">
         <div className="container">
           <div className="navbar-brand">
-            <Link className="navbar-item" to="/">Chow Vow</Link>
-            <Link className="navbar-item" to="/map/london">Map</Link>
+            <img src="../assets/logo.png" alt="logo" />
+            <Link className="navbar-item" to="/">
+              <h1>Chow Vow</h1>
+            </Link>
           </div>
+          <Link className="navbar-item has-text-white" to="/map/london">MAP</Link>
           <div className="navbar-item has-dropdown is-hoverable">
-            <a className="navbar-link has-text-white" onClick={this.toggleNavBar}>Skills</a>
+            <a className="navbar-link has-text-white is-arrowless" onClick={this.toggleNavBar}>SKILLS</a>
             {
               navbarOpen &&
               <div className="navbar-dropdown">
-                <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>All</Link>
+                <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>ALL</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>African</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Caribbean</Link>
                 <Link className="navbar-item" to="/chefs" onClick={this.handleClick}>Chinese</Link>
@@ -62,22 +65,16 @@ class Navbar extends React.Component {
               </div>
             }
           </div>
-
           <div className="navbar-end">
-            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">Sign up</Link>}
-            {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login">Login</Link>}
-            {/* {Auth.isAuthenticated() && <Link className="navbar-item" to="/messages">Inbox</Link>} */}
-            {Auth.isAuthenticated() && <Link className="navbar-item" to="/offers">Offers</Link>}
-            {Auth.isAuthenticated() && <Link className="navbar-item" to="/profile">Profile</Link>}
-            {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.handleLogout}>Logout</a>}
+            {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/register">SIGN UP</Link>}
+            {!Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/login">LOGIN</Link>}
+            {/* {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/messages">Inbox</Link>} */}
+            {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/offers">OFFERS</Link>}
+            {Auth.isAuthenticated() && <Link className="navbar-item has-text-white" to="/profile">PROFILE</Link>}
+            {Auth.isAuthenticated() && <a className="navbar-item has-text-white" onClick={this.handleLogout}>LOGOUT</a>}
           </div>
-
         </div>
-
-
-
       </nav>
-
     )
   }
 }
