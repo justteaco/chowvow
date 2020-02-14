@@ -3,7 +3,7 @@ import axios from 'axios'
 import Auth from '../../lib/auth'
 import UserForm from './UserForm'
 //import Select from 'react-select'
-import ImageUpload from '../ImageUpload'
+//import ImageUpload from '../ImageUpload'
 
 
 class UserEdit extends React.Component {
@@ -100,13 +100,12 @@ class UserEdit extends React.Component {
             handleMultiChange={this.handleMultiChange}
           />
           <hr />
-          <button onClick={this.handleDelete} className="button is-danger">Delete Profile</button>
-          <hr />
+          <button onClick={this.handleDelete} className="button is-rounded ">Delete Profile</button>
         </div>
         <div>
-          <ImageUpload>
-            <button onClick={this.ImageUpload} className="button is-danger">Image Upload</button>
-          </ImageUpload>
+          {/* <ImageUpload>
+            <button onClick={this.ImageUpload} className="button is-primamy">Image Upload</button>
+          </ImageUpload> */}
         </div>
       </section>
     )

@@ -25,7 +25,7 @@ class UserShow extends React.Component {
       // this.setState({ user: res.data, skills: res.data.skills, recipes: res.data.recipes })
       this.countRatings(res)
     } catch (err) {
-      // this.props.history.push('/notfound')
+      this.props.history.push('/notfound')
     }
   }
 
@@ -153,6 +153,11 @@ class UserShow extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
+        <div className="imageShowlayer">
+          
+          <img className="floating-image img-three" src="./../assets/background/strawberries.png"></img>
+          <img className="floating-image img-three" src="./../assets/background/mexican.png"></img>
+        </div>
         <div className="user-container">
           <div className="user-info">
             <h2 className="username">{name}</h2>
