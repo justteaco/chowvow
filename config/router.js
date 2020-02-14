@@ -35,33 +35,15 @@ router.route('/chefs/:id/offersPending')
 router.route('/chefs/:id/offersPending/:offereyid')
   .delete(secureRoute, users.offersPendingDelete)
 
-<<<<<<< HEAD
-router.route('/chefs/:id/offers')
-=======
 router.route('/offers')
->>>>>>> development
   .get(secureRoute, authUsers.offers)
 
-
-<<<<<<< HEAD
-// router.route('/chefs/:id/offersAccepted')
-//   .post(users)
-//   .delete(users)
-
-router.route('/register')
-  .post(authUsers.register)
-
-
-router.route('/login')
-  .post(authUsers.login)
-=======
 router.route('/register')
   .post(authUsers.register)
 
 router.route('/login')
   .post(authUsers.login)
 
->>>>>>> development
 // router.route('/message')
 //   .post(authUsers.message)
 
