@@ -8,11 +8,15 @@ class Offers extends React.Component {
   }
 
   getOffers = user => {
-    return (axios.get(`/api/chefs/${user.offeringUser}`))
+    return (axios.get(`/api/chefs/${user.offeringUser}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    }))
   }
 
   getAccepted = user => {
-    return (axios.get(`/api/chefs/${user.acceptedUser}`))
+    return (axios.get(`/api/chefs/${user.acceptedUser}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    }))
   }
 
   findOffers = async user => {
@@ -31,10 +35,14 @@ class Offers extends React.Component {
   }
 
   async componentDidMount() {
-    const user = await axios.get('/api/offers', {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    })
-    await this.findOffers(user)
+    try {
+      const user = await axios.get('/api/offers', {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      await this.findOffers(user)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   handleDelete = async offerery => {

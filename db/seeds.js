@@ -383,7 +383,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'LE3 2GP',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }, {
+        },{
           name: 'James Marcus',
           email: 'James12@email.com',
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
@@ -392,7 +392,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'LE2 8QY',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }, {
+        }, 
+        {
           name: 'Jane Clarence',
           email: 'Jane12@email.com',
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
@@ -407,7 +408,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
           skills: ['Mexican', 'Turkish/Middle-Eastern', 'Vegan'],
           city: 'Leicester',
-          postcode: 'LE5 OHJ',
+          postcode: 'LE15 OHJ',
           password: 'pass',
           passwordConfirmation: 'pass'
         }, {
@@ -419,7 +420,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'LE3 9EE',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }, {
+        },{
           name: 'Jake Gowan',
           email: 'Jake@email.com',
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
@@ -434,10 +435,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581364904/Chow%20Vow/ben_parker_pk7xf0.jpg',
           skills: ['Greek', 'Japanese', 'Korean'],
           city: 'Leicester',
-          postcode: 'LE8 9FN',
+          postcode: 'LE18 9FN',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }          
+        }  
       ])
     })
     .then(createdUsers => {
