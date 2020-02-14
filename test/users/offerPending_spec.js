@@ -1,7 +1,7 @@
 /* global api, describe, it, expect, beforeEach, afterEach */
 const User = require('../../models/user')
-const jwt = require('jsonwebtoken') 
-const { secret } = require('../../config/environment')
+const jwt = require('jsonwebtoken') // again needed just like in create, we need to be able to pass tokens with requests.
+const { secret } = require('../../config/environment') // and our secret to encode that token with
 
 const testUserData = [{ 
   name: 'offering',
@@ -21,7 +21,7 @@ const testUserData = [{
   postcode: 'M1 1EZ'
 }]
 
-describe('Post a rating on anothers profile', () => {
+describe('Post to /chefs/:id/offersPending to create an offer of colaboration', () => {
   let token, incorrectToken, user
 
   beforeEach(done => {
@@ -39,48 +39,29 @@ describe('Post a rating on anothers profile', () => {
       .then(() => done())
   })
 
-  afterEach(done => {
-    User.deleteMany()
-      .then(() => done())
-  })
-
-  it('should return a 404 not found for an invalid chefs id', done => {
-    api.post('/api/chefs/1234/rating')
+  it('should return a 201', done => {
+    api.post(`/api/chefs/${user[1]._id}/offersPending`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ 'rating': 2 })
-      .end((err, res) => {
-        expect(res.status).to.eq(404)
-        done()
-      })
-  })
-
-  it('should return a 401 with no token', done => {
-    api.post(`/api/chefs/${user[0]._id}/rating`)
-      .send({ 'rating': 2 })
-      .end((err, res) => {
-        expect(res.status).to.eq(401)
-        done()
-      })
-  })
-
-  it('should return a 201 with a token', done => {
-    api.post(`/api/chefs/${user[1]._id}/rating`)
-      .set('Authorization', `Bearer ${token}`)
-      .send({ 'rating': 2 })
+      .send(null)
       .end((err, res) => {
         expect(res.status).to.eq(201)
         done()
       })
   })
 
-  it('should return a 401 if the user is trying to rate themself', done => {
-    api.post(`/api/chefs/${user[0]._id}/rating`)
+  it('should return a 401 if the user is trying to give himself an offer', done => {
+    api.post(`/api/chefs/${user[0]._id}/offersPending`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ 
-        user,
-        'review': 'amazing',
-        'rating': '5'
+      .send(null)
+      .end((err, res) => {
+        expect(res.status).to.eq(401)
+        done()
       })
+  })
+
+  it('should return a 401 if user is not logged in', done => {
+    api.post(`/api/chefs/${user[1]._id}/offersPending`)
+      .send(null)
       .end((err, res) => {
         expect(res.status).to.eq(401)
         done()
@@ -88,9 +69,9 @@ describe('Post a rating on anothers profile', () => {
   })
 
   it('should return an object', done => {
-    api.post(`/api/chefs/${user[1]._id}/rating`)
+    api.post(`/api/chefs/${user[1]._id}/offersPending`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ 'rating': 2 })
+      .send(null)
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         done()
@@ -98,7 +79,7 @@ describe('Post a rating on anothers profile', () => {
   })
 
   it('should return the correct fields', done => {
-    api.post(`/api/chefs/${user[1]._id}/rating`)
+    api.post(`/api/chefs/${user[1]._id}/offersPending`)
       .set('Authorization', `Bearer ${token}`)
       .send({ 'rating': 2 })
       .end((err, res) => {
@@ -124,13 +105,12 @@ describe('Post a rating on anothers profile', () => {
       })
   })
 
-  it('should return the correct fields', done => {
-    api.post(`/api/chefs/${user[1]._id}/rating`)
+  it('should return the correct types', done => {
+    api.post(`/api/chefs/${user[1]._id}/offersPending`)
       .set('Authorization', `Bearer ${token}`)
       .send({ 'rating': 2 })
       .end((err, res) => {
         const user = res.body
-        const rating = res.body.rating
         expect(user._id).to.be.a('string')
         expect(user.name).to.be.a('string')
         expect(user.email).to.be.a('string')
@@ -139,27 +119,40 @@ describe('Post a rating on anothers profile', () => {
         expect(user.image).to.be.a('string')
         expect(user.postcode).to.be.an('string')
         expect(user.rating).to.be.an('array')
-        expect(rating[0].rating).to.be.a('string')
-        expect(rating[0]._id).to.be.a('string')
         expect(user.offersPending).to.be.an('array')
         expect(user.offersAccepted).to.be.an('array')
         expect(user.review).to.be.an('array')
-        expect(user.avgRating).to.be.an('string')
+        expect(user.avgRating).to.be.an('number')
         done()
       })
   })
 
-  it('should increase the rating by one', done => {
-    api.post(`/api/chefs/${user[1]._id}/rating`)
+  it('should increase the offerPending by one', done => {
+    api.post(`/api/chefs/${user[1]._id}/offersPending`)
       .set('Authorization', `Bearer ${token}`)
-      .send({ 'rating': 2 })
+      .send(null)
       .end((err, res) => {
-        const rating = user[1].rating
-        expect(res.body.rating.length).to.eq(rating.length + 1)
+        const offer = user[1].offersPending
+        expect(res.body.offersPending.length).to.eq(offer.length + 1)
         done()
       })
   })
 
-  //need to check if the user has already left a review
-    
+  // has the user already sent an offer
+  // go through the persons offerspending array
+  // find an id that matches the offererys
+
+
 })
+
+// const chefId = this.props.match.params.id
+// try {
+//   const res = await axios.get(`/api/chefs/${chefId}`, {
+//     headers: { Authorization: `Bearer ${Auth.getToken()}` }
+//   })
+//   const isPending = res.data.offersPending.find(offer => offer.offeringUser === Auth.getUser())
+//   if (isPending) {
+//     this.setState({ pending: true })
+//   }
+
+

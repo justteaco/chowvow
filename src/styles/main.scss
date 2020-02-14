@@ -55,7 +55,18 @@ html {
 // }
 
 .hero-body-index {
-  background-image: url("../assets/photo14.jpeg");
+  background-image: url('../assets/back7.jpeg');
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  position: fixed;
+  z-index: -1;
+}
+
+.hero-body-offers {
+  background-image: url('../assets/back4.jpeg');
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -75,12 +86,49 @@ html {
 }
 
 .offers {
-  font-size: 40px;
+    font-size: 40px;
+    margin: 40px 40px 80px 40px;
+    padding-top: 150px;
+    font-family: 'Montserrat Subrayada', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    // font-family: 'Caveat', cursive;
+    // font-family: 'Kalam', cursive;
+    color: white;
+  }
+
+
+.pending, .accepted {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  color: white;
+  margin: 20px;
 }
 
-.pending,
-.accepted {
-  font-size: 25px;
+.offer-buttons {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+
+  button.is-success {
+  height: 60px;
+  width: 120px;
+  margin: 20px;
+  font-size: 20px;
+  }
+
+  button.is-danger {
+    height: 60px;
+    width: 120px;
+    margin: 20px;
+    font-size: 20px;
+  }
+}
+
+.none {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  color: white;
+  margin: 20px 20px 50px 20px;
 }
 
 .wrapper {
@@ -362,10 +410,8 @@ div.box {
   background-color: rgba(10, 17, 27, 0.3);
   // background-color: rgba(0, 225, 255, 0.26);
 
-  h3,
-  h4,
-  p {
-    color: rgb(135, 185, 135);
+  h3, h4, p, h5 {
+    color: white;
   }
 }
 
@@ -373,9 +419,76 @@ div.box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 120px;
+
+  .title{
+      font-size: 40px;
+    }
+
+  h4{
+      font-size: 26px;
+    }
 
   h3 {
-    font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  }
+
+  h5 {
+    font-size: 16px;
+  }
+}
+
+.info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .skills {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+
+    p {
+      // border: 1px solid black;
+      background-color: $dark-blue;
+      height: fit-content;
+      margin: 20px;
+      padding: 20px 40px;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+    }
+  }
+
+  .skills-offers {
+    display: flex;
+    width: 30%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .offer-skills {
+      // border: 1px solid black;
+      background-color: $dark-blue;
+      height: fit-content;
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.contact {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+
+  .email {
+    font-size: 24px;
   }
 }
 
@@ -416,47 +529,6 @@ div.box {
   // font-family: 'Caveat', cursive;
   // font-family: 'Kalam', cursive;
   color: white;
-}
-
-.info {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-
-  .bio {
-    margin-left: 120px;
-
-    .title {
-      font-size: 40px;
-    }
-
-    h3 {
-      font-size: 30px;
-    }
-
-    h4 {
-      font-size: 26px;
-    }
-  }
-
-  .skills {
-    display: flex;
-    width: 50%;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    align-items: center;
-
-    p {
-      // border: 1px solid black;
-      background-color: $dark-blue;
-      height: fit-content;
-      margin: 20px;
-      padding: 20px 40px;
-      font-size: 20px;
-      font-family: "Montserrat", sans-serif;
-      text-transform: uppercase;
-    }
-  }
 }
 
 .chef-image {

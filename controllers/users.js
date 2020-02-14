@@ -45,6 +45,7 @@ function ratingCreate(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found ' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.rating.push(req.body)
       return user.save()
     })
@@ -56,6 +57,7 @@ function offersPendingCreate(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.offersPending.push({ offeringUser: req.currentUser })
       return user.save()
     })
@@ -81,6 +83,7 @@ function offersAccepted(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.offersAccepted.push({ acceptedUser: req.body.data })
       console.log(user)
       return user.save()
@@ -107,6 +110,7 @@ function reviewCreate(req, res) {
     .findById(req.params.id)
     .then(user => {
       if (!user) return res.status(404).json({ message: 'Not Found' })
+      if (user.equals(req.currentUser._id)) return res.status(401).json({ message: 'Not Found' })
       user.review.push(req.body)
       return user.save()
     })
