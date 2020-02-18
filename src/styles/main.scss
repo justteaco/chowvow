@@ -16,6 +16,7 @@ html {
 .usersSkills {
   margin: 15px;
   padding: 15px;
+  opacity: 0.8;
   background-color: #727171;
   border: 1px solid #727171;
   border-radius: 3px;
@@ -277,6 +278,7 @@ body {
   position: absolute;
   justify-content: center;
   display: flex;
+  opacity: 0.5;
 }
 
 .profile-image {
@@ -286,21 +288,21 @@ body {
 }
 
 .img-seven {
-  top: 20px;
-  left: 1500px;
-  height: 250px;
+  top: 200px;
+  left: -40px;
+  height: 00px;
 }
 
 .img-eight {
   top: 40px;
-  left: 30px;
-  bottom: 200px;
-  height: 300px;
+  left: 300px;
+  bottom: 100px;
+  height: 150px;
 
 }
 .img-nine {
   top: 500px;
-  left: -100px;
+  left: -20px;
   bottom: 200px;
   height: 200px;
 
