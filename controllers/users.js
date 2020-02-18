@@ -1,6 +1,5 @@
 const User = require('../models/user')
 function index(req, res) {
-  console.log('working')
   User
     .find()
     .populate('user')
