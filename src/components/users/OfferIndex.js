@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
-
 class Offers extends React.Component {
   state = {
     offersPending: [],
@@ -14,6 +13,7 @@ class Offers extends React.Component {
     }))
   }
   getAccepted = user => {
+    console.log(user)
     return (axios.get(`/api/chefs/${user.acceptedUser}`, {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     }))
@@ -44,7 +44,7 @@ class Offers extends React.Component {
   }
   handleDelete = async offerery => {
     try {
-      await axios.delete(`/api/chefs/${Auth.getUser()}/offersPending/${offerery.data._id}`, {
+      await axios.delete(`/api/chefs/${Auth.getUser()}/offersPending/${offerery._id}`, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
     } catch (err) {
@@ -114,8 +114,8 @@ class Offers extends React.Component {
                   ))}
                 </div>
                 <div className="offer-buttons">
-                  <button onClick={() => this.handleAccept(user)} className="button is-success">Accept</button>
-                  <button onClick={() => this.handleDelete(user)} className="button is-danger">Delete</button>
+                  <button onClick={() => this.handleAccept(user.data)} className="button is-success">Accept</button>
+                  <button onClick={() => this.handleDelete(user.data)} className="button is-danger">Delete</button>
                 </div>
               </div>
             </article>

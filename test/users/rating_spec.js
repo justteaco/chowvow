@@ -22,13 +22,12 @@ const testUserData = [{
 }]
 
 describe('Post a rating on anothers profile', () => {
-  let token, incorrectToken, user
+  let token, user
 
   beforeEach(done => {
     User.create(testUserData)
       .then(users => {
         token = jwt.sign({ sub: users[0]._id }, secret, { expiresIn: '6h' })
-        incorrectToken = jwt.sign({ sub: users[1]._id }, secret, { expiresIn: '6h' })
         user = users
         done()
       })
@@ -134,12 +133,12 @@ describe('Post a rating on anothers profile', () => {
         expect(user.image).to.be.a('string')
         expect(user.postcode).to.be.an('string')
         expect(user.rating).to.be.an('array')
-        expect(rating[0].rating).to.be.a('string')
+        expect(rating[0].rating).to.be.a('number')
         expect(rating[0]._id).to.be.a('string')
         expect(user.offersPending).to.be.an('array')
         expect(user.offersAccepted).to.be.an('array')
         expect(user.review).to.be.an('array')
-        expect(user.avgRating).to.be.an('string')
+        expect(user.avgRating).to.be.a('string')
         done()
       })
   })

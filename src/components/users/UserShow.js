@@ -45,10 +45,14 @@ class UserShow extends React.Component {
     e.target.innerHTML = '<h2>Review submitted</h2>'
     const chefId = this.props.match.params.id
     try {
-      const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user)
+      const res = await axios.post(`/api/chefs/${chefId}/rating`, this.state.user, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       this.getData()
       this.countRatings(res)
-      const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user)
+      const rev = await axios.post(`/api/chefs/${chefId}/review`, this.state.user, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       this.submitReview(rev)
     } catch (err) {
       this.setState({ error: 'Invalid Credentials' })
@@ -154,9 +158,9 @@ class UserShow extends React.Component {
     if (!this.state.user) return null
     return (
       <section className="user-section">
-        <div className="imageShowlayer">
-          <img className="floating-image img-three" src="./../assets/background/strawberries.png"></img>
-          <img className="floating-image img-three" src="./../assets/background/mexican.png"></img>
+        <div className="profilelayer">
+          <img className="profile-image img-seven" src="./../assets/background/strawberries.png"></img>
+          <img className="profile-image img-eight" src="./../assets/background/mexican.png"></img>
         </div>
         <div className="user-container">
           <div className="user-info fadeInLeft">
@@ -185,7 +189,7 @@ class UserShow extends React.Component {
             <figure className="image-container">
               <img className="chef-image" src={image} alt={name} />
             </figure>
-            <hr />
+            <br />
             {accepted ? <div>{email}</div> : (pending ? <button className="button is-danger">Sent</button> : <button className="button is-success" onClick={this.offerPending}>Collaborate?</button>)}
           </div>
           <div className="skills-recipes fadeInRight">
