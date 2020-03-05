@@ -8,9 +8,8 @@
     "start:front": "webpack-dev-server --mode-development",
     "seed": "node db/seeds.js",
     "test": "mocha test/**/*_spec.js --require test/helper --recursive --exit",
-    "css-build": "node-sass --omit-source-map-url styles/main.scss styles/cust.scss",
-    "css-watch": "npm run css-build -- --watch",
-    "start": "npm run css-watch"
+    "start": "node index.js",
+    "build": "webpack -p"
   },
   "dependencies": {
     "axios": "^0.19.2",

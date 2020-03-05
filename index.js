@@ -14,6 +14,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true , useUnifiedTopology: true, useF
   console.log('Mongo is connected')
 })
 
+app.use(express.static(`${__dirname}/dist`))
+
 // set up bodyParser middleware
 app.use(bodyParser.json())
 
@@ -25,6 +27,9 @@ app.use('/api', router)
 
 // error handler for return the correct statuses
 app.use(errorHandler)
+
+// route for serving front end
+app.get('/*', (req, res) => res.sendFile(`${__dirname}/dist/index.html`))
 
 // get express running on port
 app.listen(port, () => console.log(`Express is listening on port ${port}`))
