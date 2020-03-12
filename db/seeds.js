@@ -97,7 +97,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: ' LE18 3TF',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }, 
+        },
         {
           name: 'Ben Parker',
           email: 'ben@email.com',
@@ -465,7 +465,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           //   cookTime: 35,
           //   ingredients: ['100g pancetta', '50g parmesan', '3 large eggs', '350g spaghetti', 'garlic', '50g unsalted butter', 'salt', 'black pepper']
           // }]
-        }, 
+        },
         // }, {
         //   name: 'Larissa Jackson',
         //   email: 'larissa@hotmail.com',
@@ -557,7 +557,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         //   password: 'pass',
         //   passwordConfirmation: 'pass'
         // }, {
-          {
+        {
           name: 'Tom Nichol',
           email: 'Tom12@email.com',
           image: 'https://res.cloudinary.com/dqrkw1z1a/image/upload/v1581689453/Chow%20Vow/new%20bens/tom-nichol_zql7rt.jpg',
@@ -620,7 +620,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
           postcode: 'LE18 9FN',
           password: 'pass',
           passwordConfirmation: 'pass'
-        }  
+        }
       ])
     })
     .then(createdUsers => {
