@@ -9,9 +9,6 @@ This is my third project built while at General Assembly as a Software Engineeri
 
 # Chow Vow 
 
-
-<img src="https://bit.ly/2JPrOEK" width="400" height="250">
-
 Chow Vow is an app for members to trade skills and search for other chefs from anywhere in the world. The user can view the map or list of members with any kind of cooking skills. If clicked on a member, the user is redirected to the login page. 
 The users can search via location or skills to connect with other members.
 
