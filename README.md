@@ -133,6 +133,8 @@ Frontend:
 
 The biggest setback during our group project was trying to synchronize our work to Git. Every day there was another issue and loads of errors that took up a good chunk of our work time. In this time we learned how to effectively communicate with each other and work seamlessly through our mistakes. At some point we all pushed our work incorrectly which got rid of some of our work which was the biggest issue. 
 
+<img src="https://i.ibb.co/r2C8ycy/Screenshot-2020-05-05-at-11-08-18.png" width="400" height="250">
+
 
 ## Improvements 
 
